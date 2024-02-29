@@ -1,12 +1,12 @@
-{ system, overlays, pkgs, lib }:
+{ system, pkgs, lib, inputs }:
 
-{
-  xps = pkgs.nixosSystem {
-    inherit system lib;
+let
+  commonConfig = import ./common.nix { inherit pkgs lib inputs; };
 
-    modules = [
-      ./common.nix
-      ./workstations/xps.nix
-    ];
+  importConfigs = typePath: import typePath {
+    inherit system pkgs lib inputs commonConfig;
   };
-}
+in
+importConfigs ./workstations
+  //
+importConfigs ./servers;

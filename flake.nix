@@ -37,13 +37,13 @@
       ];
 
       pkgs = import nixpkgs {
-        config.allowUnfree = true;
         inherit overlays system;
+        config.allowUnfree = true;
       };
 
       inherit (pkgs) lib;
     in
     {
-      nixosConfigurations = import ./hosts system pkgs lib;
+      nixosConfigurations = import ./hosts { inherit system pkgs lib inputs; };
     };
 }
