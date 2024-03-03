@@ -47,6 +47,9 @@
       forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system});
     in
     {
+      inherit lib;
+      homeManagerModules = import ./modules/home-manager;
+
       overlays = import ./overlays { inherit inputs outputs; };
 
       packages = forEachSystem (pkgs: import ./pkgs { inherit pkgs; });
