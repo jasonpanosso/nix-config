@@ -1,0 +1,19 @@
+{
+  imports = [
+    ./lua-ls.nix
+    ./cssls.nix
+    ./gopls.nix
+    ./taplo.nix
+    ./bashls.nix
+    ./clangd.nix
+    ./jsonls.nix
+    ./nil_ls.nix
+    ./dockerls.nix
+    ./marksman.nix
+    ./ansiblels.nix
+    ./tailwindcss.nix
+    ./html-language-server.nix
+    ./eslint-language-server.nix
+    ./svelte-language-server.nix
+  ];
+}

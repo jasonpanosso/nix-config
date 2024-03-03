@@ -1,0 +1,12 @@
+{
+  "Null check": {
+    "prefix": "ifnull",
+    "body": ["if (${1:MaybeNull} == null)", "{", "\t$0", "}"],
+    "description": "Null check"
+  },
+  "Debug Log": {
+    "prefix": "dl",
+    "body": ["Debug.Log(${1:});"],
+    "description": "Unity Debug.Log"
+  }
+}
