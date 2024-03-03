@@ -3,7 +3,7 @@
   imports = [
     ../features/cli
     ../features/nvim
-  ] ++ (builtins.attrValues outputs.homeManagerModules);
+  ];
 
   nixpkgs = {
     overlays = builtins.attrValues outputs.overlays;
