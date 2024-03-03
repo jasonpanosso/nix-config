@@ -31,13 +31,17 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... } @ inputs:
+  outputs = { self, nixpkgs, home-manager, neovim-nightly-overlay, ... } @ inputs:
     let
       inherit (self) outputs;
       lib = nixpkgs.lib // home-manager.lib;
       systems = [
         "aarch64-linux"
         "x86_64-linux"
+      ];
+
+      overlays = [
+        inputs.neovim-nightly-overlay.overlay
       ];
 
       pkgsFor = lib.genAttrs systems (system: import nixpkgs {
@@ -47,10 +51,8 @@
       forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system});
     in
     {
-      inherit lib;
+      inherit lib overlays;
       homeManagerModules = import ./modules/home-manager;
-
-      overlays = import ./overlays { inherit inputs outputs; };
 
       packages = forEachSystem (pkgs: import ./pkgs { inherit pkgs; });
       devShells = forEachSystem (pkgs: import ./shell.nix { inherit pkgs; });
@@ -61,6 +63,15 @@
         pathfinder = lib.nixosSystem {
           modules = [ ./hosts/pathfinder ];
           specialArgs = { inherit inputs outputs; };
+        };
+      };
+
+      homeConfigurations = {
+        # Workstations
+        "jason@pathfinder" = lib.homeManagerConfiguration {
+          modules = [ ./home/jason/pathfinder.nix ];
+          pkgs = pkgsFor.x86_64-linux;
+          extraSpecialArgs = { inherit inputs outputs; };
         };
       };
     };
