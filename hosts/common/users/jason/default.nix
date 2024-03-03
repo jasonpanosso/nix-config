@@ -2,7 +2,7 @@
 let ifGroupExists = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
 in
 {
-  users.mutableUsers = false;
+  users.mutableUsers = true;
   users.users.jason = {
     isNormalUser = true;
     shell = pkgs.zsh;

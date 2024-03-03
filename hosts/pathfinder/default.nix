@@ -12,6 +12,7 @@
 
   networking = {
     hostName = "pathfinder";
+    networkmanager.enable = true;
   };
 
   powerManagement.powertop.enable = true;
