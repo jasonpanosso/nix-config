@@ -105,10 +105,7 @@
         "sway/workspaces" = {
           all-outputs = false;
           disable-scroll = true;
-          format = "{icon} {name}";
-          format-icons = {
-            "urgent" = "";
-          };
+          format = "{name}";
         };
 
         temperature = {
