@@ -6,7 +6,7 @@
   ] ++ (builtins.attrValues outputs.homeManagerModules);
 
   nixpkgs = {
-    # overlays = outputs.overlays;
+    overlays = builtins.attrValues outputs.overlays;
     config = {
       allowUnfree = true;
       allowUnfreePredicate = (_: true);

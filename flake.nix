@@ -24,6 +24,17 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    sops-nix = {
+      url = "github:mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs-stable.follows = "nixpkgs";
+    };
+
+    nh = {
+      url = "github:viperml/nh";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     nixvim = {
       url = "github:nix-community/nixvim";
@@ -40,10 +51,6 @@
         "x86_64-linux"
       ];
 
-      overlays = [
-        inputs.neovim-nightly-overlay.overlay
-      ];
-
       pkgsFor = lib.genAttrs systems (system: import nixpkgs {
         inherit system;
         config.allowUnfree = true;
@@ -51,12 +58,14 @@
       forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system});
     in
     {
-      inherit lib overlays;
+      inherit lib;
       homeManagerModules = import ./modules/home-manager;
 
       packages = forEachSystem (pkgs: import ./pkgs { inherit pkgs; });
       devShells = forEachSystem (pkgs: import ./shell.nix { inherit pkgs; });
       formatter = forEachSystem (pkgs: pkgs.nixpkgs-fmt);
+
+      overlays = import ./overlays { inherit inputs outputs; };
 
       nixosConfigurations = {
         # Laptop - XPS 13
