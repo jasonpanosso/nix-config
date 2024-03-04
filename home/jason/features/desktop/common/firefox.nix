@@ -9,7 +9,6 @@
       extensions = with pkgs.inputs.firefox-addons; [
         ublock-origin
         bitwarden
-        betterttv
         reddit-enhancement-suite
         darkreader
         vimium
