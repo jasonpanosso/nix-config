@@ -1,8 +1,8 @@
 {
   imports = [
     ./common
-    ./features/cli
-    ./features/nvim
+    ./features/desktop/common
+    ./features/desktop/sway
   ];
 
   monitors = [{
