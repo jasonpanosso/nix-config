@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  home.sessionVariables.TERMINAL = "/usr/bin/kitty";
+  home.sessionVariables.TERMINAL = "kitty";
 
   programs.kitty = {
     enable = true;
