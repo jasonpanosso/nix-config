@@ -1,5 +1,5 @@
 # This file (and the global directory) holds config that i use on all hosts
-{ inputs, outputs, ... }: {
+{ inputs, outputs, pkgs, ... }: {
   imports = [
     inputs.home-manager.nixosModules.home-manager
     ./locale.nix
@@ -7,6 +7,8 @@
     ./systemd-initrd.nix
     ./zsh.nix
   ];
+
+  environment.systemPackages = with pkgs; [ git ];
 
   home-manager.extraSpecialArgs = { inherit inputs outputs; };
 
