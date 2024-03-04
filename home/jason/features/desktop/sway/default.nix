@@ -17,12 +17,17 @@
         window = {
           border = 0;
           titlebar = false;
-          hideEdgeBorders = "both";
+          hideEdgeBorders = "smart";
         };
         bars = [{ command = "${pkgs.waybar}/bin/waybar"; }];
         focus = {
           followMouse = false;
         };
+        gaps = {
+          smartBorders = "on";
+          smartGaps = false;
+        };
+        defaultWorkspace = "workspace number 4";
       };
     };
 
