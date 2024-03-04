@@ -5,8 +5,14 @@
     enable = true;
     config = {
       modifier = "Mod4";
+      terminal = "kitty";
     };
   };
 
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-wlr ];
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    config.sway.default = [ "wlr" "gtk" ];
+  };
 }
