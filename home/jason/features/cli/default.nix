@@ -3,6 +3,7 @@
     ./fzf.nix
     ./gh.nix
     ./git.nix
+    ./kitty.nix
     ./tmux.nix
     ./zsh.nix
   ];
