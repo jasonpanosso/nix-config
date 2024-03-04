@@ -27,5 +27,5 @@ in
 
   home-manager.users.jason = import ../../../../home/jason/${config.networking.hostName}.nix;
 
-  # security.pam.services = { swaylock = { }; };
+  security.pam.services = { swaylock = { }; };
 }
