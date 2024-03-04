@@ -15,10 +15,14 @@
         modifier = modifier;
         terminal = "${pkgs.kitty}/bin/kitty";
         window = {
+          border = 0;
           titlebar = false;
           hideEdgeBorders = "both";
         };
         bars = [{ command = "${pkgs.waybar}/bin/waybar"; }];
+        focus = {
+          followMouse = false;
+        };
       };
     };
 
