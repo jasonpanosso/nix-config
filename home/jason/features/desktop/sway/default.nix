@@ -8,7 +8,7 @@
     enable = true;
     config = {
       modifier = "Mod4";
-      terminal = "kitty";
+      terminal = "${pkgs.kitty}/bin/kitty";
     };
   };
 
