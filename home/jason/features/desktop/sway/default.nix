@@ -5,13 +5,19 @@
     ./swaylock.nix
   ];
 
-  wayland.windowManager.sway = {
-    enable = true;
-    config = {
-      modifier = "Mod4";
-      terminal = "${pkgs.kitty}/bin/kitty";
+  wayland.windowManager.sway =
+    let modifier = "Mod4"; in
+    {
+      enable = true;
+      config = {
+        modifier = modifier;
+        terminal = "${pkgs.kitty}/bin/kitty";
+        window = {
+          titlebar = false;
+          hideEdgeBorders = "both";
+        };
+      };
     };
-  };
 
   xdg.portal = {
     enable = true;
