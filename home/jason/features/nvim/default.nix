@@ -20,8 +20,6 @@
 
   programs.nixvim = {
     enable = true;
-    viAlias = true;
-    package = pkgs.neovim;
     globals.mapleader = " ";
   };
 }
