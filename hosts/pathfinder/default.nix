@@ -5,7 +5,6 @@
     ../common/global
     ../common/users/jason
 
-    ../common/optional/wireless.nix
     ../common/optional/docker.nix
     ../common/optional/systemd-boot.nix
   ];

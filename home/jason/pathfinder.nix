@@ -2,7 +2,6 @@
   imports = [
     ./common
     ./features/cli
-    ./features/desktop/wireless
     ./features/nvim
   ];
 
