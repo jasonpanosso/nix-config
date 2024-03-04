@@ -1,3 +1,5 @@
+{ pkgs, ... }:
+
 {
   wayland.windowManager.sway = {
     enable = true;
@@ -5,4 +7,6 @@
       modifier = "Mod4";
     };
   };
+
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-wlr ];
 }
