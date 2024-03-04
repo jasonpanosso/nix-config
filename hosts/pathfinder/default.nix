@@ -7,6 +7,7 @@
 
     ../common/optional/docker.nix
     ../common/optional/systemd-boot.nix
+    ../common/optional/greetd.nix
   ];
 
   networking = {
