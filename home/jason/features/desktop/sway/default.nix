@@ -3,6 +3,8 @@
 {
   imports = [
     ./swaylock.nix
+    ./waybar.nix
+    ./wofi.nix
   ];
 
   wayland.windowManager.sway =
@@ -16,6 +18,7 @@
           titlebar = false;
           hideEdgeBorders = "both";
         };
+        bars = [{ command = "${pkgs.waybar}/bin/waybar"; }];
       };
     };
 
