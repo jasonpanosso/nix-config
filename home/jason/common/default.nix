@@ -1,6 +1,11 @@
-{ lib, pkgs, config, outputs, ... }:
+{ lib, pkgs, config, outputs, inputs, ... }:
+
+let
+  colorSchemes = inputs.nix-colors.colorSchemes // (import ./kanagawa-term-edit.nix);
+in
 {
   imports = [
+    inputs.nix-colors.homeManagerModule
     ../features/cli
     ../features/nvim
   ] ++ (builtins.attrValues outputs.homeManagerModules);
@@ -27,6 +32,8 @@
     home-manager.enable = true;
     git.enable = true;
   };
+
+  colorscheme = lib.mkDefault colorSchemes.kanagawa-term-edit;
 
   home = {
     username = lib.mkDefault "jason";

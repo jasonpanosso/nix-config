@@ -1,5 +1,6 @@
-{ ... }:
+{ config, ... }:
 
+let colors = config.colorscheme.palette; in
 {
   home.sessionVariables.TERMINAL = "kitty";
 
@@ -33,6 +34,34 @@
       shell_integration = "no-cursor";
       cursor_blink_interval = ".500";
       cursor_shape = "block";
+
+      background = "#${colors.base00}";
+      foreground = "#${colors.base0F}";
+      selection_background = "#${colors.base0F}";
+      selection_foreground = "#${colors.base07}";
+      url_color = "#${colors.base0C}";
+      cursor = "#${colors.base07}";
+      active_tab_background = "#${colors.base00}";
+      active_tab_foreground = "#${colors.base07}";
+      inactive_tab_background = "#${colors.base00}";
+      inactive_tab_foreground = "#${colors.base08}";
+
+      color0 = "#${colors.base00}";
+      color1 = "#${colors.base01}";
+      color2 = "#${colors.base02}";
+      color3 = "#${colors.base03}";
+      color4 = "#${colors.base04}";
+      color5 = "#${colors.base05}";
+      color6 = "#${colors.base06}";
+      color7 = "#${colors.base07}";
+      color8 = "#${colors.base08}";
+      color9 = "#${colors.base09}";
+      color10 = "#${colors.base0A}";
+      color11 = "#${colors.base0B}";
+      color12 = "#${colors.base0C}";
+      color13 = "#${colors.base0D}";
+      color14 = "#${colors.base0E}";
+      color15 = "#${colors.base0F}";
     };
 
     extraConfig = ''
@@ -43,41 +72,8 @@
 
       #: Click the link under the mouse or move the cursor
       mouse_map ctrl+left click ungrabbed mouse_handle_click selection link prompt
-
       mouse_map ctrl+left press ungrabbed mouse_selection normal
-
       mouse_map right press ungrabbed copy_to_clipboard
-
-      # Kanagawa colors
-      background #1F1F28
-      foreground #DCD7BA
-      selection_background #2D4F67
-      selection_foreground #C8C093
-      url_color #72A7BC
-      cursor #C8C093
-      active_tab_background #1F1F28
-      active_tab_foreground #C8C093
-      inactive_tab_background  #1F1F28
-      inactive_tab_foreground #727169
-      # tab_bar_background #15161E
-      color0 #16161D
-      color1 #C34043
-      color2 #76946A
-      color3 #C0A36E
-      color4 #7E9CD8
-      color5 #957FB8
-      color6 #6A9589
-      color7 #C8C093
-      color8  #727169
-      color9  #E82424
-      color10 #98BB6C
-      color11 #E6C384
-      color12 #7FB4CA
-      color13 #938AA9
-      color14 #7AA89F
-      color15 #DCD7BA
-      color16 #FFA066
-      color17 #FF5D62
     '';
 
     keybindings = {
