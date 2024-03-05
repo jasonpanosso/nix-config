@@ -28,6 +28,10 @@
           smartGaps = false;
         };
         defaultWorkspace = "workspace number 4";
+
+        keybindings = {
+          "${modifier}+Space" = "exec ${pkgs.wofi}/bin/wofi --show=drun";
+        };
       };
     };
 
