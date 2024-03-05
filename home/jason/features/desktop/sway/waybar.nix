@@ -171,7 +171,6 @@
       #battery,
       #clock,
       #cpu,
-      #custom-keyboard-layout,
       #memory,
       #mode,
       #network,
@@ -264,10 +263,6 @@
 
       #pulseaudio.muted {
           /* No styles */
-      }
-
-      #custom-spotify {
-          color: rgb(102, 220, 105);
       }
 
       #temperature {
