@@ -41,6 +41,8 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    xremap-flake.url = "github:xremap/nix-flake";
   };
 
   outputs = { self, nixpkgs, home-manager, neovim-nightly-overlay, ... } @ inputs:
