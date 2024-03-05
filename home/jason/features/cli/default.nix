@@ -27,6 +27,7 @@
     iperf3 # network perf tool
     jq
     killall
+    lazygit
     ldns # dns lookup tool - `drill` command
     lm_sensors # for `sensors` command
     lsof # list open files
