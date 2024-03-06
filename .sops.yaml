@@ -1,7 +1,8 @@
 keys:
-  - &primary age1nw03gcmtwencls89cucx7y539j0k63fm65tjtz88gmepq3gutgksaz57ka
+  - &users:
+    - &jason 7F4BBBCE5FA232F9DC9E6707CD4B7B6A06A225FD
 creation_rules:
-  - path_regex: secrets/secrets.yaml$
+  - path_regex: hosts/common/secrets.yaml$
     key_groups:
-      - age:
-          - *primary
+      - pgp:
+          - *jason
