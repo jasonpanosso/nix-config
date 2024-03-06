@@ -4,6 +4,8 @@
     inputs.home-manager.nixosModules.home-manager
     ./locale.nix
     ./nix.nix
+    ./openssh.nix
+    ./sops.nix
     ./systemd-initrd.nix
     ./zsh.nix
   ];
