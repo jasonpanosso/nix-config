@@ -3,7 +3,7 @@
 let
   inherit (config.networking) hostName;
   hosts = outputs.nixosConfigurations;
-  # pubKey = host: ../../${host}/ssh_host_ed25519_key.pub;
+  pubKey = host: ../../${host}/ssh_host_ed25519_key.pub;
 in
 {
   services.openssh = {
@@ -28,7 +28,7 @@ in
     # Each hosts public key
     knownHosts = builtins.mapAttrs
       (name: _: {
-        # publicKeyFile = pubKey name;
+        publicKeyFile = pubKey name;
         extraHostNames =
           (lib.optional (name == hostName) "localhost");
       })
