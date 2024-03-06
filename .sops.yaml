@@ -2,12 +2,12 @@ keys:
   - &users:
     - &jason 7F4BBBCE5FA232F9DC9E6707CD4B7B6A06A225FD
   - &hosts:
-    - &pathfinder: age1a9vhaue5zrxlgnz4xqqqg0k8ecakzdf7srppqx2j92fdleftduxsens203
+    - &pathfinder age1c2ruz060djdr5mjn49wkgvnh6kl89e6t7zkentlql9u83f88zatqzrvmlp
 
 creation_rules:
   - path_regex: hosts/common/secrets.yaml$
     key_groups:
-      - pgp:
-          - *jason
       - age:
           - *pathfinder
+        pgp:
+          - *jason
