@@ -3,7 +3,6 @@
     ./calibre.nix
     ./discord.nix
     ./firefox.nix
+    ./xdg.nix
   ];
-
-  xdg.portal.enable = true;
 }
