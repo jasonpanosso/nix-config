@@ -5,6 +5,7 @@
     ./fzf.nix
     ./gh.nix
     ./git.nix
+    ./gpg.nix
     ./kitty.nix
     ./tmux.nix
     ./zsh.nix
