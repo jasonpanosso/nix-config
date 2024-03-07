@@ -62,7 +62,7 @@
 
         cpu = {
           interval = 5;
-          format = " {usage}% ({load})"; # Icon: microchip
+          format = "󰇺{usage}% ({load})"; # Icon: pipe thingy
           states = {
             warning = 70;
             critical = 90;
@@ -89,11 +89,6 @@
         "sway/mode" = {
           format = "<span style=\"italic\">  {}</span>"; # Icon: expand-arrows-alt
           tooltip = false;
-        };
-
-        "sway/window" = {
-          format = "{}";
-          max-length = 120;
         };
 
         "sway/workspaces" = {
@@ -163,7 +158,7 @@
       #waybar {
           background: #323232;
           color: white;
-          font-family: Iosevka Nerd Font Mono, Noto Sans, sans-serif;
+          font-family: Iosevka Nerd Font Propo, Noto Sans, sans-serif;
           font-size: 16px;
       }
 
@@ -275,10 +270,6 @@
 
       #tray {
           /* No styles */
-      }
-
-      #window {
-          font-weight: bold;
       }
 
       #workspaces button {
