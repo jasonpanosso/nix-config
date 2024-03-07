@@ -22,6 +22,7 @@
       branch.sort = "committerdate";
       push.autoSetupRemote = true;
       rerere.enabled = true; # Reuse merge conflict fixes when rebasing
+      pull.rebase = true;
     };
 
     aliases = {
