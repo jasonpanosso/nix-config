@@ -18,14 +18,12 @@
           "sway/mode"
         ];
 
-        modules-center = [
-          "sway/window"
-        ];
+        modules-center = [ ];
 
         modules-right = [
           "network"
-          "memory"
           "cpu"
+          "memory"
           "temperature"
           "battery"
           "tray"
@@ -36,8 +34,8 @@
         battery = {
           interval = 10;
           states = { warning = 30; critical = 15; };
-          format = "  {icon}  {capacity}%"; # Icon: bolt
-          format-discharging = "{icon}  {capacity}%";
+          format = "{icon} {capacity}%"; # Icon: bolt
+          format-discharging = "{icon} {capacity}%";
           format-icons = [
             "" # Icon: battery-empty
             "" # Icon: battery-quarty
@@ -50,19 +48,19 @@
 
         "clock#time" = {
           interval = 1;
-          format = "{:%H:%M:%S}";
+          format = "{:%H:%M}";
           tooltip = false;
         };
 
         "clock#date" = {
           interval = 10;
-          format = "  {:%e %b %Y}"; # Icon: calendar-alt
-          tooltip-format = "{:%e %B %Y}";
+          format = " {:%b%e %Y}"; # Icon: calendar-alt
+          tooltip-format = "{:%B%e %Y}";
         };
 
         cpu = {
           interval = 5;
-          format = "󰇺{usage}% ({load})"; # Icon: pipe thingy
+          format = "󰇺 {usage}%"; # Icon: pipe thingy
           states = {
             warning = 70;
             critical = 90;
@@ -71,7 +69,7 @@
 
         memory = {
           interval = 5;
-          format = "  {}%"; # Icon: memory
+          format = " {}%"; # Icon: memory
           states = {
             warning = 70;
             critical = 90;
@@ -80,14 +78,14 @@
 
         network = {
           interval = 5;
-          format-wifi = "  {essid} ({signalStrength}%)"; # Icon: wifi
-          format-ethernet = "  {ifname}: {ipaddr}/{cidr}"; # Icon: ethernet
-          format-disconnected = "⚠  Disconnected";
+          format-wifi = " {essid} ({signalStrength}%)"; # Icon: wifi
+          format-ethernet = "󰈀 {ifname}: {ipaddr}/{cidr}"; # Icon: ethernet
+          format-disconnected = "⚠ Disconnected";
           tooltip-format = "{ifname}: {ipaddr}";
         };
 
         "sway/mode" = {
-          format = "<span style=\"italic\">  {}</span>"; # Icon: expand-arrows-alt
+          format = "<span style=\"italic\"> {}</span>"; # Icon: expand-arrows-alt
           tooltip = false;
         };
 
@@ -100,7 +98,7 @@
         temperature = {
           critical-threshold = 80;
           interval = 5;
-          format = "{icon}  {temperatureC}°C";
+          format = "{icon} {temperatureC}°C";
           format-icons = [
             "" # Icon = temperature-empty
             "" # Icon = temperature-quarter
