@@ -73,21 +73,37 @@ in
       }
       {
         plugin = tmuxPlugins.resurrect;
-        extraConfig = ''
-          set -g @resurrect-capture-pane-contents 'on'
-          set -g @resurrect-processes '~vim ~nvim'
+        extraConfig =
+          let
+            simpleRestore = [ "btop" "htop" ];
+            # have to do some jank to restore nvim/vim/nix-shell due to how nix
+            # wraps these programs, note that ~ effectively means "process
+            # contains target name"
+            complexRestore = [ "nvim" "vim" "nix-shell" ];
+            resurrectProcesses = lib.concatStringsSep " " (
+              simpleRestore
+              ++ (map (x: "\"~${x}->${x} *\"") complexRestore)
+            );
+          in
+          ''
+            set -g @resurrect-capture-pane-contents 'on'
+            set -g @resurrect-processes '${resurrectProcesses}'
+            resurrect_dir="$HOME/.tmux/resurrect"
+            set -g @resurrect-dir $resurrect_dir
 
-          resurrect_dir="$HOME/.tmux/resurrect"
-          set -g @resurrect-dir $resurrect_dir
-
-          # cursed fix for .nix-profile
-          set -g @resurrect-hook-post-save-all "target=\$(readlink -f \$resurrect_dir/last); if [[ -n \$target && -f \$target ]]; then sed \"s| --cmd .*-vim-pack-dir||g; s|/etc/profiles/per-user/\$USER/bin/||g; s|/home/\$USER/.nix-profile/bin/||g\" \$target | sponge \$target; else echo 'Error: Target file is not valid.' >&2; fi"
-        '';
+            # cursed fix for resurrect not killing off session 0 on restore
+            # this should work by default, but.. doesn't?
+            set -g @resurrect-hook-pre-restore-pane-processes 'tmux switch-client -n && tmux kill-session -t=0'
+            # cursed fix for .nix-profile, and how nix wraps programs
+            set -g @resurrect-hook-post-save-all "target=\$(readlink -f \$resurrect_dir/last); if [[ -n \$target && -f \$target ]]; then sed \"s| --cmd .*-vim-pack-dir||g; s|/etc/profiles/per-user/\$USER/bin/||g; s|/home/\$USER/.nix-profile/bin/||g\" \$target | sponge \$target; else echo 'Error: Target file is not valid.' >&2; fi"
+          '';
       }
       {
         plugin = tmuxPlugins.continuum;
         extraConfig = ''
           set -g @continuum-restore 'on'
+          set -g @continuum-boot-options '${pkgs.kitty}/bin/kitty'
+          set -g @continuum-boot 'on'
           set -g @continuum-save-interval '5'
         '';
       }
