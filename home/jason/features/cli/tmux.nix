@@ -75,6 +75,7 @@ in
         plugin = tmuxPlugins.resurrect;
         extraConfig = ''
           set -g @resurrect-capture-pane-contents 'on'
+          set -g @resurrect-processes '~vim ~nvim'
 
           resurrect_dir="$HOME/.tmux/resurrect"
           set -g @resurrect-dir $resurrect_dir
