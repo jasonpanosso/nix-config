@@ -39,11 +39,11 @@
           format = "  {icon}  {capacity}%"; # Icon: bolt
           format-discharging = "{icon}  {capacity}%";
           format-icons = [
-            "" # Icon: battery-full
-            "" # Icon: battery-three-quarters
+            "" # Icon: battery-empty
+            "" # Icon: battery-quarty
             "" # Icon: battery-half
-            "" # Icon: battery-quarter
-            "" # Icon: battery-empty
+            "" # Icon: battery-three-quarters
+            "" # Icon: battery-full
           ];
           "tooltip" = true;
         };
@@ -62,7 +62,7 @@
 
         cpu = {
           interval = 5;
-          format = "  {usage}% ({load})"; # Icon: microchip
+          format = " {usage}% ({load})"; # Icon: microchip
           states = {
             warning = 70;
             critical = 90;
@@ -71,7 +71,7 @@
 
         memory = {
           interval = 5;
-          format = "  {}%"; # Icon: memory
+          format = "  {}%"; # Icon: memory
           states = {
             warning = 70;
             critical = 90;
@@ -81,7 +81,7 @@
         network = {
           interval = 5;
           format-wifi = "  {essid} ({signalStrength}%)"; # Icon: wifi
-          format-ethernet = "  {ifname}: {ipaddr}/{cidr}"; # Icon: ethernet
+          format-ethernet = "  {ifname}: {ipaddr}/{cidr}"; # Icon: ethernet
           format-disconnected = "⚠  Disconnected";
           tooltip-format = "{ifname}: {ipaddr}";
         };
@@ -163,8 +163,8 @@
       #waybar {
           background: #323232;
           color: white;
-          font-family: Iosevka, Noto Sans, sans-serif;
-          font-size: 13px;
+          font-family: Iosevka Nerd Font Mono, Noto Sans, sans-serif;
+          font-size: 16px;
       }
 
       /* Each module */
