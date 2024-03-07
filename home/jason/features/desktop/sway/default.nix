@@ -10,6 +10,8 @@ in
     ./wofi.nix
   ];
 
+  home.packages = with pkgs; [ wl-clipboard ];
+
   wayland.windowManager.sway =
     let modifier = "Mod4"; in
     {
