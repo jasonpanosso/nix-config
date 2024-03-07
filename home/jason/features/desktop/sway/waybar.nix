@@ -163,7 +163,7 @@
       #waybar {
           background: #323232;
           color: white;
-          font-family: Cantarell, Noto Sans, sans-serif;
+          font-family: Iosevka, Noto Sans, sans-serif;
           font-size: 13px;
       }
 
