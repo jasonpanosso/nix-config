@@ -10,9 +10,11 @@ let
     input "type:touchpad" {
       tap enabled
     }
-    exec '${vars} ${command}; ${pkgs.sway}/bin/swaymsg exit'
+
+    exec '${vars} ${command};'
   ''}";
 in
+
 {
   users.extraUsers.greeter = {
     home = "/tmp/greeter-home";
@@ -21,10 +23,25 @@ in
 
   programs.regreet = {
     enable = true;
+    settings = {
+      GTK = {
+        application_prefer_dark_theme = true;
+        font_name = "Iosevka Nerd Font";
+        icon_theme_name = "Papirus";
+        theme_name = "Colloid-Dark";
+      };
+      commands = {
+        reboot = [ "systemctl" "reboot" ];
+        poweroff = [ "systemctl" "poweroff" ];
+      };
+    };
   };
 
   services.greetd = {
     enable = true;
-    settings.default_session.command = sway-kiosk (lib.getExe config.programs.regreet.package);
+    settings.default_session = {
+      user = "greeter";
+      command = sway-kiosk (lib.getExe config.programs.regreet.package);
+    };
   };
 }
