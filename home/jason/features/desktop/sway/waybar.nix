@@ -60,7 +60,7 @@
 
         cpu = {
           interval = 5;
-          format = "󰇺 {usage}%"; # Icon: pipe thingy
+          format = "󰇺 {usage}%"; # Icon: engine
           states = {
             warning = 70;
             critical = 90;
@@ -80,7 +80,7 @@
           interval = 5;
           format-wifi = " {essid} ({signalStrength}%)"; # Icon: wifi
           format-ethernet = "󰈀 {ifname}: {ipaddr}/{cidr}"; # Icon: ethernet
-          format-disconnected = "⚠ Disconnected";
+          format-disconnected = "⚠ Disconnected"; # Icon: warning
           tooltip-format = "{ifname}: {ipaddr}";
         };
 
