@@ -8,7 +8,7 @@ My personal nix config, WIP
 - [ ] make `continuum-boot` work
 - [x] improve regreeter/greetd
 - [x] fix laptop keyboard format(f keys not working?)
-- [ ] improve swaylock, setup swayidle
+- [x] improve swaylock, setup swayidle
 - [ ] setup dev shell templates(rust, lua, ts, etc)
 - [ ] configure redshift
 - [x] move laptop to nixos
