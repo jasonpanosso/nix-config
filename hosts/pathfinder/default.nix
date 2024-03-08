@@ -24,6 +24,10 @@
 
   powerManagement.powertop.enable = true;
 
+  programs = {
+    light.enable = true;
+  };
+
   # Lid settings
   services.logind = {
     lidSwitch = "suspend";
