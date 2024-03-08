@@ -4,6 +4,7 @@
     ./discord.nix
     ./firefox.nix
     ./pavucontrol.nix
+    ./playerctl.nix
     ./xdg.nix
   ];
 }

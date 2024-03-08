@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, lib, config, ... }:
 
 let
   cfg = config.wayland.windowManager.sway;
@@ -37,6 +37,9 @@ in
         keybindings =
           let
             pactl = "${pkgs.pulseaudio}/bin/pactl";
+            swaylock = "${config.programs.swaylock.package}/bin/swaylock";
+            playerctl = "${config.services.playerctld.package}/bin/playerctl";
+            playerctld = "${config.services.playerctld.package}/bin/playerctld";
           in
           {
             "${modifier}+Space" = "exec ${pkgs.wofi}/bin/wofi --show=drun";
@@ -110,7 +113,23 @@ in
             # Screenshotting
             # "Print" = "exec,${grimblast} --notify --freeze copy output";
             # "Shift+Print" = "exec ${grimblast} --notify --freeze copy area";
-          };
+          } //
+          # Media control
+          (lib.optionals config.services.playerctld.enable {
+            "XF86AudioNext" = "exec ${playerctl} next";
+            "XF86AudioPrev" = "exec ${playerctl} previous";
+            "XF86AudioPlay" = "exec ${playerctl} play-pause";
+            "XF86AudioStop" = "exec ${playerctl} stop";
+            "ALT+XF86AudioNext" = "exec ${playerctld} shift";
+            "ALT+XF86AudioPrev" = "exec ${playerctld} unshift";
+            "ALT+XF86AudioPlay" = "exec systemctl --user restart playerctld";
+          }) //
+          # Screen lock
+          (lib.optionals config.programs.swaylock.enable {
+            "XF86Launch5" = "exec ${swaylock} -S --grace 2";
+            "XF86Launch4" = "exec ${swaylock} -S --grace 2";
+            "${modifier}+l" = "exec ${swaylock} -S --grace 2";
+          });
       };
     };
 
