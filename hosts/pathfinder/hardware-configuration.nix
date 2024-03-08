@@ -5,7 +5,8 @@
 
 {
   imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
+    [
+      (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
@@ -14,26 +15,27 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/4c0c18c0-251f-4616-8d33-5c609286d872";
+    {
+      device = "/dev/disk/by-uuid/4c0c18c0-251f-4616-8d33-5c609286d872";
       fsType = "ext4";
     };
 
   boot.initrd.luks.devices."luks-475d5adc-6438-47ec-9def-1d14ad91765c".device = "/dev/disk/by-uuid/475d5adc-6438-47ec-9def-1d14ad91765c";
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/9524-3CFC";
+    {
+      device = "/dev/disk/by-uuid/9524-3CFC";
       fsType = "vfat";
     };
 
-  swapDevices =
-    [ { device = "/dev/disk/by-uuid/f3c535ab-675a-48cb-8b27-8f32ab183dbe"; }
-    ];
+  swapDevices = [ ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
+  # networking.interfaces.docker0.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlp58s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";

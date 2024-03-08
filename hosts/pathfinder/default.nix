@@ -15,6 +15,8 @@
     inputs.xremap-flake.nixosModules.default
   ];
 
+  swapDevices = [{ label = "swap"; }];
+
   networking = {
     hostName = "pathfinder";
     networkmanager.enable = true;
