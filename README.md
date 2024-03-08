@@ -4,7 +4,7 @@ My personal nix config, WIP
 
 ## TODO
 
-- [ ] audio
+- [x] audio
 - [ ] make `continuum-boot` work
 - [ ] improve regreeter/greetd
 - [ ] fix laptop keyboard format(f keys not working?)

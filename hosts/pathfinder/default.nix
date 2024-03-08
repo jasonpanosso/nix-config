@@ -3,6 +3,8 @@
 {
   imports = [
     ./hardware-configuration.nix
+    inputs.hardware.nixosModules.dell-xps-13-9360
+    inputs.xremap-flake.nixosModules.default
 
     ../common/global
     ../common/users/jason
@@ -10,9 +12,7 @@
     ../common/optional/docker.nix
     ../common/optional/systemd-boot.nix
     ../common/optional/greetd.nix
-
-    inputs.hardware.nixosModules.dell-xps-13-9360
-    inputs.xremap-flake.nixosModules.default
+    ../common/optional/pipewire.nix
   ];
 
   swapDevices = [{ label = "swap"; }];
