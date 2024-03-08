@@ -7,7 +7,7 @@ My personal nix config, WIP
 - [x] audio
 - [ ] make `continuum-boot` work
 - [ ] improve regreeter/greetd
-- [ ] fix laptop keyboard format(f keys not working?)
+- [x] fix laptop keyboard format(f keys not working?)
 - [ ] setup dev shell templates(rust, lua, ts, etc)
 - [ ] configure redshift
 - [x] move laptop to nixos
