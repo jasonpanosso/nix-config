@@ -1,5 +1,8 @@
 { pkgs, ... }:
 
+let
+  pavucontrol = "${pkgs.pavucontrol}/bin/pavucontrol";
+in
 {
   programs.waybar = {
     enable = true;
@@ -26,6 +29,7 @@
           "memory"
           "temperature"
           "battery"
+          "pulseaudio"
           "tray"
           "clock#date"
           "clock#time"
@@ -82,6 +86,18 @@
           format-ethernet = "󰈀 {ifname}: {ipaddr}/{cidr}"; # Icon: ethernet
           format-disconnected = "⚠ Disconnected"; # Icon: warning
           tooltip-format = "{ifname}: {ipaddr}";
+        };
+
+        pulseaudio = {
+          format = "{icon} {volume}%";
+          format-muted = "  0%";
+          format-icons = {
+            headphone = "󰋋";
+            headset = "󰋎";
+            portable = "";
+            default = [ "" "" "" ];
+          };
+          on-click = pavucontrol;
         };
 
         "sway/mode" = {
