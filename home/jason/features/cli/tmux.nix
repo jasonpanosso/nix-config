@@ -79,7 +79,7 @@ in
             resurrectProcesses = lib.concatStringsSep " " [
               "btop"
               "htop"
-              "~nvim"
+              "\"~nvim->nvim\""
               "~vim"
               "\"~nix-shell->nix-shell *\""
             ];
