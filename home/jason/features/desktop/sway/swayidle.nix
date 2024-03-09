@@ -23,7 +23,7 @@ in
       # Lock screen
       [{
         timeout = lockTime;
-        command = "${swaylock} -i --daemonize --grace 15";
+        command = "${swaylock} --daemonize --grace 15";
       }] ++
       # Mute mic
       (afterLockTimeout {
