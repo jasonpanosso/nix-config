@@ -1,3 +1,5 @@
+{ pkgs, ... }:
+
 {
   gtk = {
     enable = true;
@@ -5,6 +7,7 @@
     theme.name = "Adwaita-dark";
     iconTheme = {
       name = "Papirus";
+      package = pkgs.papirus-icon-theme;
     };
 
     gtk2.extraConfig = ''
