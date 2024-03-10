@@ -5,6 +5,7 @@ let
 in
 {
   imports = [
+    ./gammastep.nix
     ./swayidle.nix
     ./swaylock.nix
     ./waybar.nix

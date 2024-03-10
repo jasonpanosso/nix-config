@@ -41,7 +41,6 @@
     nmap # network mapper
     p7zip # 7-zip port for unix
     pciutils # lspci
-    redshift # adaptive brightness
     ripgrep
     strace # sys calls
     sysstat # sys perf monitoring tools
