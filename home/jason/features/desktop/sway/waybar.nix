@@ -30,9 +30,9 @@ in
           "temperature"
           "battery"
           "pulseaudio"
-          "tray"
           "clock#date"
           "clock#time"
+          "tray"
         ];
 
         battery = {
