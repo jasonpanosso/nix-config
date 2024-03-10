@@ -58,8 +58,8 @@ in
 
         "clock#date" = {
           interval = 10;
-          format = " {:%b%e %Y}"; # Icon: calendar-alt
-          tooltip-format = "{:%B%e %Y}";
+          format = " {:%b %e %Y}"; # Icon: calendar-alt
+          tooltip-format = "{:%B %e %Y}";
         };
 
         cpu = {
