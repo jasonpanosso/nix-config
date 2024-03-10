@@ -51,13 +51,5 @@
     xz # xz compression
     yq-go # jq for yaml
     zip
-
-    (nerdfonts.override {
-      fonts = [
-        "IosevkaTerm"
-        "IosevkaTermSlab"
-        "Iosevka"
-      ];
-    })
   ];
 }

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 let
   pavucontrol = "${pkgs.pavucontrol}/bin/pavucontrol";
@@ -172,7 +172,7 @@ in
       #waybar {
           background: #323232;
           color: white;
-          font-family: Iosevka Nerd Font Propo, Noto Sans, sans-serif;
+          font-family: ${config.fontProfiles.monospace.family} Propo, Noto Sans, sans-serif;
           font-size: 16px;
       }
 

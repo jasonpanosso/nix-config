@@ -1,6 +1,8 @@
 { config, ... }:
 
-let colors = config.colorscheme.palette; in
+let
+  colors = config.colorscheme.palette;
+in
 {
   home.sessionVariables.TERMINAL = "kitty";
 
@@ -11,11 +13,12 @@ let colors = config.colorscheme.palette; in
       mode = "no-cursor";
     };
 
+    font = {
+      name = "${config.fontProfiles.monospace.family}";
+      size = 17;
+    };
+
     settings = {
-      font_family = "IosevkaTerm Nerd Font";
-      bold_font = "IosevkaTerm Nerd Font";
-      italic_font = "IosevkaTerm Nerd Font, Regular Italic";
-      bold_italic_font = "IosevkaTerm Nerd Font, Semibold Italic";
       scrollback_lines = 8000;
       sync_to_monitor = "no";
       disable_ligatures = "never";
@@ -27,7 +30,6 @@ let colors = config.colorscheme.palette; in
       placement_strategy = "center";
       window_padding_width = 0;
       window_padding_height = 0;
-      font_size = 17;
       active_border_color = "none";
       resize_in_steps = "yes";
       allow_hyperlinks = "yes";
