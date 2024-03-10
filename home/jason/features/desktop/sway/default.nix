@@ -6,6 +6,7 @@ in
 {
   imports = [
     ./gammastep.nix
+    ./mako.nix
     ./swayidle.nix
     ./swaylock.nix
     ./waybar.nix
@@ -42,6 +43,7 @@ in
             swaylock = "${config.programs.swaylock.package}/bin/swaylock";
             playerctl = "${config.services.playerctld.package}/bin/playerctl";
             playerctld = "${config.services.playerctld.package}/bin/playerctld";
+            makoctl = "${config.services.mako.package}/bin/makoctl";
           in
           {
             "${modifier}+Space" = "exec ${pkgs.wofi}/bin/wofi --show=drun";
@@ -131,6 +133,11 @@ in
             "XF86Launch5" = "exec ${swaylock} -S --grace 2";
             "XF86Launch4" = "exec ${swaylock} -S --grace 2";
             "${modifier}+l" = "exec ${swaylock} -S --grace 2";
+          })
+          //
+          # Notifications
+          (lib.optionals config.services.mako.enable {
+            "${modifier}+d" = "exec ${makoctl} dismiss";
           });
       };
     };
