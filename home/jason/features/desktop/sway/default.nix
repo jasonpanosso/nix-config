@@ -13,7 +13,12 @@ in
     ./wofi.nix
   ];
 
-  home.packages = with pkgs; [ wl-clipboard ];
+  home.packages = with pkgs; [
+    wl-clipboard
+    grim
+    slurp
+    libnotify
+  ];
 
   wayland.windowManager.sway =
     let modifier = "Mod4"; in
@@ -44,6 +49,7 @@ in
             playerctl = "${config.services.playerctld.package}/bin/playerctl";
             playerctld = "${config.services.playerctld.package}/bin/playerctld";
             makoctl = "${config.services.mako.package}/bin/makoctl";
+            grim = "${pkgs.grim}/bin/grim";
           in
           {
             "${modifier}+Space" = "exec ${pkgs.wofi}/bin/wofi --show=drun";
@@ -115,8 +121,10 @@ in
             "XF86AudioMicMute" = "exec ${pactl} set-source-mute @DEFAULT_SOURCE@ toggle";
 
             # Screenshotting
-            # "Print" = "exec,${grimblast} --notify --freeze copy output";
-            # "Shift+Print" = "exec ${grimblast} --notify --freeze copy area";
+            "Print" = "exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') -t png - | wl-copy -t image/png && notify-send -e \"Screenshot taken\"";
+            "Shift+Print" = "exec grim -g \"$(slurp -d)\" -t png - | wl-copy -t image/png && notify-send -e \"Screenshot taken\"";
+            "${modifier}+p" = "exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') -t png - | wl-copy -t image/png && notify-send -e \"Screenshot taken\"";
+            "${modifier}+Shift+p" = "exec grim -g \"$(slurp -d)\" -t png - | wl-copy -t image/png && notify-send -e \"Screenshot taken\"";
           } //
           # Media control
           (lib.optionals config.services.playerctld.enable {
