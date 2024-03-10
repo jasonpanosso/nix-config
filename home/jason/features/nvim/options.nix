@@ -5,6 +5,8 @@ let
 in
 {
   programs.nixvim = {
+    luaLoader.enable = true;
+
     options = {
       number = true;
       relativenumber = true;
