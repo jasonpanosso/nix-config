@@ -1,7 +1,8 @@
 { config, ... }:
 
 let
-  colors = config.colorscheme.palette;
+  kanagawa-term = (import ../../common/kanagawa-term-edit.nix).kanagawa-term-edit;
+  colors = kanagawa-term.palette;
 in
 {
   home.sessionVariables.TERMINAL = "kitty";
@@ -15,7 +16,7 @@ in
 
     font = {
       name = "${config.fontProfiles.monospace.family}";
-      size = 17;
+      size = 18;
     };
 
     settings = {

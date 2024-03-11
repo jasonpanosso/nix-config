@@ -33,7 +33,7 @@ in
     git.enable = true;
   };
 
-  colorscheme = lib.mkDefault colorSchemes.kanagawa-term-edit;
+  colorscheme = lib.mkDefault colorSchemes.kanagawa;
 
   home = {
     username = lib.mkDefault "jason";

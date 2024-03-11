@@ -15,8 +15,8 @@ in
     borderSize = 2;
     defaultTimeout = 0;
     backgroundColor = "#${colors.base00}dd";
-    textColor = "#${colors.base03}dd";
-    borderColor = "#${colors.base04}dd";
+    textColor = "#${colors.base0A}dd";
+    borderColor = "#${colors.base03}dd";
     layer = "overlay";
   };
 }
