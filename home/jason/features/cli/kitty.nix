@@ -16,7 +16,7 @@ in
 
     font = {
       name = "${config.fontProfiles.monospace.family}";
-      size = 18;
+      size = 18.1;
     };
 
     settings = {
@@ -28,7 +28,7 @@ in
       background_opacity = 1;
       dynamic_background_opacity = "yes";
       allow_remote_control = "yes";
-      placement_strategy = "center";
+      placement_strategy = "top-left";
       window_padding_width = 0;
       window_padding_height = 0;
       active_border_color = "none";
