@@ -30,7 +30,7 @@ in
           "battery"
           "pulseaudio"
           "clock"
-          "tray"
+          # "tray"
         ];
 
         battery = {
