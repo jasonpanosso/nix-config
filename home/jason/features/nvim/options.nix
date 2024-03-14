@@ -72,7 +72,7 @@ in
       signcolumn = "yes";
       spelloptions = "camel";
 
-      textwidth = 80;
+      textwidth = 0;
       colorcolumn = "80";
 
       conceallevel = 0;
