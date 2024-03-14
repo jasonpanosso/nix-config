@@ -26,7 +26,7 @@
         updateevents = "TextChanged,TextChangedI";
 
         ext_opts.__raw =
-          # lua
+          /* lua */
           ''
             {
               [require('luasnip.util.types').choiceNode] = {

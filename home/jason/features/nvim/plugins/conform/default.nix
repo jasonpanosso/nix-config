@@ -61,7 +61,7 @@
         mode = [ "n" "v" ];
         key = "<leader>lf";
         action =
-          # lua
+          /* lua */
           ''
             function()
               require("conform").format({ async = true, lsp_fallback = true })

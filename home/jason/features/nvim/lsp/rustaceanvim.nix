@@ -4,7 +4,7 @@
 
     server = {
       onAttach =
-        #lua
+        /* lua */
         ''
           function(client, bufnr)
             require('lsp-inlayhints').on_attach(client, bufnr)

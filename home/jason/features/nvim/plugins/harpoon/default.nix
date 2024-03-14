@@ -42,7 +42,7 @@ in
         mode = [ "n" "v" ];
         key = "<leader>h";
         action =
-          # lua
+          /* lua */
           ''
             function()
               local harpoon = require('harpoon')
