@@ -1,0 +1,11 @@
+[package]
+name = "rust-embedded-project" # TODO
+version = "0.1.0"
+license = "MIT"
+edition = "2021"
+
+[dependencies]
+cortex-m = "0.7.3"
+cortex-m-rt = "0.7.0"
+cortex-m-semihosting = "0.5.0"
+panic-halt = "0.2.0"

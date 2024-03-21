@@ -1,0 +1,11 @@
+{
+  "checkOnSave": true,
+  "check": {
+    "targets": [],
+    "features": []
+  },
+  "cargo": {
+    "targets": [],
+    "features": []
+  }
+}
