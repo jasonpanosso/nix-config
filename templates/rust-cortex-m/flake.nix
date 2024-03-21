@@ -37,6 +37,7 @@
             clippy
             minicom
             gdb
+            openocd
           ];
         };
       });
