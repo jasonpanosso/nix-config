@@ -20,6 +20,7 @@
 
   programs.nixvim = {
     enable = true;
+    viAlias = true;
     extraPlugins = with pkgs.vimPlugins; [ nvim-web-devicons ];
     globals.mapleader = " ";
   };
