@@ -14,6 +14,7 @@
     ../common/optional/systemd-boot.nix
     ../common/optional/greetd.nix
     ../common/optional/pipewire.nix
+    ../common/optional/embedded.nix
   ];
 
   swapDevices = [{ label = "swap"; }];
