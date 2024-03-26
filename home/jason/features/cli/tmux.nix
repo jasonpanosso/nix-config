@@ -80,6 +80,7 @@ in
               "btop"
               "htop"
               "\"~nvim->nvim\""
+              "\"~vi->vi\""
               "~vim"
               "\"~nix-shell->nix-shell *\""
             ];
@@ -98,8 +99,6 @@ in
         plugin = tmuxPlugins.continuum;
         extraConfig = ''
           set -g @continuum-restore 'on'
-          set -g @continuum-boot-options '${pkgs.kitty}/bin/kitty'
-          set -g @continuum-boot 'on'
           set -g @continuum-save-interval '5'
         '';
       }
