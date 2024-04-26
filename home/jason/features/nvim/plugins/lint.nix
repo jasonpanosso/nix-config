@@ -14,7 +14,19 @@
 
     plugins.lint = {
       enable = true;
-      autoCmd.event = [ "InsertLeave" "TextChanged" "BufRead" ];
+      autoCmd.event = [ "InsertLeave" "TextChanged" "BufRead" "BufWrite" ];
+
+      linters = {
+        sqlfluff = {
+          cmd = "sqlfluff";
+          args = [
+            "lint"
+            "--format=json"
+            "--dialect=postgres"
+          ];
+        };
+      };
+
       lintersByFt = {
         python = [ "flake8" ];
         lua = [ "selene" ];
