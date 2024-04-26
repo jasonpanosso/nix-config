@@ -19,7 +19,7 @@
     ./comment.nix
     ./sleuth.nix
     ./treesitter
-    ./conform
+    ./conform.nix
     ./harpoon
     ./indent-blankline.nix
   ];

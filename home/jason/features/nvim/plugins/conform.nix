@@ -18,6 +18,7 @@
       ])
       csharpier
       ruff
+      sqlfluff
     ];
 
     plugins.conform-nvim = {
@@ -26,6 +27,15 @@
         prettier-svelte = {
           command = "prettier";
           prepend_args = [ "--plugin=prettier-plugin-svelte" ];
+        };
+        rustfmt = {
+          command = "rustfmt";
+          args = [ "--edition=2021" ];
+        };
+        sqlfluff = {
+          command = "sqlfluff";
+          stdin = true;
+          args = [ "fix" "--dialect=postgres" "--force" "-" ];
         };
       };
 
