@@ -140,7 +140,7 @@ in
           (lib.optionals config.programs.swaylock.enable {
             "XF86Launch5" = "exec ${swaylock} -S --grace 2";
             "XF86Launch4" = "exec ${swaylock} -S --grace 2";
-            "${modifier}+l" = "exec ${swaylock} -S --grace 2";
+            "${modifier}+m" = "exec ${swaylock} -S --grace 2";
           })
           //
           # Notifications
