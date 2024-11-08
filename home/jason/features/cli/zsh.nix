@@ -1,10 +1,8 @@
-{ pkgs, ... }:
-
 {
   programs.zsh = {
     enable = true;
     enableCompletion = true;
-    enableAutosuggestions = true;
+    # autosuggestions.enable = true;
     autocd = true;
     syntaxHighlighting = {
       enable = true;
@@ -28,18 +26,20 @@
       ];
     };
 
-    initExtra = ''
+    initExtra = /* sh */ ''
       bindkey "''${key[Up]}" up-line-or-search
       bindkey "''${key[Down]}" down-line-or-search
     '';
+  };
 
-    plugins = [
-      {
-        name = "spaceship";
-        src = pkgs.spaceship-prompt;
-        file = "share/zsh/themes/spaceship.zsh-theme";
-      }
-    ];
+  programs.starship = {
+    enable = true;
+    enableZshIntegration = true;
+    settings = {
+      character.success_symbol = "[➜](bold green)";
+      character.error_symbol = "[➜](bold red)";
+      aws.disabled = true;
+    };
   };
 
   programs.fzf = {
