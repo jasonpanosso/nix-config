@@ -10,6 +10,7 @@
       ansible-lint
       djlint
       golangci-lint
+      tflint
     ];
 
     plugins.lint = {
@@ -36,6 +37,7 @@
         yaml = [ "ansible_lint" ];
         htmldjango = [ "djlint" ];
         go = [ "golangcilint" ];
+        terraform = [ "tflint" ];
       };
     };
   };

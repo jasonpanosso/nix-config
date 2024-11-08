@@ -3,13 +3,13 @@
     treesitter = {
       enable = true;
 
-      ignoreInstall = [ "phpdoc" "luau" ];
-      ensureInstalled = "all";
-
-      indent = true;
-      folding = true;
       nixvimInjections = true;
       nixGrammars = true;
+      settings = {
+        indent.enable = true;
+        highlight.enable = true;
+        folding = true;
+      };
     };
 
     ts-autotag.enable = true;
@@ -71,17 +71,15 @@
     };
   };
 
-  programs.nixvim.extraConfigLua =
-    #lua
-    ''
-      vim.api.nvim_command('set nofoldenable')
+  programs.nixvim.extraConfigLua = /* lua */ ''
+    vim.api.nvim_command('set nofoldenable')
 
-      -- indenting for jsx/tsx
-      vim.api.nvim_create_autocmd('FileType', {
-        pattern = { 'javascriptreact', 'typescriptreact' },
-        callback = function(opt)
-          vim.bo[opt.buf].indentexpr = 'nvim_treesitter#indent()'
-        end,
-      })
-    '';
+    -- indenting for jsx/tsx
+    vim.api.nvim_create_autocmd('FileType', {
+      pattern = { 'javascriptreact', 'typescriptreact' },
+      callback = function(opt)
+        vim.bo[opt.buf].indentexpr = 'nvim_treesitter#indent()'
+      end,
+    })
+  '';
 }

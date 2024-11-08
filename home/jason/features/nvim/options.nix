@@ -7,7 +7,7 @@ in
   programs.nixvim = {
     luaLoader.enable = true;
 
-    options = {
+    opts = {
       number = true;
       relativenumber = true;
       shiftwidth = 2;

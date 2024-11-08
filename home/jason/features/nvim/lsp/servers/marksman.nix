@@ -1,3 +1,3 @@
 {
-  programs.nixvim.plugins.lsp.servers.marksman.enable = true;
+  # programs.nixvim.plugins.lsp.servers.marksman.enable = true;
 }

@@ -21,7 +21,7 @@
         }
       ];
 
-      extraConfig = {
+      settings = {
         enable_autosnippets = true;
         updateevents = "TextChanged,TextChangedI";
 

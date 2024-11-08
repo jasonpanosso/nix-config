@@ -8,7 +8,7 @@ in
 {
   # Third party overlays
   nh = inputs.nh.overlays.default;
-  neovim = inputs.neovim-nightly-overlay.overlay;
+  neovim = inputs.neovim-nightly-overlay.overlays.default;
 
   # For every flake input, aliases 'pkgs.inputs.${flake}' to
   # 'inputs.${flake}.packages.${pkgs.system}' or
@@ -33,9 +33,18 @@ in
 
   # Modifies existing packages
   modifications = final: prev: {
-    # Modify packages here, i.e:
     # vimPlugins = prev.vimPlugins // {
-    #   vim-numbertoggle = addPatches prev.vimPlugins.vim-numbertoggle [ ./vim-numbertoggle-command-mode.patch ];
+    #   oil-nvim = prev.vimUtils.buildVimPlugin {
+    #     pname = "oil";
+    #     version = "2024-04-26";
+    #     src = prev.fetchgit {
+    #       url = "https://github.com/stevearc/oil.nvim";
+    #       rev = "f3a31eba24587bc038592103d8f7e64648292115";
+    #       hash = "sha256-JlA5/qU3U/uAuNt9iVIsIUnULxtxpzoO49ooF8MY3gw=";
+    #       fetchSubmodules = true;
+    #     };
+    #     meta.homepage = "https://github.com/stevearc/oil.nvim";
+    #   };
     # };
   };
 

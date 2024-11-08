@@ -18,7 +18,7 @@
     ./telescope
     ./comment.nix
     ./sleuth.nix
-    ./treesitter
+    ./treesitter.nix
     ./conform.nix
     ./harpoon
     ./indent-blankline.nix

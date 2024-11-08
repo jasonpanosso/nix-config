@@ -19,50 +19,57 @@
       csharpier
       ruff
       sqlfluff
+      google-java-format
+      terraform
     ];
 
     plugins.conform-nvim = {
       enable = true;
-      formatters = {
-        prettier-svelte = {
-          command = "prettier";
-          prepend_args = [ "--plugin=prettier-plugin-svelte" ];
-        };
-        rustfmt = {
-          command = "rustfmt";
-          args = [ "--edition=2021" ];
-        };
-        sqlfluff = {
-          command = "sqlfluff";
-          stdin = true;
-          args = [ "fix" "--dialect=postgres" "--force" "-" ];
-        };
-      };
 
-      formattersByFt = {
-        lua = [ "stylua" ];
-        nix = [ "nixpkgs_fmt" ];
-        typescript = [ "prettierd" ];
-        javascript = [ "prettierd" ];
-        typescriptreact = [ "prettierd" ];
-        javascriptreact = [ "prettierd" ];
-        svelte = [ "prettier-svelte" ];
-        markdown = [ "prettierd" ];
-        html = [ "prettierd" ];
-        htmldjango = [ "djlint" ];
-        sh = [ "beautysh" ];
-        zsh = [ "beautysh" ];
-        yaml = [ "prettierd" ];
-        toml = [ "taplo" ];
-        cs = [ "csharpier" ];
-        rust = [ "rustfmt" ];
-        go = [ "gofmt" ];
-        python = [ "ruff_format" ];
-        sql = [ "sqlfluff" ];
-        css = [ "prettierd" ];
-        json = [ "prettierd" ];
-        jsonc = [ "prettierd" ];
-        "*" = [ "trim_whitespace" ];
+      settings = {
+        formatters = {
+          prettier-svelte = {
+            command = "prettier";
+            args = [ "--stdin-filepath" "$FILENAME" ];
+          };
+          rustfmt = {
+            command = "rustfmt";
+            args = [ "--edition=2021" ];
+          };
+          sqlfluff = {
+            command = "sqlfluff";
+            stdin = true;
+            args = [ "fix" "--dialect=postgres" "--force" "-" ];
+          };
+        };
+
+        formatters_by_ft = {
+          lua = [ "stylua" ];
+          nix = [ "nixpkgs_fmt" ];
+          typescript = [ "prettier" ];
+          javascript = [ "prettier" ];
+          typescriptreact = [ "prettier" ];
+          javascriptreact = [ "prettier" ];
+          svelte = [ "prettier-svelte" ];
+          markdown = [ "prettier" ];
+          html = [ "prettier" ];
+          htmldjango = [ "djlint" ];
+          sh = [ "beautysh" ];
+          zsh = [ "beautysh" ];
+          yaml = [ "prettier" ];
+          toml = [ "taplo" ];
+          cs = [ "csharpier" ];
+          rust = [ "rustfmt" ];
+          go = [ "gofmt" ];
+          python = [ "ruff_format" ];
+          sql = [ "sqlfluff" ];
+          css = [ "prettier" ];
+          json = [ "prettier" ];
+          jsonc = [ "prettier" ];
+          java = [ "google-java-format" ];
+          terraform = [ "terraform_fmt" ];
+          "*" = [ "trim_whitespace" ];
+        };
       };
     };
 

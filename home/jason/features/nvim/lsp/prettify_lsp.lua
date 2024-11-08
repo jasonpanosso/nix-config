@@ -9,7 +9,11 @@ local lsp_border = {
   { '│', 'NormalFloat' },
 }
 
-vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = lsp_border })
+vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(function(_nil, result, ctx, config)
+  if result then
+    return vim.lsp.handlers.hover(_nil, result, ctx, config)
+  end
+end, { border = lsp_border })
 vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = lsp_border })
 
 local signs = {

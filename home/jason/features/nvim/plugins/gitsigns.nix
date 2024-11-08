@@ -1,45 +1,35 @@
 {
   programs.nixvim.plugins.gitsigns = {
     enable = true;
-    currentLineBlame = true;
-    signcolumn = true;
 
-    signs = {
-      add = {
-        hl = "GitSignsAdd";
-        text = "▎";
-        numhl = "GitSignsAddNr";
-        linehl =
-          "GitSignsAddLn";
-      };
+    settings = {
+      current_line_blame = true;
+      signcolumn = true;
 
-      change = {
-        hl = "GitSignsChange";
-        text = "▎";
-        numhl = "GitSignsChangeNr";
-        linehl = "GitSignsChangeLn";
-      };
+      signs = {
+        add = {
+          text = "▎";
+        };
 
-      delete = {
-        hl = "GitSignsDelete";
-        text = "󰐊";
-        numhl = "GitSignsDeleteNr";
-        linehl = "GitSignsDeleteLn";
-      };
+        change = {
+          text = "▎";
+        };
 
-      topdelete = {
-        hl = "GitSignsDelete";
-        text = "󰐊";
-        numhl =
-          "GitSignsDeleteNr";
-        linehl = "GitSignsDeleteLn";
-      };
+        delete = {
+          text = "󰐊";
+        };
 
-      changedelete = {
-        hl = "GitSignsChange";
-        text = "▎";
-        numhl = "GitSignsChangeNr";
-        linehl = "GitSignsChangeLn";
+        topdelete = {
+          text = "󰐊";
+        };
+
+        changedelete = {
+          text = "▎";
+        };
+
+        untracked = {
+          text = "┆";
+        };
       };
     };
   };

@@ -1,6 +1,6 @@
 {
   imports = [
-    ./lua-ls.nix
+    ./lua_ls.nix
     ./cssls.nix
     ./gopls.nix
     ./taplo.nix
@@ -15,5 +15,6 @@
     ./html-language-server.nix
     ./eslint-language-server.nix
     ./svelte-language-server.nix
+    ./terraformls.nix
   ];
 }

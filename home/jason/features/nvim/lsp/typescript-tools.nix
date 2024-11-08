@@ -4,8 +4,8 @@
       enable = true;
 
       settings = {
-        separateDiagnosticServer = true;
-        publishDiagnosticOn = "insert_leave";
+        separate_diagnostic_server = true;
+        publish_diagnostic_on = "insert_leave";
       };
     };
 

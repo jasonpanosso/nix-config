@@ -1,5 +1,11 @@
+{ pkgs, ... }:
+
 {
   programs.nixvim = {
+    extraPackages = [
+      pkgs.terraform-ls
+    ];
+
     plugins.lsp = {
       enable = true;
       capabilities = #lua
@@ -51,5 +57,6 @@
     ./rustaceanvim.nix
     ./typescript-tools.nix
     ./roslyn.nix
+    ./jdtls.nix
   ];
 }

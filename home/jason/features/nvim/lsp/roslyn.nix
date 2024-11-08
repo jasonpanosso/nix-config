@@ -3,12 +3,12 @@
 let
   roslyn-nvim = pkgs.vimUtils.buildVimPlugin {
     pname = "roslyn-nvim";
-    version = "2024-02-27";
+    version = "2024-10-21";
     src = pkgs.fetchgit
       {
-        url = "https://github.com/jasonpanosso/roslyn.nvim";
-        rev = "4afa375b57b0ea9e94d5a14e53c6a845332e6759";
-        hash = "sha256-3qXMAmyGhgQ+mOYk64SNX1f1YEPreRjop9/JLCyQiPM=";
+        url = "https://github.com/seblj/roslyn.nvim";
+        rev = "0cb7527d951237bd23e30c461e8f7e2d615830fd";
+        hash = "sha256-t3gShqWD54bUPOAsqF+VeUenbuFtFxk3fpz8mVRASEw=";
       };
   };
 in
@@ -18,7 +18,9 @@ in
       (with dotnetCorePackages; combinePackages [
         sdk_6_0
         sdk_7_0
+        sdk_8_0
       ])
+      roslyn-ls
     ];
 
     extraPlugins = [ roslyn-nvim ];
@@ -37,6 +39,7 @@ in
 
         require("roslyn").setup({
             on_attach = function() end,
+            exe = 'Microsoft.CodeAnalysis.LanguageServer',
             capabilities = capabilities,
         })
       '';
