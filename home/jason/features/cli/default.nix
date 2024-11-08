@@ -2,27 +2,28 @@
 
 {
   imports = [
+    ./btop.nix
     ./direnv.nix
+    ./eza.nix
+    ./fd.nix
+    ./font.nix
     ./fzf.nix
     ./gh.nix
     ./git.nix
     ./gpg.nix
     ./kitty.nix
+    ./ripgrep.nix
+    ./ssh-agent.nix
     ./tmux.nix
     ./zsh.nix
   ];
 
   home.packages = with pkgs; [
-    btop # htop/nmon
     dnsutils # `dig` command
     docker-compose
     ethtool # query/control network device driver & hw settings
-    eza # improved ls
-    fd # improved find
     file # determines type of a file(human readable/mime)
-    fzf # fuzzy find
     glow # md viewer
-    gnupg # privary guard
     gnused # sed
     gnutar # tar
     iftop # net
@@ -41,7 +42,6 @@
     nmap # network mapper
     p7zip # 7-zip port for unix
     pciutils # lspci
-    ripgrep
     strace # sys calls
     sysstat # sys perf monitoring tools
     tree
