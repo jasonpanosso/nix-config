@@ -22,7 +22,7 @@ in
 
   home.file = {
     # setup tmux-sessionizer config
-    ".config/tms/config.toml".text = ''
+    ".config/tms/config.toml".text = /* toml */ ''
       [[search_dirs]]
       path = '${config.home.homeDirectory}/Projects'
       depth = 1
@@ -45,7 +45,7 @@ in
       tmuxPlugins.better-mouse-mode
       {
         plugin = nova;
-        extraConfig = ''
+        extraConfig = /* sh */ ''
           set -g @nova-nerdfonts true
           set -g @nova-nerdfonts-left 
           set -g @nova-nerdfonts-right 
@@ -85,7 +85,7 @@ in
               "\"~nix-shell->nix-shell *\""
             ];
           in
-          ''
+            /* sh */ ''
             set -g @resurrect-capture-pane-contents 'on'
             set -g @resurrect-processes '${resurrectProcesses}'
             resurrect_dir="$HOME/.tmux/resurrect"
@@ -97,14 +97,14 @@ in
       }
       {
         plugin = tmuxPlugins.continuum;
-        extraConfig = ''
+        extraConfig = /* sh */ ''
           set -g @continuum-restore 'on'
           set -g @continuum-save-interval '5'
         '';
       }
     ];
 
-    extraConfig = ''
+    extraConfig = /* sh */ ''
       set -ga terminal-overrides ",xterm-256color:RGB"
       set -g repeat-time 300
       set -g detach-on-destroy off
