@@ -90,6 +90,12 @@
           pkgs = pkgsFor.x86_64-linux;
           extraSpecialArgs = { inherit inputs outputs; };
         };
+
+        "jason@ubuntu" = lib.homeManagerConfiguration {
+          modules = [ ./home/jason/common ];
+          pkgs = pkgsFor.x86_64-linux;
+          extraSpecialArgs = { inherit inputs outputs; };
+        };
       };
     };
 }
