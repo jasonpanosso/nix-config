@@ -15,7 +15,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     hardware.url = "github:nixos/nixos-hardware";
 
-    nix-colors.url = "github:misterio77/nix-colors";
+    stylix.url = "github:danth/stylix";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -47,7 +47,7 @@
     xremap-flake.url = "github:xremap/nix-flake";
   };
 
-  outputs = { self, nixpkgs, home-manager, neovim-nightly-overlay, ... } @ inputs:
+  outputs = { self, nixpkgs, home-manager, neovim-nightly-overlay, stylix, ... } @ inputs:
     let
       inherit (self) outputs;
       lib = nixpkgs.lib // home-manager.lib;
@@ -92,7 +92,10 @@
         };
 
         "jason@ubuntu" = lib.homeManagerConfiguration {
-          modules = [ ./home/jason/common ];
+          modules = [
+            ./home/jason/common
+            ./home/jason/features/desktop/common
+          ];
           pkgs = pkgsFor.x86_64-linux;
           extraSpecialArgs = { inherit inputs outputs; };
         };

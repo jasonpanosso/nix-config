@@ -6,7 +6,6 @@
     ./direnv.nix
     ./eza.nix
     ./fd.nix
-    ./font.nix
     ./fzf.nix
     ./gh.nix
     ./git.nix

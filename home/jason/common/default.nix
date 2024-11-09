@@ -1,11 +1,8 @@
 { lib, pkgs, config, outputs, inputs, ... }:
 
-let
-  colorSchemes = inputs.nix-colors.colorSchemes // (import ./kanagawa-term-edit.nix);
-in
 {
   imports = [
-    inputs.nix-colors.homeManagerModule
+    inputs.stylix.homeManagerModules.stylix
     ../features/cli
     ../features/nvim
   ] ++ (builtins.attrValues outputs.homeManagerModules);
@@ -32,15 +29,13 @@ in
     home-manager.enable = true;
   };
 
-  colorscheme = lib.mkDefault colorSchemes.kanagawa;
-
   home = {
     username = lib.mkDefault "jason";
     homeDirectory = lib.mkDefault "/home/${config.home.username}";
     stateVersion = lib.mkDefault "23.11";
-    sessionPath = [ "$HOME/.local/bin" ];
+    sessionPath = [ "${config.home.homeDirectory}/.local/bin" ];
     sessionVariables = {
-      FLAKE = "$HOME/Documents/NixConfig";
+      FLAKE = "${config.home.homeDirectory}/Documents/NixConfig";
     };
   };
 }

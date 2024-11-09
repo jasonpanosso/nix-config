@@ -3,8 +3,8 @@
 let
   pinentry =
     if config.gtk.enable then {
-      homePackages = [ pkgs.pinentry-gnome pkgs.gcr ];
-      package = pkgs.pinentry-gnome;
+      homePackages = [ pkgs.pinentry-gnome3 pkgs.gcr ];
+      package = pkgs.pinentry-gnome3;
       name = "gnome3";
     } else {
       homePackages = [ pkgs.pinentry-curses ];
@@ -58,7 +58,7 @@ in
       Service = {
         Type = "oneshot";
         ExecStart = "${pkgs.coreutils}/bin/ln -Tfs /run/user/%U/gnupg %h/.gnupg-sockets";
-        ExecStop = "${pkgs.coreutils}/bin/rm $HOME/.gnupg-sockets";
+        ExecStop = "${pkgs.coreutils}/bin/rm ${config.home.homeDirectory}/.gnupg-sockets";
         RemainAfterExit = true;
       };
       Install.WantedBy = [ "default.target" ];
