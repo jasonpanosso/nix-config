@@ -31,6 +31,10 @@
       };
     };
 
+    targets = {
+      nixvim.enable = false;
+      neovim.enable = false;
+    };
 
     image = pkgs.fetchurl {
       url = "https://i.imgur.com/ivh6aQ3.png";
