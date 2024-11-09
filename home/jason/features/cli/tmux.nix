@@ -88,7 +88,7 @@ in
             /* sh */ ''
             set -g @resurrect-capture-pane-contents 'on'
             set -g @resurrect-processes '${resurrectProcesses}'
-            resurrect_dir="$HOME/.tmux/resurrect"
+            resurrect_dir="${config.home.homeDirectory}/.tmux/resurrect"
             set -g @resurrect-dir $resurrect_dir
 
             # cursed fix for .nix-profile, and how nix wraps programs
