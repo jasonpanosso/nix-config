@@ -8,4 +8,9 @@
     path = ./rust-cortex-m;
     description = "Rust template for cortex-m";
   };
+
+  typescript = {
+    path = ./typescript;
+    description = "Typescript template with prettier & eslint";
+  };
 }

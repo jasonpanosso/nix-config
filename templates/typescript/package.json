@@ -1,0 +1,25 @@
+{
+    "name": "typescript",
+    "version": "0.1.0",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "build": "tsc",
+        "check": "tsc --noEmit",
+        "lint": "eslint .",
+        "typecheck": "tsc --noEmit",
+        "format:write": "prettier --write \"**/*.{ts,tsx,js,jsx,mdx}\" --cache",
+        "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,mdx}\" --cache"
+    },
+    "dependencies": {},
+    "devDependencies": {
+        "@types/eslint": "^8.56.10",
+        "@types/node": "^20.14.10",
+        "@typescript-eslint/eslint-plugin": "^8.1.0",
+        "@typescript-eslint/parser": "^8.1.0",
+        "eslint": "^8.57.0",
+        "prettier": "^3.3.2",
+        "typescript": "^5.5.3"
+    },
+    "packageManager": "npm@10.8.2"
+}
