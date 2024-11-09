@@ -37,6 +37,7 @@
     lsof # list open files
     ltrace # lib calls
     mtr # my traceroute (auto refreshing traceroute)
+    nodePackages_latest.npm
     nix-output-monitor
     nmap # network mapper
     p7zip # 7-zip port for unix
