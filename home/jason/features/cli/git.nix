@@ -9,11 +9,13 @@
     userEmail = "jasonpanosso@protonmail.com";
     lfs.enable = true;
     difftastic.enable = true;
+    signing = {
+      key = "7F4BBBCE5FA232F9DC9E6707CD4B7B6A06A225FD";
+      signByDefault = true;
+    };
 
     extraConfig = {
       init.defaultBranch = "main";
-      user.signingkey = "7F4BBBCE5FA232F9DC9E6707CD4B7B6A06A225FD";
-      # commit.gpgSign = true;
       merge.conflictStyle = "zdiff3";
       commit.verbose = true;
       diff.algorithm = "histogram";
