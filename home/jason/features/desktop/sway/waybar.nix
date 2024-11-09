@@ -1,8 +1,7 @@
-{ pkgs, config, ... }:
+{ pkgs, ... }:
 
 let
   pavucontrol = "${pkgs.pavucontrol}/bin/pavucontrol";
-  colors = config.colorscheme.palette;
 in
 {
   programs.waybar = {
@@ -128,23 +127,23 @@ in
     style = /* css */ ''
       @keyframes blink-warning {
           70% {
-              color: #${colors.base06};
+              color: #6A9589;
           }
 
           to {
-              color: #${colors.base06};
-              background-color: #${colors.base09};
+              color: #6A9589;
+              background-color: #E82424;
           }
       }
 
       @keyframes blink-critical {
           70% {
-            color: #${colors.base06};
+            color: #6A9589;
           }
 
           to {
-              color: #${colors.base06};
-              background-color: #${colors.base08};
+              color: #6A9589;
+              background-color: #727169;
           }
       }
 
@@ -157,7 +156,7 @@ in
       * {
         border: none;
         border-radius: 0;
-        font-family: ${config.fontProfiles.monospace.family} Propo, Noto Sans, sans-serif;
+        font-family: Iosevka, Propo, Noto Sans, sans-serif;
         min-height: 0;
         margin: 0;
         padding: 0;
@@ -165,8 +164,8 @@ in
 
       /* The whole bar */
       #waybar {
-        background-color: #${colors.base00};
-        color: #${colors.base06};
+        background-color: #16161D;
+        color: #6A9589;
         font-size: 20px;
         transition-property: background-color;
         transition-duration: 0.5s;
@@ -202,11 +201,11 @@ in
       }
 
       #battery.warning {
-        color: #${colors.base09};
+        color: #E82424;
       }
 
       #battery.critical {
-        color: #${colors.base08};
+        color: #727169;
       }
 
       #battery.warning.discharging {
@@ -228,11 +227,11 @@ in
       }
 
       #cpu.warning {
-        color: #${colors.base09};
+        color: #E82424;
       }
 
       #cpu.critical {
-        color: #${colors.base08};
+        color: #727169;
       }
 
       #memory {
@@ -242,18 +241,18 @@ in
       }
 
       #memory.warning {
-        color: #${colors.base09};
+        color: #E82424;
       }
 
       #memory.critical {
-        color: #${colors.base08};
+        color: #727169;
         animation-name: blink-critical;
         animation-duration: 2s;
       }
 
       #mode {
         background: transparent;
-        color: #${colors.base08};
+        color: #727169;
       }
 
       #network {
@@ -261,7 +260,7 @@ in
       }
 
       #network.disconnected {
-        color: #${colors.base09};
+        color: #E82424;
       }
 
       #pulseaudio {
@@ -277,7 +276,7 @@ in
       }
 
       #temperature.critical {
-        color: #${colors.base08};
+        color: #727169;
       }
 
       #tray {
@@ -286,31 +285,31 @@ in
 
       #workspaces button {
         padding: 0 5px;
-        color: #${colors.base06};
+        color: #6A9589;
         border-radius: 5px;
       }
 
       #workspaces button.focused {
-        background-color: #${colors.base06};
-        color: #${colors.base00};
+        background-color: #6A9589;
+        color: #16161D;
         border-bottom: none;
       }
 
       #workspaces button.urgent {
-        background-color: #${colors.base08};
+        background-color: #727169;
       }
 
       label:focus {
-        background-color: #${colors.base00};
+        background-color: #16161D;
       }
 
       tooltip {
         border-radius: 5px;
-        background: #${colors.base02};
+        background: #76946A;
       }
 
       tooltip label {
-        color: #${colors.base06};
+        color: #6A9589;
       }
 
       widget > * {
@@ -335,8 +334,8 @@ in
         padding: 0 12px;
         margin-left: 0;
         margin-right: 0;
-        color: #${colors.base00};
-        background-color: #${colors.base06};
+        color: #16161D;
+        background-color: #6A9589;
       }
 
       .modules-right > widget:first-child > * {
