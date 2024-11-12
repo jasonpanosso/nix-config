@@ -111,15 +111,15 @@
         };
       }
 
-      {
-        mode = [ "n" ];
-        key = "<leader>sc";
-        action = "<cmd>Telescope dap commands<CR>";
-        options = {
-          silent = true;
-          desc = "[S]earch DAP [C]ommands";
-        };
-      }
+      # {
+      #   mode = [ "n" ];
+      #   key = "<leader>sc";
+      #   action = "<cmd>Telescope dap commands<CR>";
+      #   options = {
+      #     silent = true;
+      #     desc = "[S]earch DAP [C]ommands";
+      #   };
+      # }
 
       {
         mode = [ "n" ];
@@ -145,6 +145,66 @@
 
       {
         mode = [ "n" ];
+        key = "gd";
+        action = /* lua */ ''
+          function()
+            require('telescope.builtin').lsp_definitions({ intial_mode = 'normal' })
+          end
+        '';
+        lua = true;
+        options = {
+          silent = true;
+          desc = "LSP: [G]oto [D]efinition";
+        };
+      }
+
+      {
+        mode = [ "n" ];
+        key = "gt";
+        action = /* lua */ ''
+          function()
+            require('telescope.builtin').lsp_type_definitions({ intial_mode = 'normal' })
+          end
+        '';
+        lua = true;
+        options = {
+          silent = true;
+          desc = "LSP: [G]oto [T]ype definition";
+        };
+      }
+
+      {
+        mode = [ "n" ];
+        key = "<leader>pt";
+        action = /* lua */ ''
+          function()
+            require('telescope.builtin').lsp_type_definitions({ intial_mode = 'normal', jump_type = 'never' })
+          end
+        '';
+        lua = true;
+        options = {
+          silent = true;
+          desc = "LSP: [P]eek [T]ype definition";
+        };
+      }
+
+      {
+        mode = [ "n" ];
+        key = "<leader>pd";
+        action = /* lua */ ''
+          function()
+            require('telescope.builtin').lsp_definitions({ intial_mode = 'normal', jump_type = 'never' })
+          end
+        '';
+        lua = true;
+        options = {
+          silent = true;
+          desc = "LSP: [P]eek [D]efinition";
+        };
+      }
+
+      {
+        mode = [ "n" ];
         key = "<leader>db";
         action = "function() require('telescope.builtin').diagnostics({bufnr=0}) end";
         lua = true;
@@ -153,6 +213,7 @@
           desc = "[D]iagnostics [B]uffer";
         };
       }
+
 
       {
         mode = [ "n" ];
