@@ -22,5 +22,6 @@
     ./conform.nix
     ./harpoon
     ./indent-blankline.nix
+    ./nui.nix
   ];
 }
