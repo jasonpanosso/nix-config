@@ -1,11 +1,5 @@
-{ pkgs, ... }:
-
 {
   programs.nixvim = {
-    extraPackages = [
-      pkgs.terraform-ls
-    ];
-
     plugins.lsp = {
       enable = true;
       capabilities = #lua
@@ -50,6 +44,7 @@
   };
 
   imports = [
+    ./actions-preview
     ./inlayhints
     ./fidget.nix
     ./lspsaga
