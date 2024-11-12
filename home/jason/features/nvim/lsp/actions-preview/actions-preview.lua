@@ -1,12 +1,10 @@
 require('actions-preview').setup({
   diff = {
-    algorithm = 'histogram',
+    algorithm = 'patience',
     ignore_whitespace = true,
   },
 
-  telescope = vim.tbl_extend('force', require('telescope.themes').get_cursor(), {
-    previewer = false,
+  telescope = {
     initial_mode = 'normal',
-    layout_strategy = 'vertical',
-  }),
+  },
 })
