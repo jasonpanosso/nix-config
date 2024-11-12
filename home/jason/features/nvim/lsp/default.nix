@@ -40,6 +40,16 @@
           desc = "LSP: Signature Help";
         };
       }
+
+      {
+        mode = [ "n" ];
+        key = "<leader>rl";
+        action = "<cmd>so $MYVIMRC<CR>";
+        options = {
+          silent = true;
+          desc = "[R]e[L]oad init.lua";
+        };
+      }
     ];
   };
 
@@ -48,6 +58,7 @@
     ./inlayhints
     ./fidget.nix
     ./lspsaga
+    ./pretty_hover
     ./servers
     ./rustaceanvim.nix
     ./typescript-tools.nix

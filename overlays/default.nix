@@ -33,19 +33,31 @@ in
 
   # Modifies existing packages
   modifications = final: prev: {
-    # vimPlugins = prev.vimPlugins // {
-    #   oil-nvim = prev.vimUtils.buildVimPlugin {
-    #     pname = "oil";
-    #     version = "2024-04-26";
-    #     src = prev.fetchgit {
-    #       url = "https://github.com/stevearc/oil.nvim";
-    #       rev = "f3a31eba24587bc038592103d8f7e64648292115";
-    #       hash = "sha256-JlA5/qU3U/uAuNt9iVIsIUnULxtxpzoO49ooF8MY3gw=";
-    #       fetchSubmodules = true;
-    #     };
-    #     meta.homepage = "https://github.com/stevearc/oil.nvim";
-    #   };
-    # };
-  };
+    vimPlugins = prev.vimPlugins // {
+      actions-preview = prev.vimUtils.buildVimPlugin {
+        pname = "actions-preview";
+        version = "2024-11-26";
+        src = prev.fetchgit {
+          url = "https://github.com/aznhe21/actions-preview.nvim";
+          rev = "9f52a01c374318e91337697ebed51c6fae57f8a4";
+          hash = "sha256-lYjsv8y1fMuTGpBF/iG7cm/a7tLdh748vJhVsSp/Iz8=";
+          fetchSubmodules = true;
+        };
+        meta.homepage = "https://github.com/aznhe21/actions-preview.nvim";
+      };
 
+      pretty_hover = prev.vimUtils.buildVimPlugin {
+        pname = "pretty_hover";
+        version = "2024-11-26";
+        src = prev.fetchgit {
+          url = "https://github.com/Fildo7525/pretty_hover";
+          rev = "dabf4dcfd6b074d5edefce381f1bc04c361527ca";
+          hash = "sha256-N/AtGg2vL3YGJ4hzm0isYc9CkYAsP7LTlBeAcspF+2I=";
+          fetchSubmodules = true;
+        };
+        meta.homepage = "https://github.com/Fildo7525/pretty_hover";
+      };
+
+    };
+  };
 }
