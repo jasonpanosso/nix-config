@@ -18,20 +18,27 @@
                 vim.cmd.RustLsp('codeAction')
               end, { buffer = bufnr, silent = true })
 
-              -- https://www.reddit.com/r/neovim/comments/12gvms4/this_is_why_your_higlights_look_different_in_90/
-              vim.api.nvim_set_hl(0, '@lsp.type.macro', { link = 'Macro', default = true })
-              vim.api.nvim_set_hl(0, '@lsp.type.decorator', { link = '@function', default = true })
+              vim.keymap.set('n', '<Leader>em', function()
+                vim.cmd.RustLsp('expandMacro')
+              end, { buffer = bufnr, silent = true })
+
+              vim.keymap.set('n', '<Leader>ee', function()
+                vim.cmd.RustLsp('explainError')
+              end, { buffer = bufnr, silent = true })
+
+              vim.keymap.set('n', '<Leader>co', function()
+                vim.cmd.RustLsp('openCargo')
+              end, { buffer = bufnr, silent = true })
+
+              vim.keymap.set('n', '<Leader>do', function()
+                vim.cmd.RustLsp('openDocs')
+              end, { buffer = bufnr, silent = true })
+
+              vim.keymap.set('n', '<Leader>pm', function()
+                vim.cmd.RustLsp('parentModule')
+              end, { buffer = bufnr, silent = true })
             end
           '';
-
-        default_settings =
-          /* lua */
-          ''
-            function(project_root)
-              return require('rustaceanvim.config.server').load_rust_analyzer_settings(project_root)
-            end
-          '';
-
       };
     };
   };
