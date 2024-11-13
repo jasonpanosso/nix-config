@@ -57,6 +57,7 @@
     ./actions-preview
     ./inlayhints
     ./fidget.nix
+    ./garbage-day.nix
     ./lspsaga
     ./pretty_hover
     ./servers

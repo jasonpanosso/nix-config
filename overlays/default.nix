@@ -58,6 +58,17 @@ in
         meta.homepage = "https://github.com/Fildo7525/pretty_hover";
       };
 
+      garbage-day = prev.vimUtils.buildVimPlugin {
+        pname = "garbage-day.nvim";
+        version = "2024-11-13";
+        src = prev.fetchgit {
+          url = "https://github.com/Zeioth/garbage-day.nvim";
+          rev = "750ef08ae6031ee3683014c5349144340c08ead6";
+          hash = "sha256-XBt1EMbd3QTwfxHZcTVO1Rd0rocATrv8HMEBPxbs60w=";
+          fetchSubmodules = true;
+        };
+        meta.homepage = "https://github.com/Zeioth/garbage-day.nvim";
+      };
     };
   };
 }
