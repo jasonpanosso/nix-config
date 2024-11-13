@@ -1,10 +1,10 @@
 { inputs }:
 
-let
-  addPatches = pkg: patches: pkg.overrideAttrs (oldAttrs: {
-    patches = (oldAttrs.patches or [ ]) ++ patches;
-  });
-in
+# let
+#   addPatches = pkg: patches: pkg.overrideAttrs (oldAttrs: {
+#     patches = (oldAttrs.patches or [ ]) ++ patches;
+#   });
+# in
 {
   # Third party overlays
   nh = inputs.nh.overlays.default;
