@@ -22,11 +22,11 @@
 
     {
       mode = [ "n" ];
-      key = "<leader>o";
+      key = "<leader>to";
       action = "<cmd>Lspsaga outline<CR>";
       options = {
         silent = true;
-        desc = "LSP: Toggle [O]utline";
+        desc = "LSP: [T]oggle [O]utline";
       };
     }
 
