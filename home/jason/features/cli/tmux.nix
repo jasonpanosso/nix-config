@@ -1,18 +1,5 @@
 { config, pkgs, ... }:
 
-let
-  nova = pkgs.tmuxPlugins.mkTmuxPlugin
-    {
-      pluginName = "nova";
-      version = "unstable-2024-02-25";
-      src = pkgs.fetchFromGitHub {
-        owner = "o0th";
-        repo = "tmux-nova";
-        rev = "c827cd1d8fac4a86766d535a47d7174715d1b18c";
-        sha256 = "sha256-qpviRordzZSqVzzK56rM1uHux7Ejfq2rxmTVCHfYV54=";
-      };
-    };
-in
 {
   home.packages = with pkgs;
     [
@@ -44,7 +31,7 @@ in
       tmuxPlugins.vim-tmux-navigator
       tmuxPlugins.better-mouse-mode
       {
-        plugin = nova;
+        plugin = tmuxPlugins.tmux-nova;
         extraConfig = /* sh */ ''
           set -g @nova-nerdfonts true
           set -g @nova-nerdfonts-left 
