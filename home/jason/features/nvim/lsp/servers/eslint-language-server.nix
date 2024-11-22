@@ -1,3 +1,8 @@
 {
-  programs.nixvim.plugins.lsp.servers.eslint.enable = true;
+  programs.nixvim.plugins.lsp.servers.eslint = {
+    enable = true;
+    settings = {
+      workingDirectories.mode = "location";
+    };
+  };
 }

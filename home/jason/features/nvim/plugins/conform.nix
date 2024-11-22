@@ -1,9 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, lib, config, ... }:
 
 {
   programs.nixvim = {
     extraPackages = with pkgs; [
-      prettierd
       nodePackages.prettier
       stylua
       rustfmt
@@ -26,12 +25,29 @@
     plugins.conform-nvim = {
       enable = true;
 
+
       settings = {
         formatters = {
           prettier-svelte = {
             command = "prettier";
             args = [ "--stdin-filepath" "$FILENAME" ];
           };
+          prettier = config.lib.nixvim.mkRaw
+            /* lua */
+            ''
+              {
+                command = function(self, bufnr)
+                    local util = require("conform.util")
+                    local cmd = util.find_executable({ ".yarn/sdks/prettier/bin/prettier.cjs" }, "")(self, bufnr)
+
+                    if cmd ~= "" then
+                      return cmd
+                    end
+
+                    return util.from_node_modules("prettier")(self, bufnr) or "${lib.getExe pkgs.nodePackages.prettier}"
+                  end
+              }
+            '';
           rustfmt = {
             command = "rustfmt";
             args = [ "--edition=2021" ];

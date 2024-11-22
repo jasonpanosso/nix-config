@@ -3,7 +3,6 @@
 {
   programs.nixvim = {
     extraPackages = with pkgs;[
-      nodePackages_latest.eslint_d
       selene
       python311Packages.flake8
       sqlfluff
