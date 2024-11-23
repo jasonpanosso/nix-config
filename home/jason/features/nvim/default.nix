@@ -24,5 +24,7 @@
     viAlias = true;
     plugins.web-devicons.enable = true;
     globals.mapleader = " ";
+
+    extraPlugins = with pkgs.vimPlugins; [ vim-rzip ];
   };
 }
