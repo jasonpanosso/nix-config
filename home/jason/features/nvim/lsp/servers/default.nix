@@ -7,6 +7,7 @@
     ./bashls.nix
     ./clangd.nix
     ./jsonls.nix
+    ./helm.nix
     ./nil_ls.nix
     ./dockerls.nix
     ./marksman.nix
