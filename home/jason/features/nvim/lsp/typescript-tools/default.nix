@@ -1,13 +1,11 @@
+{ pkgs, ... }:
+
 {
   programs.nixvim = {
-    plugins.typescript-tools = {
-      enable = true;
-
-      settings = {
-        separate_diagnostic_server = true;
-        publish_diagnostic_on = "insert_leave";
-      };
-    };
+    extraPlugins = with pkgs.vimPlugins; [
+      typescript-tools-nvim
+    ];
+    extraConfigLua = builtins.readFile ./typescript-tools.lua;
 
     keymaps = [
       {
