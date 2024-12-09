@@ -1,16 +1,18 @@
 { pkgs, ... }:
 
 {
+  home.packages = [ pkgs.tflint ];
   programs.nixvim = {
-    extraPackages = with pkgs;[
-      selene
-      python311Packages.flake8
-      sqlfluff
-      ansible-lint
-      djlint
-      golangci-lint
-      tflint
-    ];
+    extraPackages = with pkgs;
+      [
+        selene
+        python311Packages.flake8
+        sqlfluff
+        ansible-lint
+        djlint
+        golangci-lint
+        tflint
+      ];
 
     plugins.lint = {
       enable = true;
