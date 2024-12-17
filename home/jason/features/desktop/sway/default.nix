@@ -49,7 +49,6 @@ in
             playerctl = "${config.services.playerctld.package}/bin/playerctl";
             playerctld = "${config.services.playerctld.package}/bin/playerctld";
             makoctl = "${config.services.mako.package}/bin/makoctl";
-            grim = "${pkgs.grim}/bin/grim";
           in
           {
             "${modifier}+Space" = "exec ${pkgs.wofi}/bin/wofi --show=drun";
@@ -152,7 +151,6 @@ in
 
   xdg.portal = {
     enable = true;
-    # wlr.enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
     config.common.default = [ "wlr" "gtk" ];
   };

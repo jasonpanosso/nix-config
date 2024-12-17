@@ -20,9 +20,7 @@
       allow_remote_control = "yes";
       placement_strategy = "top-left";
       window_margin_width = 0;
-      window_margin_height = 0;
       window_padding_width = 0;
-      window_padding_height = 0;
       active_border_color = "none";
       resize_in_steps = "yes";
       allow_hyperlinks = "yes";

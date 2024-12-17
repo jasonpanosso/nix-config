@@ -25,9 +25,6 @@
 
   hardware.enableRedistributableFirmware = true;
 
-  # enabled at host level, all other config in hm
-  xdg.portal.wlr.enable = true;
-
   # speed up boot time
   systemd.services.NetworkManager-wait-online.enable = false;
   systemd.network.wait-online.enable = false;
