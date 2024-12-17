@@ -18,4 +18,9 @@
     path = ./go;
     description = "Basic golang template";
   };
+
+  kind = {
+    path = ./kind;
+    description = "Kubernetes testing template";
+  };
 }
