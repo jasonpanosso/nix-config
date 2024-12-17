@@ -15,7 +15,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     hardware.url = "github:nixos/nixos-hardware";
 
-    stylix.url = "github:danth/stylix";
+    stylix.url = "github:danth/stylix/master"; # use master, somehow breaks regreet(W T F ?)
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -30,7 +30,6 @@
     sops-nix = {
       url = "github:mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nixpkgs-stable.follows = "nixpkgs";
     };
 
     nh = {
@@ -58,7 +57,6 @@
 
       pkgsFor = lib.genAttrs systems (system: import nixpkgs {
         inherit system;
-        config.allowUnfree = true;
       });
       forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system});
     in

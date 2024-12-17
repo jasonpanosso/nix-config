@@ -21,40 +21,5 @@
       show = "drun";
       prompt = "";
     };
-
-    style = /* css */ ''
-      * {
-        font-family: monospace;
-      }
-
-      window {
-        background-color: #323232;
-      }
-
-      #input {
-        margin: 5px;
-        border-radius: 0px;
-        border: none;
-        background-color: #323232;
-        color: white;
-      }
-
-      #scroll {}
-
-      #text {
-        padding: 5px;
-        color: white;
-      }
-
-      #entry {
-        background-color: #323232;
-      }
-
-      #entry:selected {
-        background-color: #4c7899;
-      }
-
-      #text:selected {}
-    '';
   };
 }

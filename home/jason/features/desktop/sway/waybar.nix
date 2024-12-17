@@ -35,8 +35,8 @@ in
         battery = {
           interval = 10;
           states = { warning = 30; critical = 15; };
-          format = " {icon} {capacity}%"; # Icon: bolt
-          format-discharging = "{icon} {capacity}%";
+          format = " {icon}  {capacity}%"; # Icon: bolt
+          format-discharging = "{icon}   {capacity}%";
           format-icons = [
             "" # Icon: battery-empty
             "" # Icon: battery-quarty
@@ -49,13 +49,13 @@ in
 
         clock = {
           interval = 1;
-          format = "󰃰 {:%b %d %H:%M}"; # Icon: calendar/clock
+          format = "󰃰   {:%b %d %H:%M}"; # Icon: calendar/clock
           tooltip-format = "{:%B %e %Y}";
         };
 
         cpu = {
           interval = 5;
-          format = "󰇺 {usage}%"; # Icon: engine
+          format = "󰇺   {usage}%"; # Icon: engine
           states = {
             warning = 70;
             critical = 90;
@@ -64,7 +64,7 @@ in
 
         memory = {
           interval = 5;
-          format = " {}%"; # Icon: memory
+          format = "   {}%"; # Icon: memory
           states = {
             warning = 70;
             critical = 90;
@@ -73,17 +73,17 @@ in
 
         network = {
           interval = 5;
-          format-wifi = " Connected"; # Icon: wifi
-          format-ethernet = "󰈀 {ipaddr}/{cidr}"; # Icon: ethernet
-          format-disconnected = "⚠ Disconnected"; # Icon: warning
+          format-wifi = "   Connected"; # Icon: wifi
+          format-ethernet = "󰈀  {ipaddr}/{cidr}"; # Icon: ethernet
+          format-disconnected = "⚠  Disconnected"; # Icon: warning
           tooltip-format = "{ifname} via {gwaddr}";
           tooltip-format-wifi = "{essid} ({signalStrength}%)";
           tooltip-format-ethernet = "{ifname}";
         };
 
         pulseaudio = {
-          format = "{icon} {volume}%";
-          format-muted = "  0%";
+          format = "{icon}  {volume}%";
+          format-muted = "   0%";
           format-icons = {
             headphone = "󰋋";
             headset = "󰋎";
@@ -94,7 +94,7 @@ in
         };
 
         "sway/mode" = {
-          format = "<span style=\"italic\"> {}</span>"; # Icon: expand-arrows-alt
+          format = "<span style=\"italic\">   {}</span>"; # Icon: expand-arrows-alt
           tooltip = false;
         };
 
@@ -107,7 +107,7 @@ in
         temperature = {
           critical-threshold = 80;
           interval = 5;
-          format = "{icon} {temperatureC}°C";
+          format = "{icon}  {temperatureC}°C";
           format-icons = [
             "" # Icon = temperature-empty
             "" # Icon = temperature-quarter
@@ -125,29 +125,6 @@ in
       };
     };
     style = /* css */ ''
-      @keyframes blink-warning {
-          70% {
-              color: #6A9589;
-          }
-
-          to {
-              color: #6A9589;
-              background-color: #E82424;
-          }
-      }
-
-      @keyframes blink-critical {
-          70% {
-            color: #6A9589;
-          }
-
-          to {
-              color: #6A9589;
-              background-color: #727169;
-          }
-      }
-
-
       /* -----------------------------------------------------------------------------
        * Base styles
        * -------------------------------------------------------------------------- */
@@ -164,8 +141,6 @@ in
 
       /* The whole bar */
       #waybar {
-        background-color: #16161D;
-        color: #6A9589;
         font-size: 20px;
         transition-property: background-color;
         transition-duration: 0.5s;
@@ -200,14 +175,6 @@ in
         animation-direction: alternate;
       }
 
-      #battery.warning {
-        color: #E82424;
-      }
-
-      #battery.critical {
-        color: #727169;
-      }
-
       #battery.warning.discharging {
         animation-name: blink-warning;
         animation-duration: 3s;
@@ -218,98 +185,28 @@ in
         animation-duration: 2s;
       }
 
-      #clock {
-        /* No styles */
-      }
-
-      #cpu {
-        /* No styles */
-      }
-
-      #cpu.warning {
-        color: #E82424;
-      }
-
-      #cpu.critical {
-        color: #727169;
-      }
-
       #memory {
         animation-timing-function: linear;
         animation-iteration-count: infinite;
         animation-direction: alternate;
       }
 
-      #memory.warning {
-        color: #E82424;
-      }
-
       #memory.critical {
-        color: #727169;
         animation-name: blink-critical;
         animation-duration: 2s;
       }
 
-      #mode {
-        background: transparent;
-        color: #727169;
-      }
-
-      #network {
-        /* No styles */
-      }
-
-      #network.disconnected {
-        color: #E82424;
-      }
-
-      #pulseaudio {
-        /* No styles */
-      }
-
-      #pulseaudio.muted {
-        /* No styles */
-      }
-
-      #temperature {
-        /* No styles */
-      }
-
-      #temperature.critical {
-        color: #727169;
-      }
-
-      #tray {
-        /* No styles */
-      }
-
       #workspaces button {
         padding: 0 5px;
-        color: #6A9589;
         border-radius: 5px;
       }
 
       #workspaces button.focused {
-        background-color: #6A9589;
-        color: #16161D;
         border-bottom: none;
-      }
-
-      #workspaces button.urgent {
-        background-color: #727169;
-      }
-
-      label:focus {
-        background-color: #16161D;
       }
 
       tooltip {
         border-radius: 5px;
-        background: #76946A;
-      }
-
-      tooltip label {
-        color: #6A9589;
       }
 
       widget > * {
@@ -334,8 +231,6 @@ in
         padding: 0 12px;
         margin-left: 0;
         margin-right: 0;
-        color: #16161D;
-        background-color: #6A9589;
       }
 
       .modules-right > widget:first-child > * {

@@ -1,10 +1,8 @@
 { inputs, lib, pkgs, ... }:
+
 {
   nix = {
-    # TODO
-    # https://github.com/NixOS/nix/issues/9579
-    # https://github.com/NixOS/nix/pull/9547
-    package = pkgs.nixVersions.nix_2_19;
+    package = pkgs.nixVersions.latest;
 
     settings = {
       substituters = [

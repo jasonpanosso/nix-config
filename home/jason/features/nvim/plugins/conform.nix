@@ -25,7 +25,6 @@
     plugins.conform-nvim = {
       enable = true;
 
-
       settings = {
         formatters = {
           prettier-svelte = {

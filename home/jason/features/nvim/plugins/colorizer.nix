@@ -1,15 +1,17 @@
 {
-  programs.nixvim.plugins.nvim-colorizer = {
+  programs.nixvim.plugins.colorizer = {
     enable = true;
-    fileTypes = [
-      "lua"
-      "css"
-      "html"
-      "sass"
-      "less"
-      "typescriptreact"
-      "conf"
-      "config"
-    ];
+    settings = {
+      fileTypes = [
+        "lua"
+        "css"
+        "html"
+        "sass"
+        "less"
+        "typescriptreact"
+        "conf"
+        "config"
+      ];
+    };
   };
 }

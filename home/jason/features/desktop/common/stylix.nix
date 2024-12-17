@@ -8,7 +8,7 @@
     fonts = {
       monospace = {
         name = "IosevkaTerm Nerd Font";
-        package = pkgs.nerdfonts.override { fonts = [ "IosevkaTerm" ]; };
+        package = pkgs.nerd-fonts.iosevka-term;
       };
 
       serif = {
@@ -43,12 +43,8 @@
   };
 
   home.packages = [
-    (pkgs.nerdfonts.override {
-      fonts = [
-        "IosevkaTerm"
-        "IosevkaTermSlab"
-        "Iosevka"
-      ];
-    })
+    pkgs.nerd-fonts.iosevka-term
+    pkgs.nerd-fonts.iosevka-term-slab
+    pkgs.nerd-fonts.iosevka
   ];
 }

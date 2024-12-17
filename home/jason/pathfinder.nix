@@ -3,6 +3,7 @@
     ./common
     ./features/desktop/common
     ./features/desktop/sway
+    ./features/desktop/optional/firefox.nix
   ];
 
   monitors = [{

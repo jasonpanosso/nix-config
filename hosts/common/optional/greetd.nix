@@ -1,4 +1,5 @@
 { pkgs, lib, config, ... }:
+
 let
   homeCfgs = config.home-manager.users;
   homeSharePaths = lib.mapAttrsToList (_: v: "${v.home.path}/share") homeCfgs;
@@ -26,9 +27,6 @@ in
     settings = {
       GTK = {
         application_prefer_dark_theme = true;
-        font_name = "Iosevka Nerd Font";
-        icon_theme_name = "Papirus";
-        theme_name = "Colloid-Dark";
       };
       commands = {
         reboot = [ "systemctl" "reboot" ];
