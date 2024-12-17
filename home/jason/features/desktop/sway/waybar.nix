@@ -35,7 +35,7 @@ in
         battery = {
           interval = 10;
           states = { warning = 30; critical = 15; };
-          format = " {icon}  {capacity}%"; # Icon: bolt
+          format = " {icon}   {capacity}%"; # Icon: bolt
           format-discharging = "{icon}   {capacity}%";
           format-icons = [
             "" # Icon: battery-empty
