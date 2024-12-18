@@ -14,7 +14,7 @@ in
         mode = "dock";
         layer = "top";
         position = "top";
-        height = 30;
+        height = 34;
 
         modules-left = [
           "sway/workspaces"
@@ -133,7 +133,6 @@ in
       * {
         border: none;
         border-radius: 0;
-        font-family: Iosevka, Propo, Noto Sans, sans-serif;
         min-height: 0;
         margin: 0;
         padding: 0;
@@ -141,7 +140,6 @@ in
 
       /* The whole bar */
       #waybar {
-        font-size: 20px;
         transition-property: background-color;
         transition-duration: 0.5s;
       }
