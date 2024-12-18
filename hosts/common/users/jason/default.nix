@@ -35,10 +35,7 @@ in
     neededForUsers = true;
   };
 
-  home-manager = {
-    users.jason = import ../../../../home/jason/${config.networking.hostName}.nix;
-    # backupFileExtension = "backup";
-  };
+  home-manager.users.jason = import ../../../../home/jason/${config.networking.hostName}.nix;
 
   security.pam.services = { swaylock = { }; };
 }

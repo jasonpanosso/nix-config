@@ -1,4 +1,4 @@
-# This file (and the global directory) holds config that i use on all hosts
+# This file holds config that i use on all hosts
 { inputs, outputs, pkgs, ... }:
 
 {
@@ -8,13 +8,13 @@
     ./nix.nix
     ./openssh.nix
     ./sops.nix
-    ./systemd-initrd.nix
-    ./zsh.nix
   ];
 
   environment.systemPackages = with pkgs; [ git ];
-
-  home-manager.extraSpecialArgs = { inherit inputs outputs; };
+  home-manager = {
+    extraSpecialArgs = { inherit inputs outputs; };
+    useUserPackages = true;
+  };
 
   nixpkgs = {
     overlays = builtins.attrValues outputs.overlays;
@@ -23,11 +23,16 @@
     };
   };
 
+  # enabled here to allow users to login with zsh, more configuration in hm
+  programs.zsh.enable = true;
+
   hardware.enableRedistributableFirmware = true;
 
   # speed up boot time
   systemd.services.NetworkManager-wait-online.enable = false;
   systemd.network.wait-online.enable = false;
+
+  boot.initrd.systemd.enable = true;
 
   # Increase open file limit for sudoers
   security.pam.loginLimits = [
