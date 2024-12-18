@@ -37,9 +37,6 @@
           set -g @nova-nerdfonts-left 
           set -g @nova-nerdfonts-right 
 
-          set -g @nova-pane-active-border-style "#76946A"
-          set -g @nova-pane-border-style "#1F1F28"
-
           set -g @nova-status-style-bg "#16161D"
           set -g @nova-status-style-fg "#C8C093"
 
