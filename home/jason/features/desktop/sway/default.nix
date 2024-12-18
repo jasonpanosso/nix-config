@@ -28,7 +28,7 @@ in
         modifier = modifier;
         terminal = "${pkgs.kitty}/bin/kitty";
         window = {
-          border = 0;
+          border = 1;
           titlebar = false;
           hideEdgeBorders = "smart";
         };
