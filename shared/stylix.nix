@@ -41,10 +41,4 @@
       sha256 = "nw1JNlircbublRy/1MhfiQWuDy2r1w+taRkb38x4N6I=";
     };
   };
-
-  home.packages = [
-    pkgs.nerd-fonts.iosevka-term
-    pkgs.nerd-fonts.iosevka-term-slab
-    pkgs.nerd-fonts.iosevka
-  ];
 }

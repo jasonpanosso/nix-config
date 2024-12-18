@@ -3,6 +3,7 @@
 {
   imports = [
     inputs.stylix.homeManagerModules.stylix
+    ../../../shared/stylix.nix
     ../features/cli
     ../features/nvim
   ] ++ (builtins.attrValues outputs.homeManagerModules);
@@ -39,7 +40,7 @@
     stateVersion = lib.mkDefault "23.11";
     sessionPath = [ "${config.home.homeDirectory}/.local/bin" ];
     sessionVariables = {
-      FLAKE = "${config.home.homeDirectory}/Documents/NixConfig";
+      FLAKE = "${config.home.homeDirectory}/Projects/nix-config";
     };
   };
 }

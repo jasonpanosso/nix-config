@@ -7,7 +7,6 @@
     ./pavucontrol.nix
     ./playerctl.nix
     ./qt.nix
-    ./stylix.nix
     ./xdg.nix
   ];
 }
