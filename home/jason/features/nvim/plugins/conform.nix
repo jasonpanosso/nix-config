@@ -47,6 +47,10 @@
                   end
               }
             '';
+          prettier-helm = {
+            command = "prettier";
+            args = [ "--no-bracket-spacing" "--parser" "yaml" "--stdin-filepath" "$FILENAME" ];
+          };
           rustfmt = {
             command = "rustfmt";
             args = [ "--edition=2021" ];
@@ -71,7 +75,7 @@
           htmldjango = [ "djlint" ];
           sh = [ "beautysh" ];
           zsh = [ "beautysh" ];
-          yaml = [ "prettier" ];
+          yaml = [ "prettier-helm" ];
           toml = [ "taplo" ];
           cs = [ "csharpier" ];
           rust = [ "rustfmt" ];
