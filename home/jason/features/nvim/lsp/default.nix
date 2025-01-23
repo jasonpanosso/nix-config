@@ -55,6 +55,7 @@
 
   imports = [
     ./actions-preview
+    ./breadcrumbs.nix
     ./inlayhints
     ./fidget.nix
     ./garbage-day.nix
@@ -63,7 +64,6 @@
     ./servers
     ./rustaceanvim.nix
     ./typescript-tools
-    ./breadcrumbs
     ./roslyn.nix
     ./jdtls.nix
   ];

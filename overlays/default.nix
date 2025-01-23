@@ -81,6 +81,18 @@
         };
         meta.homepage = "https://github.com/lbrayner/vim-rzip";
       };
+
+      breadcrumbs-nvim = prev.vimUtils.buildVimPlugin {
+        pname = "breadcrumbs.nvim";
+        version = "2024-12-09";
+        src = prev.fetchgit {
+          url = "https://github.com/LunarVim/breadcrumbs.nvim";
+          rev = "9f764278784ce2f10dbe2f555ba14be2451d36a0";
+          hash = "sha256-DXR5Qvlxh9MiCngH9OlzsUp6LCg8P/RNwurU9vky89w=";
+          fetchSubmodules = true;
+        };
+        meta.homepage = "https://github.com/LunarVim/breadcrumbs.nvim";
+      };
     };
   };
 }

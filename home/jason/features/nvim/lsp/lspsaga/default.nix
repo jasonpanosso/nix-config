@@ -21,12 +21,7 @@
       openCmd = "!firefox";
     };
 
-    symbolInWinbar = {
-      separator = " ";
-      hideKeyword = true;
-      folderLevel = 2;
-    };
-
+    symbolInWinbar.enable = false;
     beacon.enable = false;
     lightbulb.enable = false;
   };
