@@ -17,5 +17,6 @@
     ./eslint-language-server.nix
     ./svelte-language-server.nix
     ./terraformls.nix
+    ./pyright.nix
   ];
 }
