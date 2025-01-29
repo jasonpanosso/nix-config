@@ -32,9 +32,14 @@
       };
     };
 
+    cursor = {
+      size = 20;
+    };
+
     targets = {
       nixvim.enable = false;
       neovim.enable = false;
+      hyprland.enable = false;
     };
 
     image = pkgs.fetchurl {
