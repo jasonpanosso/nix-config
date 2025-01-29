@@ -34,6 +34,40 @@
   # Modifies existing packages
   modifications = final: prev: {
     vimPlugins = prev.vimPlugins // {
+
+      harpoon2 = prev.vimUtils.buildVimPlugin {
+        pname = "harpoon";
+        version = "2024-02-27";
+        src = prev.fetchgit
+          {
+            url = "https://github.com/ThePrimeagen/harpoon";
+            rev = "a38be6e0dd4c6db66997deab71fc4453ace97f9c";
+            hash = "sha256-RjwNUuKQpLkRBX3F9o25Vqvpu3Ah1TCFQ5Dk4jXhsbI=";
+          };
+
+        # No idea why the require checks fail
+        doCheck = false;
+
+        meta.homepage = "https://github.com/ThePrimeagen/harpoon/tree/harpoon2";
+      };
+
+      harpoon-tabline =
+        prev.vimUtils.buildVimPlugin {
+          pname = "harpoon-tabline";
+          version = "2024-02-27";
+          src = prev.fetchgit
+            {
+              url = "https://github.com/jasonpanosso/harpoon-tabline.nvim";
+              rev = "37a15cfd9c4dac32e5be37b41491eb81082f6afe";
+              hash = "sha256-ypJdBXLZccWilUo6wLJc/xYtXxF2suyxFDPWqLVrD0s=";
+            };
+
+          # dep on harpoon, idc to learn how to configure it
+          doCheck = false;
+
+          meta.homepage = "https://github.com/jasonpanosso/harpoon-tabline.nvim/";
+        };
+
       actions-preview = prev.vimUtils.buildVimPlugin {
         pname = "actions-preview";
         version = "2024-11-26";

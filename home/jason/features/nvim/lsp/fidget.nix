@@ -1,7 +1,9 @@
 {
   programs.nixvim.plugins.fidget = {
     enable = true;
-    progress.lsp.progressRingbufSize = 16384;
-    progress.ignore = [ "eslint" ];
+    settings = {
+      progress.lsp.progress_ringbuf_size = 16384;
+      progress.ignore = [ "eslint" ];
+    };
   };
 }

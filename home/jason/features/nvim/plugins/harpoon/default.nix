@@ -1,35 +1,8 @@
 { pkgs, ... }:
 
-let
-  harpoon2 = pkgs.vimUtils.buildVimPlugin {
-    pname = "harpoon2";
-    version = "2024-02-27";
-    src = pkgs.fetchgit
-      {
-        url = "https://github.com/ThePrimeagen/harpoon";
-        rev = "a38be6e0dd4c6db66997deab71fc4453ace97f9c";
-        hash = "sha256-RjwNUuKQpLkRBX3F9o25Vqvpu3Ah1TCFQ5Dk4jXhsbI=";
-      };
-
-    meta.homepage = "https://github.com/ThePrimeagen/harpoon/tree/harpoon2";
-  };
-
-  harpoon-tabline =
-    pkgs.vimUtils.buildVimPlugin {
-      pname = "harpoon-tabline";
-      version = "2024-02-27";
-      src = pkgs.fetchgit
-        {
-          url = "https://github.com/jasonpanosso/harpoon-tabline.nvim";
-          rev = "37a15cfd9c4dac32e5be37b41491eb81082f6afe";
-          hash = "sha256-ypJdBXLZccWilUo6wLJc/xYtXxF2suyxFDPWqLVrD0s=";
-        };
-      meta.homepage = "https://github.com/jasonpanosso/harpoon-tabline.nvim/";
-    };
-in
 {
   programs.nixvim = {
-    extraPlugins = [
+    extraPlugins = with pkgs.vimPlugins; [
       harpoon2
       harpoon-tabline
     ];
