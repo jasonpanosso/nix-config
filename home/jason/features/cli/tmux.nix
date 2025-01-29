@@ -128,10 +128,17 @@
 
       # vi copy fixes
       set-window-option -g mode-keys vi
-      bind -T copy-mode-vi v send-keys -X begin-selection
-      bind -T copy-mode-vi y send-keys -X copy-selection 'xclip -selection clipboard'
 
+      set -s copy-command 'wl-copy -p'
+      set -s set-clipboard on
+
+      bind -T copy-mode-vi v send-keys -X begin-selection
+      bind -T copy-mode-vi y send-keys -X copy-selection
+
+      bind -T copy-mode-vi C-v send-keys -X rectangle-toggle
       bind -T copy-mode-vi Escape send-keys -X cancel
+
+      # bind p run "wl-paste -n | tmux load-buffer - ; tmux paste-buffer"
     '';
   };
 }
