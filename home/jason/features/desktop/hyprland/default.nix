@@ -18,6 +18,10 @@
   ];
 
   wayland.windowManager.hyprland =
+    let
+      leftMonitor = "Ancor Communications Inc VG248 71LB06600000";
+      rightMonitor = "ASUSTek COMPUTER INC VG259QM M1LMQS046469";
+    in
     {
       enable = true;
       systemd.enable = false;
@@ -39,15 +43,20 @@
           sensitivity = "-0.2";
         };
 
+        monitor = [
+          "desc:${leftMonitor}, highrr, 0x0, 1"
+          "desc:${rightMonitor}, highrr, 1920x0, 1"
+          ", preferred, auto, 1"
+        ];
+
         workspace = [
-          "1, monitor:DP-1"
-          "2, monitor:DP-1"
-          "3, monitor:DP-1, default:true"
+          "1, monitor:desc:${leftMonitor}"
+          "2, monitor:desc:${leftMonitor}"
+          "3, monitor:desc:${leftMonitor}, default:true"
 
-          "4, monitor:DP-3, default:true"
-          "5, monitor:DP-3"
-          "6, monitor:DP-3"
-
+          "4, monitor:desc:${rightMonitor}, default:true"
+          "5, monitor:desc:${rightMonitor}"
+          "6, monitor:desc:${rightMonitor}"
 
           # smart gaps
           "f[1], gapsout:0, gapsin:0"
