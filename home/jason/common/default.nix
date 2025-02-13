@@ -6,6 +6,7 @@
     ../../../shared/stylix.nix
     ../features/cli
     ../features/nvim
+    ../features/desktop/common
   ] ++ (builtins.attrValues outputs.homeManagerModules);
 
   nixpkgs = {
