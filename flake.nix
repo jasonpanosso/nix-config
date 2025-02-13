@@ -89,10 +89,10 @@
           extraSpecialArgs = { inherit inputs outputs; };
         };
 
-        "jason@ubuntu" = lib.homeManagerConfiguration {
+        "jason" = lib.homeManagerConfiguration {
           modules = [
             ./home/jason/common
-            ./home/jason/features/desktop/common
+            ./home/jason/features/desktop/hyprland
           ];
           pkgs = pkgsFor.x86_64-linux;
           extraSpecialArgs = { inherit inputs outputs; };
