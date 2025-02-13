@@ -1,9 +1,9 @@
 {
   imports = [
     ./common
-    ./features/desktop/common
     ./features/desktop/sway
     ./features/desktop/optional/firefox.nix
+    ./features/desktop/optional/discord.nix
   ];
 
   monitors = [{
