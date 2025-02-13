@@ -2,9 +2,7 @@
 
 {
   imports = [
-    ./gammastep.nix
     ./mako.nix
-    ./swayidle.nix
     ./swaylock.nix
     ./waybar.nix
     ./wofi.nix

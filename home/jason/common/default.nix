@@ -40,8 +40,5 @@
     homeDirectory = lib.mkDefault "/home/${config.home.username}";
     stateVersion = lib.mkDefault "23.11";
     sessionPath = [ "${config.home.homeDirectory}/.local/bin" ];
-    sessionVariables = {
-      FLAKE = "${config.home.homeDirectory}/Projects/nix-config";
-    };
   };
 }
