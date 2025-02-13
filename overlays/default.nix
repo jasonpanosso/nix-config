@@ -36,13 +36,13 @@
     vimPlugins = prev.vimPlugins // {
 
       harpoon2 = prev.vimUtils.buildVimPlugin {
-        pname = "harpoon";
-        version = "2024-02-27";
+        pname = "harpoon2";
+        version = "2025-02-13";
         src = prev.fetchgit
           {
             url = "https://github.com/ThePrimeagen/harpoon";
-            rev = "a38be6e0dd4c6db66997deab71fc4453ace97f9c";
-            hash = "sha256-RjwNUuKQpLkRBX3F9o25Vqvpu3Ah1TCFQ5Dk4jXhsbI=";
+            rev = "ed1f853847ffd04b2b61c314865665e1dadf22c7";
+            hash = "sha256-L7FvOV6KvD58BnY3no5IudiKTdgkGqhpS85RoSxtl7U=";
           };
 
         # No idea why the require checks fail
