@@ -47,7 +47,7 @@ in
 
         clock = {
           interval = 1;
-          format = "󰃰   {:%b %d %H:%M}"; # Icon: calendar/clock
+          format = "󰃰   {:L%b %d %H:%M}"; # Icon: calendar/clock
           timezone = "America/Detroit";
           tooltip = true;
           tooltip-format = "<tt><small>{calendar}</small></tt>";
