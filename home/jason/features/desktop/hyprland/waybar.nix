@@ -200,29 +200,30 @@ in
         animation-duration: 3s;
       }
 
+      #battery.critical.discharging
+      {
+        animation-name: blink-critical;
+        animation-duration: 2s;
+      }
+
+      #temperature.critical,
+      #cpu.critical,
+      #memory.critical,
       #battery.critical.discharging {
-        animation-name: blink-critical;
-        animation-duration: 2s;
+        color: @base08;
       }
 
-      #memory {
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
-        animation-direction: alternate;
-      }
-
-      #memory.critical {
-        animation-name: blink-critical;
-        animation-duration: 2s;
+      #temperature.warning,
+      #cpu.warning,
+      #memory.warning,
+      #battery.warning.discharging
+      {
+        color: @base09;
       }
 
       #workspaces button {
         padding: 0 5px;
         border-radius: 5px;
-      }
-
-      #workspaces button.active {
-        border-bottom: none;
       }
 
       tooltip {
