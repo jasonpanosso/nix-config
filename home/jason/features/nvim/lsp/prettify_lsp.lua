@@ -28,17 +28,20 @@ for type, icon in pairs(signs) do
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
--- vim.diagnostic.config({
---   float = { border = lsp_border },
---   signs = true,
---   update_in_insert = false,
---   underline = true,
---   severity_sort = true,
---   virtual_text = {
---     prefix = '🔥',
---     source = true,
---   },
--- })
+vim.diagnostic.config({
+  float = {
+    show_header = false,
+    border = lsp_border,
+  },
+  signs = true,
+  update_in_insert = false,
+  underline = true,
+  severity_sort = true,
+  -- virtual_text = {
+  --   prefix = '🔥',
+  --   source = true,
+  -- },
+})
 
 vim.lsp.handlers['workspace/diagnostic/refresh'] = function(_, _, ctx)
   local ns = vim.lsp.diagnostic.get_namespace(ctx.client_id)
