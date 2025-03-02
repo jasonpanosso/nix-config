@@ -34,6 +34,10 @@
                 vim.cmd.RustLsp('openDocs')
               end, { buffer = bufnr, silent = true })
 
+              vim.keymap.set('n', '<Leader>dl', function()
+                vim.cmd.RustLsp('renderDiagnostic')
+              end, { buffer = bufnr, silent = true })
+
               vim.keymap.set('n', '<Leader>pm', function()
                 vim.cmd.RustLsp('parentModule')
               end, { buffer = bufnr, silent = true })
