@@ -21,6 +21,7 @@
       run-exec_search = true;
       show = "drun";
       prompt = "";
+      no_actions = true;
     };
   };
 }
