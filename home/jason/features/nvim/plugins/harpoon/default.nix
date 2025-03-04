@@ -28,7 +28,7 @@
       {
         mode = [ "n" "v" ];
         key = "<leader>a";
-        action = "function() require('harpoon'):list():append() end";
+        action = "function() require('harpoon'):list():add() end";
         lua = true;
       }
 
@@ -98,7 +98,7 @@
       {
         mode = [ "n" "v" ];
         key = "<leader>0";
-        action = "function() require('harpoon'):list():select(0) end";
+        action = "function() require('harpoon'):list():select(10) end";
         lua = true;
       }
     ];
