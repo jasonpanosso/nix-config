@@ -2,29 +2,27 @@
   description = "typescript devshell flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, nixpkgs }:
-    let
-      supportedSystems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
-
-      forEachSupportedSystem = f: nixpkgs.lib.genAttrs supportedSystems (system: f {
-        pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
-      });
-    in
-    {
-      devShells = forEachSupportedSystem
-        ({ pkgs }: {
-          default = pkgs.mkShell {
-            packages = [
-              pkgs.nodePackages_latest.npm
-              pkgs.nodePackages_latest.typescript
-              pkgs.nodePackages_latest.typescript-language-server
-              pkgs.nodePackages_latest.eslint
-              pkgs.nodePackages_latest.prettier
-            ];
-          };
-        });
-    };
+  outputs = { self, nixpkgs, flake-utils }:
+    flake-utils.lib.eachDefaultSystem (system:
+      let
+        pkgs = import nixpkgs {
+          inherit system;
+        };
+      in
+      {
+        devShells.default = pkgs.mkShell {
+          packages = with pkgs; [
+            nodePackages_latest.npm
+            nodePackages_latest.typescript
+            nodePackages_latest.typescript-language-server
+            nodePackages_latest.eslint
+            nodePackages_latest.prettier
+          ];
+        };
+      }
+    );
 }
