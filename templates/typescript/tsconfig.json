@@ -10,11 +10,17 @@
         "isolatedModules": true,
         "noEmit": false,
         "outDir": "dist",
+        "checkJs": true,
 
         /* Strictness */
+        "useDefineForClassFields": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noFallthroughCasesInSwitch": true,
+        "allowSyntheticDefaultImports": true,
         "strict": true,
+        "forceConsistentCasingInFileNames": true,
         "noUncheckedIndexedAccess": true,
-        "checkJs": true,
 
         /* Bundled projects */
         "lib": ["dom", "dom.iterable", "ES2022"],

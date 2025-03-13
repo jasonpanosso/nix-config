@@ -4,19 +4,25 @@ import globals from "globals";
 
 export default tseslint.config(
     {
-        ignores: ["**/dist/*", "**/build/*", "node_modules"],
+        ignores: [
+            "**/dist/*",
+            "**/build/*",
+            "node_modules",
+            "eslint.config.js",
+            "prettier.config.cjs",
+        ],
     },
     eslint.configs.recommended,
-    tseslint.configs.strict,
-    tseslint.configs.stylistic,
+    tseslint.configs.strictTypeChecked,
+    tseslint.configs.stylisticTypeChecked,
     {
         files: ["**/*.{ts,tsx,js,jsx,cjs,mjs}"],
         languageOptions: {
-            ecmaVersion: 2020,
+            ecmaVersion: 2022,
             globals: globals.node,
             parserOptions: {
+                project: true,
                 tsconfigRootDir: import.meta.dirname,
-                projectService: true,
             },
         },
         rules: {
