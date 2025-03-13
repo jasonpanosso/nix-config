@@ -8,6 +8,8 @@
         "resolveJsonModule": true,
         "moduleDetection": "force",
         "isolatedModules": true,
+        "noEmit": false,
+        "outDir": "dist",
 
         /* Strictness */
         "strict": true,
@@ -16,7 +18,6 @@
 
         /* Bundled projects */
         "lib": ["dom", "dom.iterable", "ES2022"],
-        "noEmit": true,
         "module": "ESNext",
         "moduleResolution": "Bundler",
         "jsx": "preserve",
@@ -28,6 +29,11 @@
             "~/*": ["./src/*"]
         }
     },
-    "include": [".eslintrc.cjs", "**/*.ts", "**/*.tsx", "**/*.cjs", "**/*.js"],
-    "exclude": ["node_modules", "dist"]
+    "include": ["**/*.ts", "**/*.tsx", "**/*.cjs", "**/*.js"],
+    "exclude": [
+        "node_modules",
+        "dist",
+        "eslint.config.js",
+        "prettier.config.cjs"
+    ]
 }

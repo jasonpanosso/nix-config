@@ -6,6 +6,7 @@
     "scripts": {
         "build": "tsc",
         "check": "tsc --noEmit",
+        "run": "node dist/index.js",
         "lint": "eslint .",
         "typecheck": "tsc --noEmit",
         "format:write": "prettier --write \"**/*.{ts,tsx,js,jsx,mdx}\" --cache",
@@ -13,13 +14,12 @@
     },
     "dependencies": {},
     "devDependencies": {
-        "@types/eslint": "^8.56.10",
-        "@types/node": "^20.14.10",
-        "@typescript-eslint/eslint-plugin": "^8.1.0",
-        "@typescript-eslint/parser": "^8.1.0",
-        "eslint": "^8.57.0",
+        "@eslint/js": "^9.22.0",
+        "@types/node": "^22.13.10",
+        "eslint": "^9.22.0",
+        "typescript-eslint": "^8.15.0",
         "prettier": "^3.3.2",
-        "typescript": "^5.5.3"
+        "typescript": "^5.6.3"
     },
-    "packageManager": "npm@10.8.2"
+    "packageManager": "npm@10.9.2"
 }
