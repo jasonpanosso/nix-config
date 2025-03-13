@@ -1,42 +1,27 @@
 {
-  description = "A Nix-flake-based Rust development environment"; # TODO
+  description = "A Nix-flake-based Rust development environment";
 
   inputs = {
-    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1.*.tar.gz";
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    rust-overlay.url = "github:oxalica/rust-overlay";
+    flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, nixpkgs, rust-overlay }:
-    let
-      overlays = [
-        rust-overlay.overlays.default
-        (final: prev: {
-          rustToolchain = prev.rust-bin.fromRustupToolchainFile ./rust-toolchain.toml;
-        })
-      ];
-
-      supportedSystems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
-      forEachSupportedSystem = f: nixpkgs.lib.genAttrs supportedSystems (system: f {
-        pkgs = import nixpkgs { inherit overlays system; };
-      });
-    in
-    {
-      devShells = forEachSupportedSystem ({ pkgs }: {
-        default = pkgs.mkShell {
+  outputs = { self, nixpkgs, rust-overlay, flake-utils }:
+    flake-utils.lib.eachDefaultSystem (system:
+      let
+        overlays = [ (import rust-overlay) ];
+        pkgs = import nixpkgs {
+          inherit system overlays;
+        };
+      in
+      {
+        devShells.default = pkgs.mkShell {
           packages = with pkgs; [
-            rustToolchain
-            pkg-config
-            cargo-deny
-            cargo-edit
-            cargo-watch
+            rust-bin.beta.latest.default
             rust-analyzer
-            rustfmt
-            clippy
           ];
         };
-      });
-    };
+      }
+    );
 }
