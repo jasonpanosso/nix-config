@@ -15,7 +15,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     hardware.url = "github:nixos/nixos-hardware";
 
-    stylix.url = "github:danth/stylix/master"; # use master, somehow breaks regreet(W T F ?)
+    stylix.url = "github:danth/stylix";
 
     home-manager = {
       url = "github:nix-community/home-manager";

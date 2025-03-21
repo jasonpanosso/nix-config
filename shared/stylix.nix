@@ -33,6 +33,8 @@
     };
 
     cursor = {
+      name = "Vanilla-DMZ";
+      package = pkgs.vanilla-dmz;
       size = 20;
     };
 
@@ -40,6 +42,9 @@
       nixvim.enable = false;
       neovim.enable = false;
       hyprland.enable = false;
+      waybar = {
+        font = "sansSerif";
+      };
     };
 
     image = pkgs.fetchurl {
