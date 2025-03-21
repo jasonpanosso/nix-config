@@ -10,7 +10,7 @@
             function(client, bufnr)
               require('lsp-inlayhints').on_attach(client, bufnr)
 
-              vim.keymap.set('n', '<Leader>rd', function()
+              vim.keymap.set('n', '<Leader>rdb', function()
                 vim.cmd.RustLsp('debuggables')
               end, { buffer = bufnr, silent = true })
 
@@ -23,7 +23,7 @@
               end, { buffer = bufnr, silent = true })
 
               vim.keymap.set('n', '<Leader>ee', function()
-                vim.cmd.RustLsp('explainError')
+                vim.cmd.RustLsp({ 'explainError', 'current' })
               end, { buffer = bufnr, silent = true })
 
               vim.keymap.set('n', '<Leader>co', function()
@@ -35,7 +35,11 @@
               end, { buffer = bufnr, silent = true })
 
               vim.keymap.set('n', '<Leader>dl', function()
-                vim.cmd.RustLsp('renderDiagnostic')
+                vim.cmd.RustLsp({ 'renderDiagnostic', 'current' })
+              end, { buffer = bufnr, silent = true })
+
+              vim.keymap.set('n', '<Leader>rdl', function()
+                vim.cmd.RustLsp('relatedDiagnostics')
               end, { buffer = bufnr, silent = true })
 
               vim.keymap.set('n', '<Leader>pm', function()
