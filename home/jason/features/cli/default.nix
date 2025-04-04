@@ -12,6 +12,7 @@
     ./gpg.nix
     ./kitty.nix
     ./kubecolor.nix
+    ./kubectl.nix
     ./ripgrep.nix
     ./ssh-agent.nix
     ./tmux.nix
