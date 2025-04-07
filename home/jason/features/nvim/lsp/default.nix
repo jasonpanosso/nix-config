@@ -57,7 +57,6 @@
   imports = [
     ./actions-preview
     ./breadcrumbs.nix
-    ./inlayhints
     ./fidget.nix
     ./garbage-day.nix
     ./lspsaga

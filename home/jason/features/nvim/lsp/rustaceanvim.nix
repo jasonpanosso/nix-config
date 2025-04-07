@@ -8,8 +8,6 @@
           /* lua */
           ''
             function(client, bufnr)
-              require('lsp-inlayhints').on_attach(client, bufnr)
-
               vim.keymap.set('n', '<Leader>rdb', function()
                 vim.cmd.RustLsp('debuggables')
               end, { buffer = bufnr, silent = true })
