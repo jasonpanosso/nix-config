@@ -53,7 +53,6 @@
           };
           rustfmt = {
             command = "rustfmt";
-            args = [ "--edition=2021" ];
           };
           sqlfluff = {
             command = "sqlfluff";
