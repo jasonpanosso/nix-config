@@ -1,5 +1,5 @@
 [package]
-name = "rust-project" # TODO
+name = "rust_project" # TODO
 version = "0.1.0"
 license = "MIT"
-edition = "2021"
+edition = "2024"
