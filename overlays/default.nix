@@ -8,7 +8,6 @@
 {
   # Third party overlays
   nh = inputs.nh.overlays.default;
-  neovim = inputs.neovim-nightly-overlay.overlays.default;
 
   # For every flake input, aliases 'pkgs.inputs.${flake}' to
   # 'inputs.${flake}.packages.${pkgs.system}' or
