@@ -3,6 +3,9 @@
     enable = true;
 
     settings = {
+      tools = {
+        float_win_config.border = "rounded";
+      };
       server = {
         on_attach =
           /* lua */
