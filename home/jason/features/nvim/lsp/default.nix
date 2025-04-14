@@ -63,7 +63,7 @@
     ./pretty_hover
     ./servers
     ./rustaceanvim.nix
-    ./typescript-tools
+    ./typescript-tools.nix
     ./roslyn.nix
     ./jdtls.nix
   ];
