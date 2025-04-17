@@ -20,6 +20,7 @@
       sqlfluff
       google-java-format
       terraform
+      hclfmt
     ];
 
     plugins.conform-nvim = {
@@ -86,6 +87,7 @@
           jsonc = [ "prettier" ];
           java = [ "google-java-format" ];
           terraform = [ "terraform_fmt" ];
+          hcl = [ "hcl" ];
           "*" = [ "trim_whitespace" ];
         };
       };
