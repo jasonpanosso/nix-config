@@ -19,6 +19,9 @@
     let
       leftMonitor = "Ancor Communications Inc VG248 71LB06600000";
       rightMonitor = "ASUSTek COMPUTER INC VG259QM M1LMQS046469";
+
+      waybar = "${config.programs.waybar.package}/bin/waybar";
+      mako = "${config.services.mako.package}/bin/mako";
     in
     {
       enable = true;
@@ -79,16 +82,24 @@
         animations.enabled = false;
 
         exec-once = [
-          "waybar -c ~/.config/waybar/config 2>&1 > ~/.waybar.log"
+          "${waybar} -c ~/.config/waybar/config 2>&1 > ~/.waybar.log"
+
+          # hack
+          "${mako}"
         ];
         bind =
           let
             swaylock = "${config.programs.swaylock.package}/bin/swaylock";
             playerctld = "${config.services.playerctld.package}/bin/playerctld";
             makoctl = "${config.services.mako.package}/bin/makoctl";
+            grim = "${pkgs.grim}/bin/grim";
+            slurp = "${pkgs.slurp}/bin/slurp";
+            wofi = "${pkgs.wofi}/bin/wofi";
+            notify-send = "${pkgs.libnotify}/bin/notify-send";
+            wl-copy = "${pkgs.wl-clipboard}/bin/wl-copy";
           in
           [
-            "$mainMod, Space, exec, ${pkgs.wofi}/bin/wofi --show=drun"
+            "$mainMod, Space, exec, ${wofi} --show=drun"
             "$mainMod, Return, exec, /usr/bin/kitty"
             "$mainMod, d, exec, ${makoctl} dismiss"
 
@@ -143,6 +154,9 @@
             ",XF86Launch5, exec, ${swaylock} -S --grace 2"
             ",XF86Launch4, exec, ${swaylock} -S --grace 2"
             "$mainMod, escape, exec, ${swaylock} -S --grace 2"
+
+            "Control_L&Shift_L, Print, exec, ${grim} -g \"$(${slurp} -d)\"  -t png - | ${wl-copy} -t image/png && ${notify-send} -e \"Screenshot taken\""
+            ", Print, exec, ${grim} -g \"$(${slurp} -d)\"  -t png - | ${wl-copy} -t image/png && ${notify-send} -e \"Screenshot taken\""
           ];
 
         # binds that work when screen is locked
