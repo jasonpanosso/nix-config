@@ -76,6 +76,7 @@
           sh = [ "beautysh" ];
           zsh = [ "beautysh" ];
           yaml = [ "prettier-helm" ];
+          "yaml.ghaction" = [ "prettier-helm" ];
           toml = [ "taplo" ];
           cs = [ "csharpier" ];
           rust = [ "rustfmt" ];
@@ -88,7 +89,7 @@
           java = [ "google-java-format" ];
           terraform = [ "terraform_fmt" ];
           hcl = [ "hcl" ];
-          "*" = [ "trim_whitespace" ];
+          "_" = [ "trim_whitespace" ];
         };
       };
     };
