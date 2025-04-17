@@ -5,6 +5,7 @@
     inputs.nixvim.homeManagerModules.nixvim
     ./options.nix
     ./user-commands.nix
+    ./filetypes.nix
     ./lsp
     ./plugins
     ./general-keymaps.nix

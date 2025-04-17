@@ -8,10 +8,14 @@
         selene
         python311Packages.flake8
         sqlfluff
-        ansible-lint
+        yamllint
         djlint
         golangci-lint
         tflint
+        hadolint
+        proselint
+        codespell
+        actionlint
       ];
 
     plugins.lint = {
@@ -30,15 +34,19 @@
       };
 
       lintersByFt = {
+        "*" = [ "codespell" ];
         python = [ "flake8" ];
         lua = [ "selene" ];
         luau = [ "selene" ];
         sql = [ "sqlfluff" ];
-        yml = [ "ansible_lint" ];
-        yaml = [ "ansible_lint" ];
+        yml = [ "yamllint" ];
+        yaml = [ "yamllint" ];
+        markdown = [ "proselint" ];
+        dockerfile = [ "hadolint" ];
         htmldjango = [ "djlint" ];
         go = [ "golangcilint" ];
         terraform = [ "tflint" ];
+        "yaml.ghaction" = [ "actionlint" "yamllint" ];
       };
     };
   };
