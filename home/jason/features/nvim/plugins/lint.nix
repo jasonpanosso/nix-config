@@ -1,12 +1,11 @@
 { pkgs, ... }:
 
 {
-  home.packages = [ pkgs.tflint ];
   programs.nixvim = {
     extraPackages = with pkgs;
       [
         selene
-        python311Packages.flake8
+        python313Packages.flake8
         sqlfluff
         yamllint
         djlint
@@ -49,5 +48,22 @@
         "yaml.ghaction" = [ "actionlint" "yamllint" ];
       };
     };
+
+    keymaps = [
+      {
+        mode = [ "n" ];
+        key = "<Leader>sl";
+        action = /* lua */ ''
+          function()
+            print(table.concat(require('lint').get_running(), ", "))
+          end
+        '';
+        lua = true;
+        options = {
+          silent = true;
+          desc = "Show Linters";
+        };
+      }
+    ];
   };
 }
