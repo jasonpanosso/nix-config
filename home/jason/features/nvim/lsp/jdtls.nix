@@ -4,12 +4,16 @@
   home.packages = [ pkgs.jdt-language-server ];
 
   programs.nixvim.plugins = {
-    nvim-jdtls = {
+    jdtls = {
       enable = true;
-      data = "~/.cache/jdtls/workspace";
-      cmd = [
-        "${lib.getExe pkgs.jdt-language-server}"
-      ];
+      settings = {
+        cmd = [
+          "${lib.getExe pkgs.jdt-language-server}"
+          "-data"
+          "~/.cache/jdtls/workspace"
+        ];
+      };
     };
   };
 }
+

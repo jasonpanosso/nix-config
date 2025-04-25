@@ -1,12 +1,8 @@
-{ pkgs, ... }:
-
 {
   programs.nixvim = {
-    extraPlugins = with pkgs.vimPlugins; [
-      glow-nvim
-    ];
-
-    extraConfigLua = "require('glow').setup()";
+    plugins.glow = {
+      enable = true;
+    };
 
     keymaps = [
       {

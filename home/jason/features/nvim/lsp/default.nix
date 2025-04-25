@@ -60,6 +60,7 @@
     ./fidget.nix
     ./garbage-day.nix
     ./lspsaga
+    ./navic.nix
     ./pretty_hover
     ./servers
     ./rustaceanvim.nix

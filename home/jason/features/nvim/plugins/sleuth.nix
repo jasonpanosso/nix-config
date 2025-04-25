@@ -1,7 +1,7 @@
-{ pkgs, ... }:
-
 {
   programs.nixvim = {
-    extraPlugins = with pkgs.vimPlugins; [ vim-sleuth ];
+    plugins.sleuth = {
+      enable = true;
+    };
   };
 }

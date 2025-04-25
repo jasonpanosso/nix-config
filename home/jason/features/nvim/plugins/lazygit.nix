@@ -1,10 +1,8 @@
-{ pkgs, ... }:
-
 {
   programs.nixvim = {
-    extraPlugins = with pkgs.vimPlugins; [
-      lazygit-nvim
-    ];
+    plugins.lazygit = {
+      enable = true;
+    };
 
     keymaps = [
       {
