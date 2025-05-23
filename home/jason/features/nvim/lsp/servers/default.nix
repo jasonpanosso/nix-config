@@ -11,12 +11,12 @@
     ./nil_ls.nix
     ./dockerls.nix
     ./marksman.nix
-    ./ansiblels.nix
     ./tailwindcss.nix
     ./html-language-server.nix
     ./eslint-language-server.nix
     ./svelte-language-server.nix
     ./terraformls.nix
     ./pyright.nix
+    ./yamlls.nix
   ];
 }
