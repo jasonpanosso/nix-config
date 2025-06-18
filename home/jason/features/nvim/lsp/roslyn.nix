@@ -6,9 +6,9 @@ let
     version = "2025-04-08";
     src = pkgs.fetchgit
       {
-        url = "https://github.com/seblj/roslyn.nvim";
-        rev = "09541daaefaa61a422a4ae979dcc8d1b5cd37e42";
-        hash = "sha256-VQYHRD3++0+OU7Eyrfif+k9T+F1vvPv0cSJ9XZBoUtE=";
+        url = "https://github.com/seblyng/roslyn.nvim";
+        rev = "6baa44274dabf237a0ebec94b4ccad0e3831ed12";
+        hash = "sha256-pTpJ6sS32ztVm6qE60uEfSmG5WLWQ1xqLbu/i6dZmyY=";
       };
   };
 in
@@ -16,12 +16,7 @@ in
 
   programs.nixvim = {
     extraPackages = with pkgs; [
-      (with dotnetCorePackages; combinePackages [
-        sdk_6_0
-        sdk_7_0
-        sdk_8_0
-        sdk_9_0
-      ])
+      dotnet-sdk_9
       roslyn-ls
     ];
 
@@ -31,17 +26,19 @@ in
       #lua
       ''
         local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
-        capabilities = vim.tbl_deep_extend('force', capabilities, {
-          workspace = {
-            didChangeWatchedFiles = {
-              dynamicRegistration = false,
-            },
-          },
-        })
 
         require("roslyn").setup({
-            exe = 'Microsoft.CodeAnalysis.LanguageServer',
+            filewatching = "roslyn",
             capabilities = capabilities,
+        })
+
+        vim.lsp.config("roslyn", {
+            cmd = {
+                "Microsoft.CodeAnalysis.LanguageServer",
+                "--logLevel=Information",
+                "--extensionLogDirectory=" .. vim.fs.dirname(vim.lsp.get_log_path()),
+                "--stdio",
+            },
         })
       '';
   };
