@@ -11,10 +11,6 @@
       djlint
       taplo
       go
-      (with dotnetCorePackages; combinePackages [
-        sdk_6_0
-        sdk_7_0
-      ])
       csharpier
       ruff
       sqlfluff
@@ -60,6 +56,11 @@
             stdin = true;
             args = [ "fix" "--dialect=postgres" "--force" "-" ];
           };
+          csharpier-no-dotnet = {
+            command = "csharpier";
+            stdin = true;
+            args = [ "format" "--write-stdout" ];
+          };
         };
 
         formatters_by_ft = {
@@ -78,7 +79,7 @@
           yaml = [ "prettier-helm" ];
           "yaml.ghaction" = [ "prettier-helm" ];
           toml = [ "taplo" ];
-          cs = [ "csharpier" ];
+          cs = [ "csharpier-no-dotnet" ];
           rust = [ "rustfmt" ];
           go = [ "gofmt" ];
           python = [ "ruff_format" ];
