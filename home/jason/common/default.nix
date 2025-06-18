@@ -2,12 +2,12 @@
 
 {
   imports = [
-    inputs.stylix.homeManagerModules.stylix
+    inputs.stylix.homeModules.stylix
     ../../../shared/stylix.nix
     ../features/cli
     ../features/nvim
     ../features/desktop/common
-  ] ++ (builtins.attrValues outputs.homeManagerModules);
+  ] ++ (builtins.attrValues outputs.homeModules);
 
   nixpkgs = {
     overlays = builtins.attrValues outputs.overlays;

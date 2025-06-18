@@ -25,13 +25,7 @@
       "templ"
     ];
 
-    rootDir = #lua
-      ''
-        function(fname)
-            local util = require('lspconfig.util')
-            return util.root_pattern('tailwind.config.js', 'tailwind.config.ts')(fname) or util.path.dirname(fname)
-        end,
-      '';
+    rootMarkers = [ "package.json" ];
   };
 }
 

@@ -61,7 +61,7 @@
     in
     {
       inherit lib;
-      homeManagerModules = import ./modules/home-manager;
+      homeModules = import ./modules/home-manager;
       templates = import ./templates;
 
       packages = forEachSystem (pkgs: import ./pkgs { inherit pkgs; });
