@@ -46,6 +46,7 @@
     pciutils # lspci
     strace # sys calls
     sysstat # sys perf monitoring tools
+    go-task
     tree
     unzip
     usbutils # lsusb
