@@ -182,6 +182,11 @@
             ",XF86AudioPlay, exec, ${playerctl} play-pause"
             ",XF86AudioStop, exec, ${playerctl} stop"
           ];
+
+        bindm = [
+          "$mainMod CTRL, mouse:272, resizewindow"
+          "$mainMod, mouse:272, movewindow"
+        ];
       };
     };
 
