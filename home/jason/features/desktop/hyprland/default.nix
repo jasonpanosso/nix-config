@@ -42,6 +42,7 @@
         input = {
           accel_profile = "flat";
           sensitivity = "-0.2";
+          follow_mouse = 0;
         };
 
         monitor = [
@@ -65,14 +66,19 @@
           "w[t1], gapsout:0, gapsin:0"
         ];
 
-        # smart gaps
         windowrulev2 = [
+          # smart gaps
           "bordersize 0, floating:0, onworkspace:w[t1]"
           "rounding 0, floating:0, onworkspace:w[t1]"
           "bordersize 0, floating:0, onworkspace:w[tg1]"
           "rounding 0, floating:0, onworkspace:w[tg1]"
           "bordersize 0, floating:0, onworkspace:f[1]"
           "rounding 0, floating:0, onworkspace:f[1]"
+
+          # jetbrains jank
+          "tag +jb, class:^jetbrains-.+$,floating:1"
+          "stayfocused, tag:jb"
+          "noinitialfocus, tag:jb"
         ];
 
         env = [
