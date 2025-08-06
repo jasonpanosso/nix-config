@@ -14,7 +14,7 @@ end
 
 require('telescope').setup({
   defaults = {
-    file_ignore_patterns = { 'node_modules', '_Index', '.git', '*.asset', '*.meta', '**/*.lock', '.yarn', '.pnp.*' },
+    file_ignore_patterns = { 'node_modules', '_Index', '.git', '*.lock', '.yarn', '.pnp.*' },
     path_display = { 'smart' },
     mappings = {
       n = {
