@@ -53,12 +53,12 @@
       harpoon-tabline =
         prev.vimUtils.buildVimPlugin {
           pname = "harpoon-tabline";
-          version = "2024-02-27";
+          version = "2024-04-27";
           src = prev.fetchgit
             {
-              url = "https://github.com/jasonpanosso/harpoon-tabline.nvim";
-              rev = "37a15cfd9c4dac32e5be37b41491eb81082f6afe";
-              hash = "sha256-ypJdBXLZccWilUo6wLJc/xYtXxF2suyxFDPWqLVrD0s=";
+              url = "https://github.com/Run1e/harpoon-tabline.nvim";
+              rev = "f3092df9ce0f03d06ad7124128d6dd1c49bf717b";
+              hash = "sha256-DrFsPNkBSUBZfnFNeVM1qolY7OYmagu85bpbwmlYsIo=";
             };
 
           # dep on harpoon, idc to learn how to configure it
