@@ -12,7 +12,6 @@
     ../common/optional/dconf.nix
     ../common/optional/docker.nix
     ../common/optional/systemd-boot.nix
-    ../common/optional/greetd.nix
     ../common/optional/pipewire.nix
     ../common/optional/embedded.nix
   ];

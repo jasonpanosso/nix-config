@@ -1,7 +1,7 @@
 {
   imports = [
     ./common
-    ./features/desktop/sway
+    ./features/desktop/hyprland
     ./features/desktop/optional/firefox.nix
     ./features/desktop/optional/discord.nix
   ];

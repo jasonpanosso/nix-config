@@ -4,7 +4,6 @@
   imports = [
     ./hyprpaper.nix
     ./mako.nix
-    ./swaylock.nix
     ./waybar.nix
     ./wofi.nix
   ];
@@ -99,7 +98,6 @@
         ];
         bind =
           let
-            swaylock = "${config.programs.swaylock.package}/bin/swaylock";
             playerctld = "${config.services.playerctld.package}/bin/playerctld";
             makoctl = "${config.services.mako.package}/bin/makoctl";
             grim = "${pkgs.grim}/bin/grim";
@@ -160,10 +158,6 @@
             "ALT, XF86AudioNext, exec, ${playerctld} shift"
             "ALT, XF86AudioPrev, exec, ${playerctld} unshift"
             "ALT, XF86AudioPlay, exec, systemctl --user restart playerctld"
-
-            ",XF86Launch5, exec, ${swaylock} -S --grace 2"
-            ",XF86Launch4, exec, ${swaylock} -S --grace 2"
-            "$mainMod, escape, exec, ${swaylock} -S --grace 2"
 
             "Control_L&Shift_L, Print, exec, ${grim} -g \"$(${slurp} -d)\"  -t png - | ${wl-copy} -t image/png && ${notify-send} -e \"Screenshot taken\""
             ", Print, exec, ${grim} -g \"$(${slurp} -d)\"  -t png - | ${wl-copy} -t image/png && ${notify-send} -e \"Screenshot taken\""

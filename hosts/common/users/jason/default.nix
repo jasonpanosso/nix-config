@@ -16,7 +16,6 @@ in
       ] ++ ifGroupExists [
         "network"
         "networkmanager"
-        "sway"
         "wireshark"
         "i2c"
         "docker"
@@ -36,6 +35,4 @@ in
   };
 
   home-manager.users.jason = import ../../../../home/jason/${config.networking.hostName}.nix;
-
-  security.pam.services = { swaylock = { }; };
 }
