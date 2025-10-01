@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./hyprpaper.nix
     ./mako.nix
     ./swaylock.nix
     ./waybar.nix
@@ -9,6 +10,7 @@
   ];
 
   home.packages = with pkgs; [
+    hyprpaper
     wl-clipboard
     grim
     slurp
@@ -22,6 +24,7 @@
 
       waybar = "${config.programs.waybar.package}/bin/waybar";
       mako = "${config.services.mako.package}/bin/mako";
+      hyprpaper = "${pkgs.hyprpaper}/bin/hyprpaper";
     in
     {
       enable = true;
@@ -59,6 +62,7 @@
           "4, monitor:desc:${rightMonitor}, default:true"
           "5, monitor:desc:${rightMonitor}"
           "6, monitor:desc:${rightMonitor}"
+          "7, monitor:desc:${rightMonitor}"
 
           # smart gaps
           "f[1], gapsout:0, gapsin:0"
@@ -76,9 +80,9 @@
           "rounding 0, floating:0, onworkspace:f[1]"
 
           # jetbrains jank
-          "tag +jb, class:^jetbrains-.+$,floating:1"
-          "stayfocused, tag:jb"
-          "noinitialfocus, tag:jb"
+          # "tag +jb, class:^jetbrains-.+$,floating:1"
+          # "stayfocused, tag:jb"
+          # "noinitialfocus, tag:jb"
         ];
 
         env = [
@@ -90,8 +94,8 @@
         exec-once = [
           "${waybar} -c ~/.config/waybar/config 2>&1 > ~/.waybar.log"
 
-          # hack
-          "${mako}"
+          "${hyprpaper}" # HACK
+          "${mako}" # HACK
         ];
         bind =
           let
@@ -106,7 +110,7 @@
           in
           [
             "$mainMod, Space, exec, ${wofi} --show=drun"
-            "$mainMod, Return, exec, /usr/bin/kitty"
+            "$mainMod, Return, exec, /usr/bin/kitty" # HACK
             "$mainMod, d, exec, ${makoctl} dismiss"
 
             "$mainMod SHIFT, q, killactive"
