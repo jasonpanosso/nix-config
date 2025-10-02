@@ -5,7 +5,6 @@
     extraPlugins = with pkgs.vimPlugins; [
       telescope-nvim
       telescope-fzy-native-nvim
-      project-nvim
     ];
 
     extraConfigLua = builtins.readFile ./telescope.lua;
