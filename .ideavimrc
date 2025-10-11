@@ -1,0 +1,177 @@
+"" .ideavimrc - magidc
+
+"" Settings ========================================================
+set scrolloff=6
+set number
+set relativenumber
+set showmode
+set showcmd
+set smartcase
+set incsearch
+set hlsearch
+set visualbell
+set clipboard+=unnamed
+set clipboard+=unnamedplus
+let mapleader = " "
+
+command W :w
+
+"" Choosing handlers in conflicting IDE/IdeaVim keymaps =======
+sethandler <c-i> n-v-i:vim
+sethandler <c-o> n-v-i:vim
+sethandler <c-d> n-v-i:vim
+sethandler <c-u> n-v-i:vim
+sethandler <c-h> n-v-i:vim
+sethandler <c-j> n-v-i:vim
+sethandler <c-k> n-v-i:vim
+sethandler <c-l> n-v-i:vim
+sethandler <c-a-d> n-v-i:vim
+
+" source
+map <leader>9 :source ~/.ideavimrc<cr>
+
+"" Key mappings ====================================================
+" NORMAL MODE
+" Edit
+" nnoremap d "_d
+" nnoremap D "_D
+" nnoremap dd "_dd
+nnoremap ciw "_ciw
+nnoremap caw "_caw
+nnoremap C "_C
+nnoremap cc "_cc
+nnoremap Y y$
+
+nnoremap <a-j> :m .+1<cr>==
+nnoremap <a-k> :m .-2<cr>==
+
+" Motions
+nnoremap H ^
+nnoremap L $
+vnoremap H ^
+vnoremap L $
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+nnoremap n nzz
+nnoremap N Nzz
+
+nnoremap <C-o> :action Back<cr>
+nnoremap <C-i> :action Forward<cr>
+
+" Window navigation
+nnoremap <c-h> <c-w>h
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
+nnoremap <leader>wv :action SplitVertically<cr>
+nnoremap <leader>ws :action SplitHorizontally<cr>
+nnoremap <leader>wc :action Unsplit<cr>
+nnoremap <leader>wp :action MoveEditorToOppositeTabGroup<cr>
+nnoremap <Leader>wn :action EditSourceInNewWindow<cr>
+
+" Search (leader s)
+nnoremap ; :nohlsearch<cr>
+map <leader>sf :action GotoFile<cr>
+map <leader>sp :action ManageRecentProjects<cr>
+map <leader>sa :action GotoAction<cr>
+map <leader>sg :action FindInPath<cr>
+map <leader>ss :action GotoSymbol<cr>
+map <leader>sb :action Find<cr>
+map <leader>st :action ActivateTODOToolWindow<cr>
+map <leader><leader> :action RecentFiles<cr>
+
+map <leader>pv :NERDTree<cr>
+
+" Open (leader o)
+map <leader>op :action ActivateProblemsViewToolWindow<cr>
+map <leader>os :action ActivateStructureToolWindow<cr>
+map <leader>ot :action ActivateTerminalToolWindow<cr>
+map <leader>od :action ActivateDebugToolWindow<cr>
+map <leader>q :action CloseActiveTab<cr>
+map <leader>go :action ActivateVersionControlToolWindow<cr>
+
+nnoremap Q <nop>
+nnoremap <s-q> :action CloseEditor<cr>
+
+Debug (leader d)
+nnoremap <leader>de :action Debug<cr>
+nnoremap <leader>dE :action ChooseDebugConfiguration<cr>
+nnoremap <leader>dr :action Run<cr>
+nnoremap <leader>dR :action ChooseRunConfiguration<cr>
+nnoremap <leader>dk :action Stop<cr>
+nnoremap <leader>db :action ToggleLineBreakpoint<cr>
+nnoremap <leader>dm :action XDebugger.MuteBreakpoints<cr>
+nnoremap <leader>dd :action Debugger.RemoveAllBreakpoints<cr>
+nnoremap <leader>ds :action ViewBreakpoints<cr>
+nnoremap <leader>dv :action StepOver<cr>
+nnoremap <leader>di :action StepInto<cr>e
+nnoremap <leader>do :action StepOut<cr>
+nnoremap <leader>dc :action Resume<cr>
+map <leader>dx :action QuickEvaluateExpression<cr>
+map <leader>dt :action EvaluateExpression<cr>
+map <leader>dw :action Debugger.AddToWatch<cr>
+
+" Code navigation (g)
+nnoremap gd :action GotoDeclaration<cr>
+nnoremap gt :action GotoTypeDeclaration<cr>
+nnoremap gi :action GotoImplementation<cr>
+nnoremap gs :action GotoSuperMethod<cr>
+nnoremap gr :action ShowUsages<cr>
+nnoremap gh :action CallHierarchy<CR>
+
+map <leader>ca :action ShowIntentionActions<cr>
+
+" Refactoring (leader r)
+map <leader>re :action Refactorings.QuickListPopupAction<CR>
+map <leader>rn :action RenameElement<cr>
+map <leader>rv :action IntroduceVariable<cr>
+map <leader>rc :action IntroduceConstant<cr>
+map <leader>rf :action IntroduceField<cr>
+map <leader>rp :action IntroduceParameter<cr>
+map <leader>rx :action ExtractMethod<cr>
+map <leader>lf :action ReformatCode<cr>:action RearrangeCode<cr>:action OptimizeImports<cr>
+map <leader>ro :action OptimizeImports<cr>
+map <leader>ri :action Inline<cr>
+map <leader>rs :action ChangeSignature<cr>
+map <leader>ra :action AnonymousToInner<cr>
+map <leader>rm :action Move<cr>
+
+nnoremap <leader>nf :action NewFile<cr>
+
+" Errors and diagnostics (leader e)
+map <leader>en :action GotoNextError<cr>
+map <leader>ep :action GotoPreviousError<cr>
+map <leader>ep :action GotoPreviousError<cr>
+map <leader>dl :action ShowErrorDescription<cr>
+
+" Git (leader g)
+map <leader>gd :action Compare.LastVersion<cr>
+map <leader>gD :action Compare.Selected<cr>
+map gn :action NextDiff<cr>
+map gp :action PreviousDiff<cr>
+
+" Display Modes (leader m)
+map <leader>md :action ToggleDistractionFreeMode<cr>
+map <leader>mz :action ToggleZenMode<cr>
+map <leader>z :action ToggleZenMode<cr>
+map <leader>mf :action ToggleFullScreen<cr>
+
+"--  Easy visual indentation
+vnoremap < <gv
+vnoremap > >gv
+nnoremap + v
+vnoremap + :action EditorSelectWord<cr>
+vnoremap _ :action EditorUnSelectWord<cr>
+vnoremap <a-j> :m '>+1<cr>gv=gv
+vnoremap <a-k> :m '<-2<cr>gv=gv
+
+" Plugin Settings ==================================================
+set matchit
+set commentary
+set surround
+set highlightedyank
+set argtextobj
+set ideajoin
+set ideamarks
+set multicursor
+set NERDTree
