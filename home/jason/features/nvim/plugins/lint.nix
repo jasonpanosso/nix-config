@@ -53,12 +53,11 @@
       {
         mode = [ "n" ];
         key = "<Leader>sl";
-        action = /* lua */ ''
+        action.__raw = /* lua */ ''
           function()
             print(table.concat(require('lint').get_running(), ", "))
           end
         '';
-        lua = true;
         options = {
           silent = true;
           desc = "Show Linters";

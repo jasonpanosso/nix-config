@@ -9,8 +9,7 @@
       {
         mode = [ "n" "v" ];
         key = "<leader>ca";
-        action = "require('actions-preview').code_actions";
-        lua = true;
+        action.__raw = "require('actions-preview').code_actions";
         options = {
           silent = true;
           desc = "[C]ode [A]ctions";

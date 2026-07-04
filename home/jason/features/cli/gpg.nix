@@ -17,8 +17,6 @@ in
 
   services.gpg-agent = {
     enable = true;
-    enableSshSupport = true;
-    sshKeys = [ "3856EFCE187C6C1A2A14D198EB46AC2F7430A2A0" ];
     pinentry.package = pinentry.package;
     enableExtraSocket = true;
   };

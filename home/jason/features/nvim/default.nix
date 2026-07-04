@@ -24,6 +24,8 @@
     enable = true;
     viAlias = true;
     plugins.web-devicons.enable = true;
+    defaultEditor = true;
+    nixpkgs.useGlobalPackages = true;
     globals.mapleader = " ";
 
     extraPlugins = with pkgs.vimPlugins; [ vim-rzip ];

@@ -2,8 +2,10 @@
 
 {
   fonts.fontconfig.enable = true;
+
   stylix = {
     enable = true;
+    autoEnable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/kanagawa.yaml";
 
     fonts = {
@@ -23,7 +25,7 @@
       };
 
       emoji = {
-        package = pkgs.noto-fonts-emoji;
+        package = pkgs.noto-fonts-color-emoji;
         name = "Noto Color Emoji";
       };
 

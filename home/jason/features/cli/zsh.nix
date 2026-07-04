@@ -27,8 +27,15 @@
     };
 
     initContent = /* sh */ ''
-      bindkey "''${key[Up]}" up-line-or-search
-      bindkey "''${key[Down]}" down-line-or-search
+      autoload zkbd
+      autoload up-line-or-history
+      autoload down-line-or-history
+
+      [[ -n ''${key[PageUp]} ]] && bindkey "''${key[PageUp]}" up-line-or-history
+      [[ -n ''${key[PageDown]} ]] && bindkey "''${key[PageDown]}" down-line-or-history
+
+      [[ -n ''${key[Up]} ]] && bindkey "''${key[Up]}" up-line-or-search
+      [[ -n ''${key[Down]} ]] && bindkey "''${key[Down]}" down-line-or-search
     '';
   };
 

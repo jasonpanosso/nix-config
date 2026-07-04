@@ -6,7 +6,6 @@
       exclude = {
         buftypes = [ "terminal" "nofile" "prompt" ];
       };
-
     };
   };
 }

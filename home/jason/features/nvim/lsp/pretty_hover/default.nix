@@ -9,8 +9,7 @@
       {
         mode = [ "n" ];
         key = "K";
-        action = "require('pretty_hover').hover";
-        lua = true;
+        action.__raw = "require('pretty_hover').hover";
         options = {
           silent = true;
           desc = "LSP: Hover Documentation";

@@ -5,37 +5,42 @@
 
   programs.git = {
     enable = true;
-    userName = "jasonpanosso";
-    userEmail = "jasonpanosso@protonmail.com";
-    lfs.enable = true;
-    difftastic.enable = true;
-    signing = {
-      key = "7F4BBBCE5FA232F9DC9E6707CD4B7B6A06A225FD";
-      signByDefault = true;
-    };
+    settings = {
+      user = {
+        name = "jasonpanosso";
+        email = "jasonpanosso@protonmail.com";
+      };
+      lfs.enable = true;
+      difftastic.enable = true;
+      signing = {
+        key = "7F4BBBCE5FA232F9DC9E6707CD4B7B6A06A225FD";
+        signByDefault = true;
+      };
 
-    extraConfig = {
-      init.defaultBranch = "main";
-      merge.conflictStyle = "zdiff3";
-      commit.verbose = true;
-      diff.algorithm = "histogram";
-      log.date = "iso";
-      column.ui = "auto";
-      branch.sort = "committerdate";
-      push.autoSetupRemote = true;
-      rerere.enabled = true; # Reuse merge conflict fixes when rebasing
-      pull.rebase = true;
-    };
+      extraConfig = {
+        init.defaultBranch = "main";
+        merge.conflictStyle = "zdiff3";
+        commit.verbose = true;
+        diff.algorithm = "histogram";
+        log.date = "iso";
+        column.ui = "auto";
+        branch.sort = "committerdate";
+        push.autoSetupRemote = true;
+        rerere.enabled = true; # Reuse merge conflict fixes when rebasing
+        pull.rebase = true;
+      };
 
-    aliases = {
-      ci = "commit";
-      co = "checkout";
-      st = "status";
-      fk = "commit --amend --no-edit";
-      push-with-lease = "push --force-with-lease";
-      review-local = "!git lg @{push}..";
-      uncommit = "reset --soft HEAD~1";
-      untrack = "rm --cache --";
+      aliases = {
+        ci = "commit";
+        co = "checkout";
+        st = "status";
+        fk = "commit --amend --no-edit";
+        push-with-lease = "push --force-with-lease";
+        review-local = "!git lg @{push}..";
+        uncommit = "reset --soft HEAD~1";
+        untrack = "rm --cache --";
+      };
+
     };
 
     ignores = [

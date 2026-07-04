@@ -5,8 +5,7 @@
         {
           mode = [ "n" "v" ];
           key = "<leader>pv";
-          action = "require('oil').open_float";
-          lua = true;
+          action.__raw = "require('oil').open_float";
           options = {
             silent = true;
             desc = "[P]roject [V]iew";
@@ -23,6 +22,7 @@
           };
 
           float = {
+            border = "rounded";
             padding = 10;
             max_width = 60;
             win_options = {

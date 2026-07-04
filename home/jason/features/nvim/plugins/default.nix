@@ -4,7 +4,7 @@
     ./colorscheme
     ./alpha.nix
     ./lualine
-    ./gitsigns.nix
+    ./gitgutter.nix
     ./oil.nix
     ./auto-hlsearch.nix
     ./colorizer.nix

@@ -1,4 +1,16 @@
-"" .ideavimrc - magidc
+" Plugin Settings ==================================================
+set matchit
+set commentary
+set surround
+set highlightedyank
+set argtextobj
+set ideajoin
+set ideamarks
+set NERDTree
+set VimEverywhere
+
+let g:NERDTreeQuitOnOpen = 1
+let g:NERDTreeMapActivateNode = "<CR>"
 
 "" Settings ========================================================
 set scrolloff=6
@@ -13,8 +25,7 @@ set visualbell
 set clipboard+=unnamed
 set clipboard+=unnamedplus
 let mapleader = " "
-
-command W :w
+set idearefactormode=visual
 
 "" Choosing handlers in conflicting IDE/IdeaVim keymaps =======
 sethandler <c-i> n-v-i:vim
@@ -84,6 +95,7 @@ map <leader>pv :NERDTree<cr>
 
 " Open (leader o)
 map <leader>op :action ActivateProblemsViewToolWindow<cr>
+map <leader>og :action ActivateGeminiToolWindow<cr>
 map <leader>os :action ActivateStructureToolWindow<cr>
 map <leader>ot :action ActivateTerminalToolWindow<cr>
 map <leader>od :action ActivateDebugToolWindow<cr>
@@ -93,7 +105,7 @@ map <leader>go :action ActivateVersionControlToolWindow<cr>
 nnoremap Q <nop>
 nnoremap <s-q> :action CloseEditor<cr>
 
-Debug (leader d)
+" Debug (leader d)
 nnoremap <leader>de :action Debug<cr>
 nnoremap <leader>dE :action ChooseDebugConfiguration<cr>
 nnoremap <leader>dr :action Run<cr>
@@ -130,7 +142,6 @@ map <leader>rf :action IntroduceField<cr>
 map <leader>rp :action IntroduceParameter<cr>
 map <leader>rx :action ExtractMethod<cr>
 map <leader>lf :action ReformatCode<cr>:action RearrangeCode<cr>:action OptimizeImports<cr>
-map <leader>ro :action OptimizeImports<cr>
 map <leader>ri :action Inline<cr>
 map <leader>rs :action ChangeSignature<cr>
 map <leader>ra :action AnonymousToInner<cr>
@@ -165,13 +176,13 @@ vnoremap _ :action EditorUnSelectWord<cr>
 vnoremap <a-j> :m '>+1<cr>gv=gv
 vnoremap <a-k> :m '<-2<cr>gv=gv
 
-" Plugin Settings ==================================================
-set matchit
-set commentary
-set surround
-set highlightedyank
-set argtextobj
-set ideajoin
-set ideamarks
-set multicursor
-set NERDTree
+"-- Harpooner plugin
+nmap <leader>h <Action>(HarpoonerToggleMenu)
+nmap <leader>a <Action>(HarpoonerToggleFile)
+nmap <leader>1 <Action>(HarpoonerOpenFile0)
+nmap <leader>2 <Action>(HarpoonerOpenFile1)
+nmap <leader>3 <Action>(HarpoonerOpenFile2)
+nmap <leader>4 <Action>(HarpoonerOpenFile3)
+nmap <leader>5 <Action>(HarpoonerOpenFile4)
+nmap <leader>6 <Action>(HarpoonerOpenFile5)
+nmap <leader>7 <Action>(HarpoonerOpenFile6)

@@ -123,8 +123,7 @@
       {
         mode = [ "n" ];
         key = "gr";
-        action = "require('telescope.builtin').lsp_references";
-        lua = true;
+        action.__raw = "require('telescope.builtin').lsp_references";
         options = {
           silent = true;
           desc = "[G]oto [R]eferences";
@@ -134,8 +133,7 @@
       {
         mode = [ "n" ];
         key = "gi";
-        action = "require('telescope.builtin').lsp_implementations";
-        lua = true;
+        action.__raw = "require('telescope.builtin').lsp_implementations";
         options = {
           silent = true;
           desc = "[G]oto [I]mplementations";
@@ -145,12 +143,11 @@
       {
         mode = [ "n" ];
         key = "gd";
-        action = /* lua */ ''
+        action.__raw = /* lua */ ''
           function()
             require('telescope.builtin').lsp_definitions({ intial_mode = 'normal' })
           end
         '';
-        lua = true;
         options = {
           silent = true;
           desc = "LSP: [G]oto [D]efinition";
@@ -160,12 +157,11 @@
       {
         mode = [ "n" ];
         key = "gt";
-        action = /* lua */ ''
+        action.__raw = /* lua */ ''
           function()
             require('telescope.builtin').lsp_type_definitions({ intial_mode = 'normal' })
           end
         '';
-        lua = true;
         options = {
           silent = true;
           desc = "LSP: [G]oto [T]ype definition";
@@ -175,12 +171,11 @@
       {
         mode = [ "n" ];
         key = "<leader>pt";
-        action = /* lua */ ''
+        action.__raw = /* lua */ ''
           function()
             require('telescope.builtin').lsp_type_definitions({ intial_mode = 'normal', jump_type = 'never' })
           end
         '';
-        lua = true;
         options = {
           silent = true;
           desc = "LSP: [P]eek [T]ype definition";
@@ -190,12 +185,11 @@
       {
         mode = [ "n" ];
         key = "<leader>pd";
-        action = /* lua */ ''
+        action.__raw = /* lua */ ''
           function()
             require('telescope.builtin').lsp_definitions({ intial_mode = 'normal', jump_type = 'never' })
           end
         '';
-        lua = true;
         options = {
           silent = true;
           desc = "LSP: [P]eek [D]efinition";
@@ -205,8 +199,7 @@
       {
         mode = [ "n" ];
         key = "<leader>db";
-        action = "function() require('telescope.builtin').diagnostics({bufnr=0}) end";
-        lua = true;
+        action.__raw = "function() require('telescope.builtin').diagnostics({bufnr=0}) end";
         options = {
           silent = true;
           desc = "[D]iagnostics [B]uffer";
@@ -217,8 +210,7 @@
       {
         mode = [ "n" ];
         key = "<leader>dw";
-        action = "require('telescope.builtin').diagnostics";
-        lua = true;
+        action.__raw = "require('telescope.builtin').diagnostics";
         options = {
           silent = true;
           desc = "[D]iagnostics [W]orkspace";
@@ -228,8 +220,7 @@
       {
         mode = [ "n" ];
         key = "<leader>ds";
-        action = "require('telescope.builtin').lsp_document_symbols";
-        lua = true;
+        action.__raw = "require('telescope.builtin').lsp_document_symbols";
         options = {
           silent = true;
           desc = "[D]ocument [S]ymbols";
@@ -239,8 +230,7 @@
       {
         mode = [ "n" ];
         key = "<leader>ws";
-        action = "require('telescope.builtin').lsp_dynamic_workspace_symbols";
-        lua = true;
+        action.__raw = "require('telescope.builtin').lsp_dynamic_workspace_symbols";
         options = {
           silent = true;
           desc = "[W]orkspace [S]ymbols";
@@ -250,8 +240,7 @@
       {
         mode = [ "n" ];
         key = "<leader>ci";
-        action = "require('telescope.builtin').lsp_incoming_calls";
-        lua = true;
+        action.__raw = "require('telescope.builtin').lsp_incoming_calls";
         options = {
           silent = true;
           desc = "LSP: Incoming Calls";
@@ -261,8 +250,7 @@
       {
         mode = [ "n" ];
         key = "<leader>co";
-        action = "require('telescope.builtin').lsp_outgoing_calls";
-        lua = true;
+        action.__raw = "require('telescope.builtin').lsp_outgoing_calls";
         options = {
           silent = true;
           desc = "LSP: Outgoing Calls";

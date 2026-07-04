@@ -16,11 +16,11 @@
       {
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [
-            nodePackages_latest.npm
-            nodePackages_latest.typescript
-            nodePackages_latest.typescript-language-server
-            nodePackages_latest.eslint
-            nodePackages_latest.prettier
+            pnpm
+            typescript
+            typescript-language-server
+            eslint
+            prettier
           ];
         };
       }

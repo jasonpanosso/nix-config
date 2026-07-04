@@ -43,8 +43,7 @@
       {
         mode = [ "i" "v" ];
         key = "<C-L>";
-        action = "function() require('luasnip').jump(1) end";
-        lua = true;
+        action.__raw = "function() require('luasnip').jump(1) end";
         options = {
           silent = true;
           desc = "Next snippet";

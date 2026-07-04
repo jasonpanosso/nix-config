@@ -34,8 +34,7 @@
       {
         mode = [ "n" ];
         key = "<leader>k";
-        action = "vim.lsp.buf.signature_help";
-        lua = true;
+        action.__raw = "vim.lsp.buf.signature_help";
         options = {
           silent = true;
           desc = "LSP: Signature Help";
@@ -65,7 +64,6 @@
     ./servers
     ./rustaceanvim.nix
     ./typescript-tools.nix
-    ./roslyn.nix
     ./jdtls.nix
   ];
 }

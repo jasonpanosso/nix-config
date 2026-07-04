@@ -3,7 +3,7 @@
 {
   programs.nixvim = {
     extraPackages = with pkgs; [
-      nodePackages.prettier
+      prettier
       stylua
       rustfmt
       nixpkgs-fmt
@@ -11,7 +11,6 @@
       djlint
       taplo
       go
-      csharpier
       ruff
       sqlfluff
       google-java-format
@@ -40,7 +39,7 @@
                       return cmd
                     end
 
-                    return util.from_node_modules("prettier")(self, bufnr) or "${lib.getExe pkgs.nodePackages.prettier}"
+                    return util.from_node_modules("prettier")(self, bufnr) or "${lib.getExe pkgs.prettier}"
                   end
               }
             '';
@@ -55,11 +54,6 @@
             command = "sqlfluff";
             stdin = true;
             args = [ "fix" "--dialect=postgres" "--force" "-" ];
-          };
-          csharpier-no-dotnet = {
-            command = "csharpier";
-            stdin = true;
-            args = [ "format" "--write-stdout" ];
           };
         };
 
@@ -79,7 +73,6 @@
           yaml = [ "prettier-helm" ];
           "yaml.ghaction" = [ "prettier-helm" ];
           toml = [ "taplo" ];
-          cs = [ "csharpier-no-dotnet" ];
           rust = [ "rustfmt" ];
           go = [ "gofmt" ];
           python = [ "ruff_format" ];
@@ -99,14 +92,13 @@
       {
         mode = [ "n" "v" ];
         key = "<leader>lf";
-        action =
+        action.__raw =
           /* lua */
           ''
             function()
               require("conform").format({ async = true, lsp_fallback = true })
             end
           '';
-        lua = true;
         options = {
           silent = true;
           desc = "Format";

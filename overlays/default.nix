@@ -69,11 +69,11 @@
 
       actions-preview = prev.vimUtils.buildVimPlugin {
         pname = "actions-preview";
-        version = "2024-11-26";
+        version = "2026-07-04";
         src = prev.fetchgit {
           url = "https://github.com/aznhe21/actions-preview.nvim";
-          rev = "9f52a01c374318e91337697ebed51c6fae57f8a4";
-          hash = "sha256-lYjsv8y1fMuTGpBF/iG7cm/a7tLdh748vJhVsSp/Iz8=";
+          rev = "0ac9c2aa3cfc8c885321c0862b50b6b1c3392405";
+          hash = "sha256-ibzfF/Ebm5+1EgZ05NQCTRDB+Q7ymyRy2fZpjvwv8EA=";
           fetchSubmodules = true;
         };
         meta.homepage = "https://github.com/aznhe21/actions-preview.nvim";
@@ -81,11 +81,11 @@
 
       pretty_hover = prev.vimUtils.buildVimPlugin {
         pname = "pretty_hover";
-        version = "2024-11-26";
+        version = "2026-07-04";
         src = prev.fetchgit {
           url = "https://github.com/Fildo7525/pretty_hover";
-          rev = "dabf4dcfd6b074d5edefce381f1bc04c361527ca";
-          hash = "sha256-N/AtGg2vL3YGJ4hzm0isYc9CkYAsP7LTlBeAcspF+2I=";
+          rev = "934df974ef6158b100fe910e8556e6c4a66614c2";
+          hash = "sha256-4rwsSnq9Knce9h/jp3vYzduZCQROpxXUk2SFYyveF/s=";
           fetchSubmodules = true;
         };
         meta.homepage = "https://github.com/Fildo7525/pretty_hover";
@@ -93,11 +93,11 @@
 
       garbage-day = prev.vimUtils.buildVimPlugin {
         pname = "garbage-day.nvim";
-        version = "2024-11-13";
+        version = "2026-07-04";
         src = prev.fetchgit {
           url = "https://github.com/Zeioth/garbage-day.nvim";
-          rev = "750ef08ae6031ee3683014c5349144340c08ead6";
-          hash = "sha256-XBt1EMbd3QTwfxHZcTVO1Rd0rocATrv8HMEBPxbs60w=";
+          rev = "2fcc56556281de8ee871a5f3beb9db7ab747ef32";
+          hash = "sha256-GabA9whTRQpBbQjc5pyGGVnehBG2i+lwiqJLx31tTLE=";
           fetchSubmodules = true;
         };
         meta.homepage = "https://github.com/Zeioth/garbage-day.nvim";
@@ -117,11 +117,11 @@
 
       breadcrumbs-nvim = prev.vimUtils.buildVimPlugin {
         pname = "breadcrumbs.nvim";
-        version = "2024-12-09";
+        version = "2026-07-04";
         src = prev.fetchgit {
           url = "https://github.com/LunarVim/breadcrumbs.nvim";
-          rev = "9f764278784ce2f10dbe2f555ba14be2451d36a0";
-          hash = "sha256-DXR5Qvlxh9MiCngH9OlzsUp6LCg8P/RNwurU9vky89w=";
+          rev = "a59e3ee12818135098e5ce8efeb7b58b675b09ec";
+          hash = "sha256-E/EjzeKyPmssDVF0QtbTmLU805F9b+MNl23pIE2ko0o=";
           fetchSubmodules = true;
         };
         meta.homepage = "https://github.com/LunarVim/breadcrumbs.nvim";

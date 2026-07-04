@@ -14,7 +14,7 @@
       {
         mode = [ "n" "v" ];
         key = "<leader>h";
-        action =
+        action.__raw =
           /* lua */
           ''
             function()
@@ -22,84 +22,72 @@
               harpoon.ui:toggle_quick_menu(harpoon:list())
             end
           '';
-        lua = true;
       }
 
       {
         mode = [ "n" "v" ];
         key = "<leader>a";
-        action = "function() require('harpoon'):list():add() end";
-        lua = true;
+        action.__raw = "function() require('harpoon'):list():add() end";
       }
 
       {
         mode = [ "n" "v" ];
         key = "<leader>1";
-        action = "function() require('harpoon'):list():select(1) end";
-        lua = true;
+        action.__raw = "function() require('harpoon'):list():select(1) end";
       }
 
       {
         mode = [ "n" "v" ];
         key = "<leader>2";
-        action = "function() require('harpoon'):list():select(2) end";
-        lua = true;
+        action.__raw = "function() require('harpoon'):list():select(2) end";
       }
 
       {
         mode = [ "n" "v" ];
         key = "<leader>3";
-        action = "function() require('harpoon'):list():select(3) end";
-        lua = true;
+        action.__raw = "function() require('harpoon'):list():select(3) end";
       }
 
       {
         mode = [ "n" "v" ];
         key = "<leader>4";
-        action = "function() require('harpoon'):list():select(4) end";
-        lua = true;
+        action.__raw = "function() require('harpoon'):list():select(4) end";
       }
 
       {
         mode = [ "n" "v" ];
         key = "<leader>5";
-        action = "function() require('harpoon'):list():select(5) end";
-        lua = true;
+        action.__raw = "function() require('harpoon'):list():select(5) end";
       }
 
       {
         mode = [ "n" "v" ];
         key = "<leader>6";
-        action = "function() require('harpoon'):list():select(6) end";
-        lua = true;
+        action.__raw = "function() require('harpoon'):list():select(6) end";
       }
 
       {
         mode = [ "n" "v" ];
         key = "<leader>7";
-        action = "function() require('harpoon'):list():select(7) end";
-        lua = true;
+        action.__raw = "function() require('harpoon'):list():select(7) end";
       }
 
       {
         mode = [ "n" "v" ];
         key = "<leader>8";
-        action = "function() require('harpoon'):list():select(8) end";
-        lua = true;
+        action.__raw = "function() require('harpoon'):list():select(8) end";
       }
 
       {
         mode = [ "n" "v" ];
         key = "<leader>9";
-        action = "function() require('harpoon'):list():select(9) end";
-        lua = true;
+        action.__raw = "function() require('harpoon'):list():select(9) end";
       }
 
       {
         mode = [ "n" "v" ];
         key = "<leader>0";
-        action = "function() require('harpoon'):list():select(10) end";
-        lua = true;
+        action.__raw = "function() require('harpoon'):list():select(10) end";
       }
     ];
   };
