@@ -7,7 +7,7 @@ let
       package = pkgs.pinentry-gnome3;
       name = "gnome3";
     } else {
-      homePackages = [ pkgs.pinentry-curses ];
+      homePackages = [ pkgs.pinentry-curses pkgs.gcr ];
       package = pkgs.pinentry-curses;
       name = "curses";
     };
