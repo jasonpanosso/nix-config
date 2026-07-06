@@ -17,20 +17,18 @@
         signByDefault = true;
       };
 
-      extraConfig = {
-        init.defaultBranch = "main";
-        merge.conflictStyle = "zdiff3";
-        commit.verbose = true;
-        diff.algorithm = "histogram";
-        log.date = "iso";
-        column.ui = "auto";
-        branch.sort = "committerdate";
-        push.autoSetupRemote = true;
-        rerere.enabled = true; # Reuse merge conflict fixes when rebasing
-        pull.rebase = true;
-      };
+      init.defaultBranch = "main";
+      merge.conflictStyle = "zdiff3";
+      commit.verbose = "true";
+      diff.algorithm = "histogram";
+      log.date = "iso";
+      column.ui = "auto";
+      branch.sort = "committerdate";
+      push.autoSetupRemote = "true";
+      rerere.enabled = "true"; # Reuse merge conflict fixes when rebasing
+      pull.rebase = "true";
 
-      aliases = {
+      alias = {
         ci = "commit";
         co = "checkout";
         st = "status";
@@ -40,7 +38,6 @@
         uncommit = "reset --soft HEAD~1";
         untrack = "rm --cache --";
       };
-
     };
 
     ignores = [
