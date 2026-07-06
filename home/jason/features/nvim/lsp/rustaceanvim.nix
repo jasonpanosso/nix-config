@@ -46,6 +46,10 @@
               vim.keymap.set('n', '<Leader>pm', function()
                 vim.cmd.RustLsp('parentModule')
               end, { buffer = bufnr, silent = true })
+
+              vim.keymap.set('n', 'K', function()
+                vim.cmd.RustLsp({'hover', 'actions'})
+              end, { buffer = bufnr, silent = true })
             end
           '';
       };
