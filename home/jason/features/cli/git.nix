@@ -9,17 +9,16 @@
       user = {
         name = "jasonpanosso";
         email = "jasonpanosso@protonmail.com";
+        signingkey = "7F4BBBCE5FA232F9DC9E6707CD4B7B6A06A225FD";
       };
       lfs.enable = true;
       difftastic.enable = true;
-      signing = {
-        key = "7F4BBBCE5FA232F9DC9E6707CD4B7B6A06A225FD";
-        signByDefault = true;
-      };
+      commit.verbose = "true";
+      commit.gpgsign = "true";
+      tag.gpgSign = "true";
 
       init.defaultBranch = "main";
       merge.conflictStyle = "zdiff3";
-      commit.verbose = "true";
       diff.algorithm = "histogram";
       log.date = "iso";
       column.ui = "auto";
