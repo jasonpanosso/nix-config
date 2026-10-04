@@ -1,13 +1,16 @@
+---
 keys:
-  - &users:
-    - &jason 7F4BBBCE5FA232F9DC9E6707CD4B7B6A06A225FD
-  - &hosts:
-    - &pathfinder age1c2ruz060djdr5mjn49wkgvnh6kl89e6t7zkentlql9u83f88zatqzrvmlp
+  - users:
+      - &jason 7F4BBBCE5FA232F9DC9E6707CD4B7B6A06A225FD
+  - hosts:
+      - &pathfinder age1c2ruz060djdr5mjn49wkgvnh6kl89e6t7zkentlql9u83f88zatqzrvmlp
+      - &wsl age1dulrd8jku57xyq7m9uc3zeh592p0zzkcx9kst9f0taldp546uf3q7zw983
 
 creation_rules:
-  - path_regex: hosts/common/secrets.yaml$
+  - path_regex: hosts/common/secrets.enc.yaml$
     key_groups:
       - age:
           - *pathfinder
+          - *wsl
         pgp:
           - *jason

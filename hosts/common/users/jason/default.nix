@@ -30,9 +30,7 @@ in
   };
 
   sops.secrets.jason-password = {
-    sopsFile = ../../secrets.yaml;
+    sopsFile = ../../secrets.enc.yaml;
     neededForUsers = true;
   };
-
-  home-manager.users.jason = import ../../../../home/jason/${config.networking.hostName}.nix;
 }

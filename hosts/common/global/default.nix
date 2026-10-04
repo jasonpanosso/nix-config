@@ -1,4 +1,3 @@
-# This file holds config that i use on all hosts
 { inputs, outputs, pkgs, ... }:
 
 {

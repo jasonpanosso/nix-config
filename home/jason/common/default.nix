@@ -6,7 +6,6 @@
     ../../../shared/stylix.nix
     ../features/cli
     ../features/nvim
-    ../features/desktop/common
   ] ++ (builtins.attrValues outputs.homeModules);
 
   nixpkgs = {
@@ -34,7 +33,7 @@
   home = {
     username = lib.mkDefault "jason";
     homeDirectory = lib.mkDefault "/home/${config.home.username}";
-    stateVersion = lib.mkDefault "23.11";
+    stateVersion = lib.mkDefault "26.05";
     sessionPath = [ "${config.home.homeDirectory}/.local/bin" ];
   };
 }

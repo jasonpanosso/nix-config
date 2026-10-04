@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     hardware.url = "github:nixos/nixos-hardware";
 
     home-manager = {
@@ -26,7 +27,7 @@
     };
 
     nh = {
-      url = "github:viperml/nh";
+      url = "github:nix-community/nh";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -38,7 +39,7 @@
     xremap-flake.url = "github:xremap/nix-flake";
   };
 
-  outputs = { self, nixpkgs, home-manager, stylix, templates, ... } @ inputs:
+  outputs = { self, nixpkgs, home-manager, stylix, templates, nixos-wsl, ... } @ inputs:
     let
       inherit (self) outputs;
       lib = nixpkgs.lib // home-manager.lib;
@@ -71,6 +72,22 @@
             inherit inputs outputs;
           };
         };
+
+        wsl = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./hosts/wsl
+            nixos-wsl.nixosModules.default
+            {
+              system.stateVersion = "26.05";
+              wsl.enable = true;
+            }
+          ];
+
+          specialArgs = {
+            inherit inputs outputs;
+          };
+        };
       };
 
       homeConfigurations = {
@@ -82,6 +99,15 @@
         };
 
         "jason" = lib.homeManagerConfiguration {
+          modules = [
+            ./home/jason/common
+            ./home/jason/features/desktop/common
+          ];
+          pkgs = pkgsFor.x86_64-linux;
+          extraSpecialArgs = { inherit inputs outputs; };
+        };
+
+        "cli" = lib.homeManagerConfiguration {
           modules = [
             ./home/jason/common
           ];
