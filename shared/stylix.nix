@@ -40,15 +40,6 @@
       size = 20;
     };
 
-    targets = {
-      nixvim.enable = false;
-      neovim.enable = false;
-      hyprland.enable = false;
-      waybar = {
-        font = "sansSerif";
-      };
-    };
-
     image = pkgs.fetchurl {
       url = "https://i.imgur.com/ivh6aQ3.png";
       sha256 = "nw1JNlircbublRy/1MhfiQWuDy2r1w+taRkb38x4N6I=";

@@ -30,4 +30,6 @@
 
     extraPlugins = with pkgs.vimPlugins; [ vim-rzip ];
   };
+
+  stylix.targets.nixvim.enable = false;
 }
