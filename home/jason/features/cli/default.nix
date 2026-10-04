@@ -37,7 +37,6 @@
     ldns # dns lookup tool - `drill` command
     lm_sensors # for `sensors` command
     lsof # list open files
-    ltrace # lib calls
     mtr # my traceroute (auto refreshing traceroute)
     nix-output-monitor
     nmap # network mapper
