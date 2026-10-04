@@ -39,7 +39,7 @@
     xremap-flake.url = "github:xremap/nix-flake";
   };
 
-  outputs = { self, nixpkgs, home-manager, stylix, templates, nixos-wsl, ... } @ inputs:
+  outputs = { self, nixpkgs, home-manager, stylix, nixos-wsl, ... } @ inputs:
     let
       inherit (self) outputs;
       lib = nixpkgs.lib // home-manager.lib;
