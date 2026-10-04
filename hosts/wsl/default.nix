@@ -7,5 +7,10 @@
   ];
 
   networking.hostName = "wsl";
-  home-manager.users.jason = ./../../home/jason/common;
+  home-manager.users.jason = {
+    imports = [ ../../home/jason/common ];
+
+    # no desktop on wsl
+    dconf.enable = false;
+  };
 }
