@@ -16,6 +16,7 @@
     ../common/optional/embedded.nix
   ];
 
+  home-manager.users.jason = ./home.nix;
   swapDevices = [{ label = "swap"; }];
 
   networking = {
