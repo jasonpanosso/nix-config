@@ -13,7 +13,11 @@ let
     };
 in
 {
-  home.packages = pinentry.homePackages;
+  home = {
+    packages = pinentry.homePackages;
+    shellAliases.gpg-unlock =
+      "gpg-connect-agent updatestartuptty /bye >/dev/null && echo | gpg --clearsign -u 7F4BBBCE5FA232F9DC9E6707CD4B7B6A06A225FD >/dev/null && echo unlocked";
+  };
 
   services.gpg-agent = {
     enable = true;

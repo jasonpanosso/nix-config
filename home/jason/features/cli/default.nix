@@ -13,6 +13,7 @@
     ./kitty.nix
     ./kubecolor.nix
     ./kubectl.nix
+    ./lazygit.nix
     ./ripgrep.nix
     ./ssh-agent.nix
     ./tmux.nix
@@ -20,6 +21,7 @@
   ];
 
   home.packages = with pkgs; [
+    claude-code
     dnsutils # `dig` command
     docker-compose
     ethtool # query/control network device driver & hw settings
@@ -33,7 +35,6 @@
     iperf3 # network perf tool
     jq
     killall
-    lazygit
     ldns # dns lookup tool - `drill` command
     lm_sensors # for `sensors` command
     lsof # list open files
