@@ -8,7 +8,10 @@
 
   networking.hostName = "wsl";
   home-manager.users.jason = {
-    imports = [ ../../home/jason/common ];
+    imports = [
+      ../../home/jason/common
+      ./git-exe.nix
+    ];
 
     # no desktop on wsl
     dconf.enable = false;
