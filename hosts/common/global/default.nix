@@ -12,6 +12,7 @@
   environment.systemPackages = with pkgs; [ git ];
   home-manager = {
     extraSpecialArgs = { inherit inputs outputs; };
+    backupFileExtension = ".bak";
     useUserPackages = true;
   };
 
