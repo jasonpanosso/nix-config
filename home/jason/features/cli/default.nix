@@ -44,6 +44,7 @@
     p7zip # 7-zip port for unix
     pciutils # lspci
     pnpm
+    sops
     strace # sys calls
     sysstat # sys perf monitoring tools
     go-task
