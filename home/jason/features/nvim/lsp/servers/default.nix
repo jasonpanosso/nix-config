@@ -14,6 +14,7 @@
     ./tailwindcss.nix
     ./html-language-server.nix
     ./eslint-language-server.nix
+    ./rust-analyzer.nix
     ./svelte-language-server.nix
     ./terraformls.nix
     ./pyright.nix

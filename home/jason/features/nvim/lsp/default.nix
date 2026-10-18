@@ -2,7 +2,7 @@
   programs.nixvim = {
     plugins.lsp = {
       enable = true;
-      inlayHints = true;
+      inlayHints = false;
       capabilities = #lua
         ''
           capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)

@@ -37,10 +37,10 @@ vim.diagnostic.config({
   update_in_insert = false,
   underline = true,
   severity_sort = true,
-  -- virtual_text = {
-  --   prefix = '🔥',
-  --   source = true,
-  -- },
+  virtual_text = {
+    prefix = '',
+    source = "if_many",
+  },
 })
 
 vim.lsp.handlers['workspace/diagnostic/refresh'] = function(_, _, ctx)

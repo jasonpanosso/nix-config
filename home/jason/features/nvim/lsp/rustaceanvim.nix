@@ -3,7 +3,7 @@
     dependencies.rust-analyzer.packageFallback = true;
 
     plugins.rustaceanvim = {
-      enable = true;
+      enable = false;
 
       settings = {
         tools = {
