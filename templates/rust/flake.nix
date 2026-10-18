@@ -1,5 +1,5 @@
 {
-  description = "A Nix-flake-based Rust development environment";
+  description = "rust dev flake";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -14,13 +14,17 @@
         pkgs = import nixpkgs {
           inherit system overlays;
         };
+
+        toolchain = pkgs.rust-bin.fromRustupToolchainFile ./rust-toolchain.toml;
       in
       {
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [
-            rust-bin.beta.latest.default
-            rust-analyzer
+            toolchain
+            pkg-config
           ];
+
+          RUST_SRC_PATH = "${toolchain}/lib/rustlib/src/rust/library";
         };
       }
     );
