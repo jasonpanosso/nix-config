@@ -15,7 +15,7 @@
       {
         mode = [ "n" ];
         key = "<leader>li";
-        action = "<cmd>LspInfo<CR>";
+        action = "<cmd>checkhealth vim.lsp<CR>";
         options = {
           silent = true;
           desc = "[L]SP [I]nfo";
@@ -55,7 +55,6 @@
 
   imports = [
     ./actions-preview
-    ./breadcrumbs.nix
     ./fidget.nix
     ./garbage-day.nix
     ./lspsaga
