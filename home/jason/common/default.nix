@@ -1,7 +1,8 @@
 { lib, pkgs, config, outputs, inputs, ... }:
 
 let
-  flakePath = "${config.xdg.configHome}/nixos";
+  projectsDir = "${config.home.homeDirectory}/Programming";
+  flakePath = "${projectsDir}/nix-config";
 in
 {
   imports = [
@@ -43,6 +44,7 @@ in
     stateVersion = lib.mkDefault "26.05";
     sessionPath = [ "${config.home.homeDirectory}/.local/bin" ];
     activation.cloneNixConfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      run mkdir -p "${projectsDir}"
       if [ ! -d "${flakePath}" ]; then
         run ${pkgs.git}/bin/git clone https://github.com/jasonpanosso/nix-config "${flakePath}"
       fi
