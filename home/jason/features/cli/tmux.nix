@@ -11,8 +11,8 @@
     # setup tmux-sessionizer config
     ".config/tms/config.toml".text = /* toml */ ''
       [[search_dirs]]
-      path = '${config.home.homeDirectory}/Projects'
-      depth = 1
+      path = '${config.home.homeDirectory}/Programming'
+      depth = 2
     '';
   };
 
