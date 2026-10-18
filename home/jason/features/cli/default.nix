@@ -15,6 +15,7 @@
     ./kubectl.nix
     ./lazygit.nix
     ./ripgrep.nix
+    ./rust.nix
     ./ssh-agent.nix
     ./tmux.nix
     ./zsh.nix

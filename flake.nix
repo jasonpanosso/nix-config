@@ -21,6 +21,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     sops-nix = {
       url = "github:mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -39,7 +44,7 @@
     xremap-flake.url = "github:xremap/nix-flake";
   };
 
-  outputs = { self, nixpkgs, home-manager, stylix, nixos-wsl, ... } @ inputs:
+  outputs = { self, nixpkgs, home-manager, nixos-wsl, ... } @ inputs:
     let
       inherit (self) outputs;
       lib = nixpkgs.lib // home-manager.lib;
@@ -50,19 +55,18 @@
 
       pkgsFor = lib.genAttrs systems (system: import nixpkgs {
         inherit system;
+        overlays = builtins.attrValues outputs.overlays;
       });
       forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system});
     in
     {
       inherit lib;
+      overlays = import ./overlays { inherit inputs; };
       homeModules = import ./modules/home-manager;
       templates = import ./templates;
-
       packages = forEachSystem (pkgs: import ./pkgs { inherit pkgs; });
-      devShells = forEachSystem (pkgs: import ./shell.nix { inherit pkgs; });
+      devShells = forEachSystem (pkgs: import ./shells { inherit pkgs; });
       formatter = forEachSystem (pkgs: pkgs.nixpkgs-fmt);
-
-      overlays = import ./overlays { inherit inputs; };
 
       nixosConfigurations = {
         # Laptop - XPS 13

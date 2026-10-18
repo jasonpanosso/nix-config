@@ -129,6 +129,7 @@
       "profile_default/"
       "ipython_config.py"
       ".env"
+      ".envrc"
       ".venv"
       "env/"
       "venv/"

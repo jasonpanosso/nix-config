@@ -4,7 +4,6 @@
     ./dconf.nix
     ./pavucontrol.nix
     ./playerctl.nix
-    ./xdg.nix
     ./zathura.nix
   ];
 }

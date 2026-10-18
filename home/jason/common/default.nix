@@ -1,5 +1,8 @@
 { lib, pkgs, config, outputs, inputs, ... }:
 
+let
+  flakePath = "${config.xdg.configHome}/nixos";
+in
 {
   imports = [
     inputs.stylix.homeModules.stylix
@@ -28,6 +31,10 @@
 
   programs = {
     home-manager.enable = true;
+    nh = {
+      enable = true;
+      flake = flakePath;
+    };
   };
 
   home = {
@@ -35,5 +42,18 @@
     homeDirectory = lib.mkDefault "/home/${config.home.username}";
     stateVersion = lib.mkDefault "26.05";
     sessionPath = [ "${config.home.homeDirectory}/.local/bin" ];
+    activation.cloneNixConfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      if [ ! -d "${flakePath}" ]; then
+        run ${pkgs.git}/bin/git clone https://github.com/jasonpanosso/nix-config "${flakePath}"
+      fi
+    '';
+  };
+
+  xdg = {
+    userDirs = {
+      enable = true;
+      createDirectories = true;
+      setSessionVariables = true;
+    };
   };
 }
