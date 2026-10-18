@@ -9,11 +9,13 @@
     ./fzf.nix
     ./gh.nix
     ./git.nix
+    ./go.nix
     ./gpg.nix
     ./kitty.nix
     ./kubecolor.nix
     ./kubectl.nix
     ./lazygit.nix
+    ./nixenv.nix
     ./ripgrep.nix
     ./rust.nix
     ./ssh-agent.nix
