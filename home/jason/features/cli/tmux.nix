@@ -1,12 +1,5 @@
 { config, pkgs, lib, osConfig ? { }, ... }:
 
-let
-  isWsl = osConfig.wsl.enable or false;
-  copyCommand =
-    if isWsl
-    then "clip.exe"
-    else "${pkgs.wl-clipboard}/bin/wl-copy -p";
-in
 {
   home.packages = with pkgs;
     [
@@ -136,7 +129,7 @@ in
       # vi copy fixes
       set-window-option -g mode-keys vi
 
-      set -s copy-command '${copyCommand}'
+      set -s copy-command '${config.clipboard.copy}'
       set -s set-clipboard on
 
       bind -T copy-mode-vi v send-keys -X begin-selection

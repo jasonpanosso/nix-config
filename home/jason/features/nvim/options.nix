@@ -101,6 +101,14 @@ in
       loaded_netrwPlugin = 1;
       loaded_netrwSettings = 1;
       loaded_netrwFileHandlers = 1;
+
+      # wsl compat
+      clipboard = {
+        name = "nix-clipboard";
+        copy = { "+" = config.clipboard.copy; "*" = config.clipboard.copy; };
+        paste = { "+" = config.clipboard.paste; "*" = config.clipboard.paste; };
+        cache_enabled = 0;
+      };
     };
 
     extraConfigLua =

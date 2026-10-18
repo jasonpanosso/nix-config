@@ -11,6 +11,7 @@
     imports = [
       ../../home/jason/common
       ./git-exe.nix
+      ./clipboard.nix
     ];
 
     # no desktop on wsl
