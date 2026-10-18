@@ -5,7 +5,6 @@
     extraPackages = with pkgs; [
       prettier
       stylua
-      rustfmt
       nixpkgs-fmt
       beautysh
       djlint
@@ -47,9 +46,6 @@
             command = "prettier";
             args = [ "--no-bracket-spacing" "--parser" "yaml" "--stdin-filepath" "$FILENAME" ];
           };
-          rustfmt = {
-            command = "rustfmt";
-          };
           sqlfluff = {
             command = "sqlfluff";
             stdin = true;
@@ -73,7 +69,7 @@
           yaml = [ "prettier-helm" ];
           "yaml.ghaction" = [ "prettier-helm" ];
           toml = [ "taplo" ];
-          rust = [ "rustfmt" ];
+          rust = { lsp_format = "prefer"; };
           go = [ "gofmt" ];
           python = [ "ruff_format" ];
           sql = [ "sqlfluff" ];
