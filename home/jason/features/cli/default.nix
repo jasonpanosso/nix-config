@@ -6,12 +6,12 @@
     ./direnv.nix
     ./eza.nix
     ./fd.nix
+    ./foot.nix
     ./fzf.nix
     ./gh.nix
     ./git.nix
     ./go.nix
     ./gpg.nix
-    ./kitty.nix
     ./kubecolor.nix
     ./kubectl.nix
     ./lazygit.nix
