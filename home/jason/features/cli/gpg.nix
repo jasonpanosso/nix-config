@@ -23,6 +23,8 @@ in
     enable = true;
     pinentry.package = pinentry.package;
     enableExtraSocket = true;
+    defaultCacheTtl = 3600;
+    maxCacheTtl = 7200;
   };
 
   programs =
