@@ -28,6 +28,15 @@
       scrollback = {
         lines = 10000;
       };
+
+      # dimmed text looking a bit weird with kanagawa
+      colors-light.dim-blend-towards = "black";
+      colors-dark.dim-blend-towards = "black";
+
+      # shift+enter = newline
+      text-bindings = {
+        "\\x1b\\x0d" = "Shift+Return";
+      };
     };
   };
 }
