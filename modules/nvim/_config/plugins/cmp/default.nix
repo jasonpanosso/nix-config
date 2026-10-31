@@ -1,57 +1,55 @@
 { pkgs, ... }:
 
 {
-  programs.nixvim = {
-    extraPlugins = with pkgs.vimPlugins; [
-      cmp_luasnip
-      cmp-nvim-lsp
-      cmp-path
-      cmp-buffer
-      nvim-cmp
-      lspkind-nvim
-    ];
+  extraPlugins = with pkgs.vimPlugins; [
+    cmp_luasnip
+    cmp-nvim-lsp
+    cmp-path
+    cmp-buffer
+    nvim-cmp
+    lspkind-nvim
+  ];
 
-    plugins.friendly-snippets.enable = true;
-    plugins.luasnip = {
-      enable = true;
+  plugins.friendly-snippets.enable = true;
+  plugins.luasnip = {
+    enable = true;
 
-      fromVscode = [
-        {
-          paths = ./snippets;
-        }
-      ];
-
-      settings = {
-        enable_autosnippets = true;
-        updateevents = "TextChanged,TextChangedI";
-
-        ext_opts.__raw = /* lua */ ''
-          {
-            [require('luasnip.util.types').choiceNode] = {
-              active = {
-                virt_text = { { '<- choiceNode', 'Comment' } },
-              },
-            },
-          }
-        '';
-      };
-    };
-
-    keymaps = [
+    fromVscode = [
       {
-        mode = [
-          "i"
-          "v"
-        ];
-        key = "<C-L>";
-        action.__raw = "function() require('luasnip').jump(1) end";
-        options = {
-          silent = true;
-          desc = "Next snippet";
-        };
+        paths = ./snippets;
       }
     ];
 
-    extraConfigLua = builtins.readFile ./nvim-cmp.lua;
+    settings = {
+      enable_autosnippets = true;
+      updateevents = "TextChanged,TextChangedI";
+
+      ext_opts.__raw = /* lua */ ''
+        {
+          [require('luasnip.util.types').choiceNode] = {
+            active = {
+              virt_text = { { '<- choiceNode', 'Comment' } },
+            },
+          },
+        }
+      '';
+    };
   };
+
+  keymaps = [
+    {
+      mode = [
+        "i"
+        "v"
+      ];
+      key = "<C-L>";
+      action.__raw = "function() require('luasnip').jump(1) end";
+      options = {
+        silent = true;
+        desc = "Next snippet";
+      };
+    }
+  ];
+
+  extraConfigLua = builtins.readFile ./nvim-cmp.lua;
 }

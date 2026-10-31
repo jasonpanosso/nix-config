@@ -1,6 +1,6 @@
 {
   imports = [ ./keybinds.nix ];
-  programs.nixvim.plugins.lspsaga = {
+  plugins.lspsaga = {
     enable = true;
     settings = {
       ui = {

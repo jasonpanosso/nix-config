@@ -1,5 +1,5 @@
 {
-  programs.nixvim.plugins = {
+  plugins = {
     treesitter = {
       enable = true;
 
@@ -72,7 +72,7 @@
     };
   };
 
-  programs.nixvim.extraConfigLua = /* lua */ ''
+  extraConfigLua = /* lua */ ''
     vim.api.nvim_command('set nofoldenable')
 
     -- indenting for jsx/tsx

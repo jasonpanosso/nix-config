@@ -1,5 +1,5 @@
 {
-  programs.nixvim.colorschemes.kanagawa = {
+  colorschemes.kanagawa = {
     enable = true;
 
     settings = {

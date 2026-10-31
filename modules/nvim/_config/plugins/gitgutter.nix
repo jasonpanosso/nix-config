@@ -1,5 +1,5 @@
 {
-  programs.nixvim.plugins.gitgutter = {
+  plugins.gitgutter = {
     enable = true;
   };
 }

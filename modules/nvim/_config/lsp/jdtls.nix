@@ -1,9 +1,9 @@
 { lib, pkgs, ... }:
 
 {
-  home.packages = [ pkgs.jdt-language-server ];
+  extraPackages = [ pkgs.jdt-language-server ];
 
-  programs.nixvim.plugins = {
+  plugins = {
     jdtls = {
       enable = true;
       settings = {

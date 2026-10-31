@@ -1,40 +1,39 @@
 {
   pkgs,
   lib,
-  config,
   ...
 }:
 
 {
-  programs.nixvim = {
-    extraPackages = with pkgs; [
-      prettier
-      stylua
-      nixpkgs-fmt
-      beautysh
-      djlint
-      taplo
-      go
-      ruff
-      sqlfluff
-      google-java-format
-      terraform
-      hclfmt
-    ];
+  extraPackages = with pkgs; [
+    prettier
+    stylua
+    nixpkgs-fmt
+    beautysh
+    djlint
+    taplo
+    go
+    ruff
+    sqlfluff
+    google-java-format
+    terraform
+    hclfmt
+  ];
 
-    plugins.conform-nvim = {
-      enable = true;
+  plugins.conform-nvim = {
+    enable = true;
 
-      settings = {
-        formatters = {
-          prettier-svelte = {
-            command = "prettier";
-            args = [
-              "--stdin-filepath"
-              "$FILENAME"
-            ];
-          };
-          prettier = config.lib.nixvim.mkRaw /* lua */ ''
+    settings = {
+      formatters = {
+        prettier-svelte = {
+          command = "prettier";
+          args = [
+            "--stdin-filepath"
+            "$FILENAME"
+          ];
+        };
+        prettier = {
+          __raw = /* lua */ ''
             {
               command = function(self, bufnr)
                   local util = require("conform.util")
@@ -48,78 +47,78 @@
                 end
             }
           '';
-          prettier-helm = {
-            command = "prettier";
-            args = [
-              "--no-bracket-spacing"
-              "--parser"
-              "yaml"
-              "--stdin-filepath"
-              "$FILENAME"
-            ];
-          };
-          sqlfluff = {
-            command = "sqlfluff";
-            stdin = true;
-            args = [
-              "fix"
-              "--dialect=postgres"
-              "--force"
-              "-"
-            ];
-          };
         };
-
-        formatters_by_ft = {
-          lua = [ "stylua" ];
-          nix = [ "nixpkgs_fmt" ];
-          typescript = [ "prettier" ];
-          javascript = [ "prettier" ];
-          typescriptreact = [ "prettier" ];
-          javascriptreact = [ "prettier" ];
-          svelte = [ "prettier-svelte" ];
-          markdown = [ "prettier" ];
-          html = [ "prettier" ];
-          htmldjango = [ "djlint" ];
-          sh = [ "beautysh" ];
-          zsh = [ "beautysh" ];
-          yaml = [ "prettier-helm" ];
-          "yaml.ghaction" = [ "prettier-helm" ];
-          toml = [ "taplo" ];
-          rust = {
-            lsp_format = "prefer";
-          };
-          go = [ "gofmt" ];
-          python = [ "ruff_format" ];
-          sql = [ "sqlfluff" ];
-          css = [ "prettier" ];
-          json = [ "prettier" ];
-          jsonc = [ "prettier" ];
-          java = [ "google-java-format" ];
-          terraform = [ "terraform_fmt" ];
-          hcl = [ "hcl" ];
-          "_" = [ "trim_whitespace" ];
+        prettier-helm = {
+          command = "prettier";
+          args = [
+            "--no-bracket-spacing"
+            "--parser"
+            "yaml"
+            "--stdin-filepath"
+            "$FILENAME"
+          ];
+        };
+        sqlfluff = {
+          command = "sqlfluff";
+          stdin = true;
+          args = [
+            "fix"
+            "--dialect=postgres"
+            "--force"
+            "-"
+          ];
         };
       };
-    };
 
-    keymaps = [
-      {
-        mode = [
-          "n"
-          "v"
-        ];
-        key = "<leader>lf";
-        action.__raw = /* lua */ ''
-          function()
-            require("conform").format({ async = true, lsp_fallback = true })
-          end
-        '';
-        options = {
-          silent = true;
-          desc = "Format";
+      formatters_by_ft = {
+        lua = [ "stylua" ];
+        nix = [ "nixpkgs_fmt" ];
+        typescript = [ "prettier" ];
+        javascript = [ "prettier" ];
+        typescriptreact = [ "prettier" ];
+        javascriptreact = [ "prettier" ];
+        svelte = [ "prettier-svelte" ];
+        markdown = [ "prettier" ];
+        html = [ "prettier" ];
+        htmldjango = [ "djlint" ];
+        sh = [ "beautysh" ];
+        zsh = [ "beautysh" ];
+        yaml = [ "prettier-helm" ];
+        "yaml.ghaction" = [ "prettier-helm" ];
+        toml = [ "taplo" ];
+        rust = {
+          lsp_format = "prefer";
         };
-      }
-    ];
+        go = [ "gofmt" ];
+        python = [ "ruff_format" ];
+        sql = [ "sqlfluff" ];
+        css = [ "prettier" ];
+        json = [ "prettier" ];
+        jsonc = [ "prettier" ];
+        java = [ "google-java-format" ];
+        terraform = [ "terraform_fmt" ];
+        hcl = [ "hcl" ];
+        "_" = [ "trim_whitespace" ];
+      };
+    };
   };
+
+  keymaps = [
+    {
+      mode = [
+        "n"
+        "v"
+      ];
+      key = "<leader>lf";
+      action.__raw = /* lua */ ''
+        function()
+          require("conform").format({ async = true, lsp_fallback = true })
+        end
+      '';
+      options = {
+        silent = true;
+        desc = "Format";
+      };
+    }
+  ];
 }

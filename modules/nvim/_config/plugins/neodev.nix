@@ -1,9 +1,7 @@
 { pkgs, ... }:
 
 {
-  programs.nixvim = {
-    extraPlugins = with pkgs.vimPlugins; [
-      neodev-nvim
-    ];
-  };
+  extraPlugins = with pkgs.vimPlugins; [
+    neodev-nvim
+  ];
 }

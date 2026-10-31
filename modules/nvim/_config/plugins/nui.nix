@@ -1,3 +1,3 @@
 {
-  programs.nixvim.plugins.nui.enable = true;
+  plugins.nui.enable = true;
 }

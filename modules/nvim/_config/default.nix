@@ -1,3 +1,4 @@
+# A plain nixvim module: used by both homeManager.nvim and packages.nvim
 { pkgs, ... }:
 
 {
@@ -10,25 +11,10 @@
     ./general-keymaps.nix
   ];
 
-  home.packages = with pkgs; [
-    ripgrep
-  ];
+  viAlias = true;
+  plugins.web-devicons.enable = true;
+  globals.mapleader = " ";
 
-  home.sessionVariables = {
-    EDITOR = "nvim";
-    VISUAL = "nvim";
-  };
-
-  programs.nixvim = {
-    enable = true;
-    viAlias = true;
-    plugins.web-devicons.enable = true;
-    defaultEditor = true;
-    nixpkgs.useGlobalPackages = true;
-    globals.mapleader = " ";
-
-    extraPlugins = with pkgs.vimPlugins; [ vim-rzip ];
-  };
-
-  stylix.targets.nixvim.enable = false;
+  extraPlugins = with pkgs.vimPlugins; [ vim-rzip ];
+  extraPackages = [ pkgs.ripgrep ];
 }

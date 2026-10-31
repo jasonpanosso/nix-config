@@ -1,5 +1,5 @@
 {
-  programs.nixvim.plugins.indent-blankline = {
+  plugins.indent-blankline = {
     enable = true;
     settings = {
       scope.enabled = false;

@@ -1,5 +1,5 @@
 {
-  programs.nixvim.plugins.fidget = {
+  plugins.fidget = {
     enable = true;
     settings = {
       progress.lsp.progress_ringbuf_size = 16384;

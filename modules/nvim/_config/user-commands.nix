@@ -1,7 +1,5 @@
 {
-  programs.nixvim = {
-    userCommands = {
-      W.command = "w";
-    };
+  userCommands = {
+    W.command = "w";
   };
 }
