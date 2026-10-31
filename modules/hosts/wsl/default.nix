@@ -8,7 +8,6 @@ in
     modules = with nixos; [
       base
       jason
-      stylix
       docker
       wsl
     ];

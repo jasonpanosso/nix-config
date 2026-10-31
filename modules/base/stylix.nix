@@ -51,7 +51,7 @@ let
     };
 in
 {
-  flake.modules.nixos.stylix = {
+  flake.modules.nixos.base = {
     imports = [
       inputs.stylix.nixosModules.stylix
       theme
