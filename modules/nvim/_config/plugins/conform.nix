@@ -8,7 +8,7 @@
   extraPackages = with pkgs; [
     prettier
     stylua
-    nixpkgs-fmt
+    nixfmt
     beautysh
     djlint
     taplo
@@ -72,7 +72,7 @@
 
       formatters_by_ft = {
         lua = [ "stylua" ];
-        nix = [ "nixpkgs_fmt" ];
+        nix = [ "nixfmt" ];
         typescript = [ "prettier" ];
         javascript = [ "prettier" ];
         typescriptreact = [ "prettier" ];
