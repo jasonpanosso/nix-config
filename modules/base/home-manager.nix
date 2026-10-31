@@ -14,9 +14,6 @@
   flake.modules.homeManager.base =
     { lib, config, ... }:
     {
-      # TODO: replace with machine facts
-      imports = builtins.attrValues (import ../../home/modules);
-
       programs.home-manager.enable = true;
 
       home = {

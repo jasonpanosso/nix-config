@@ -1,7 +1,27 @@
 {
   flake.modules.homeManager.hyprland =
-    { pkgs, config, ... }:
+    {
+      lib,
+      pkgs,
+      config,
+      ...
+    }:
 
+    let
+      inherit (config.desktop or (throw "hyprland: add homeManager.desktop to this home")) monitors;
+
+      output = m: if m.description != null then "desc:${m.description}" else m.name;
+
+      monitorRule =
+        m:
+        "${output m}, ${toString m.width}x${toString m.height}@${toString m.refreshRate}, ${toString m.x}x${toString m.y}, ${toString m.scale}";
+
+      workspaceRules =
+        m:
+        lib.imap0 (
+          i: ws: "${ws}, monitor:${output m}" + lib.optionalString (i == 0) ", default:true"
+        ) m.workspaces;
+    in
     {
       clipboard = {
         copy = "${pkgs.wl-clipboard}/bin/wl-copy";
@@ -18,9 +38,6 @@
 
       wayland.windowManager.hyprland =
         let
-          leftMonitor = "Ancor Communications Inc VG248 71LB06600000";
-          rightMonitor = "ASUSTek COMPUTER INC VG259QM M1LMQS046469";
-
           waybar = "${config.programs.waybar.package}/bin/waybar";
           mako = "${config.services.mako.package}/bin/mako";
           hyprpaper = "${pkgs.hyprpaper}/bin/hyprpaper";
@@ -47,22 +64,12 @@
               follow_mouse = 0;
             };
 
-            monitor = [
-              "desc:${leftMonitor}, highrr, 0x0, 1"
-              "desc:${rightMonitor}, highrr, 1920x0, 1"
+            monitor = map monitorRule monitors ++ [
+              # anything plugged in that isn't a known monitor
               ", preferred, auto, 1"
             ];
 
-            workspace = [
-              "1, monitor:desc:${leftMonitor}"
-              "2, monitor:desc:${leftMonitor}"
-              "3, monitor:desc:${leftMonitor}, default:true"
-
-              "4, monitor:desc:${rightMonitor}, default:true"
-              "5, monitor:desc:${rightMonitor}"
-              "6, monitor:desc:${rightMonitor}"
-              "7, monitor:desc:${rightMonitor}"
-
+            workspace = lib.concatMap workspaceRules monitors ++ [
               # smart gaps
               "f[1], gapsout:0, gapsin:0"
               "w[tg1], gapsout:0, gapsin:0"
