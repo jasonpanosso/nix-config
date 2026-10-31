@@ -36,7 +36,7 @@
     {
       mode = [ "n" ];
       key = "<leader>k";
-      action.__raw = "vim.lsp.buf.signature_help";
+      action.__raw = "function() vim.lsp.buf.signature_help({ border = _M.lsp_border }) end";
       options = {
         silent = true;
         desc = "LSP: Signature Help";
