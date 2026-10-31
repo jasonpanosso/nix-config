@@ -29,7 +29,6 @@
 
           hashedPasswordFile = config.sops.secrets.jason-password.path;
           openssh.authorizedKeys.keys = [ (builtins.readFile ./ssh.pub) ];
-          packages = [ pkgs.home-manager ];
         };
       };
 
