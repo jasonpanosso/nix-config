@@ -74,6 +74,9 @@ in
 
     # stylix's overlays set nixpkgs.overlays, which useGlobalPkgs forbids
     stylix.overlays.enable = false;
+
+    # rofi isn't used (wofi is), and stylix's rofi target sets a renamed option
+    stylix.targets.rofi.enable = false;
   };
 
   flake.modules.homeManager.linux.imports = [ cursor ];

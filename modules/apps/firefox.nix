@@ -5,6 +5,9 @@
     { pkgs, ... }:
 
     {
+      # not themed for now; stylix needs `stylix.targets.firefox.profileNames = [ "jason" ]` to theme it
+      stylix.targets.firefox.enable = false;
+
       programs.firefox = {
         enable = true;
 
