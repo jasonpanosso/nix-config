@@ -1,4 +1,5 @@
 {
+  # TODO: migrate off of lspsaga
   imports = [ ./keybinds.nix ];
   plugins.lspsaga = {
     enable = true;
