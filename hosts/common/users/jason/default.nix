@@ -17,7 +17,6 @@ in
       ++ ifGroupExists [
         "network"
         "networkmanager"
-        "wireshark"
         "i2c"
         "docker"
         "git"
