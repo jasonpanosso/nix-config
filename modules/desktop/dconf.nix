@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.dconf = {
+  nixos.modules.desktop = {
     programs.dconf.enable = true;
   };
 }

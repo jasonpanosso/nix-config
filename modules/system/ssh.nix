@@ -1,14 +1,13 @@
 { config, ... }:
 
 let
-  hosts = builtins.attrNames config.flake.nixosConfigurations;
+  inherit (config) hosts;
 in
 {
-  flake.modules.nixos.base =
+  nixos.modules.base =
     { lib, config, ... }:
     let
       inherit (config.networking) hostName;
-      pubKey = host: ../../hosts/${host}/ssh_host_ed25519_key.pub;
     in
     {
       services.openssh = {
@@ -32,10 +31,10 @@ in
 
       programs.ssh = {
         # each hosts public key
-        knownHosts = lib.genAttrs hosts (name: {
-          publicKeyFile = pubKey name;
-          extraHostNames = (lib.optional (name == hostName) "localhost");
-        });
+        knownHosts = lib.mapAttrs (name: host: {
+          publicKey = host.sshPublicKey;
+          extraHostNames = lib.optional (name == hostName) "localhost";
+        }) hosts;
       };
 
       # Passwordless sudo when SSH'ing with keys
@@ -46,7 +45,7 @@ in
     };
 
   # the client half: holds keys for outgoing ssh (and agent-forwarded sudo above)
-  flake.modules.homeManager.base = {
+  homeManager.modules.base = {
     services.ssh-agent.enable = true;
   };
 }

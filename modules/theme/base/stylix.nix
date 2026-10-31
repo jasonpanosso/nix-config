@@ -55,7 +55,7 @@ let
     };
 in
 {
-  flake.modules.nixos.base = {
+  nixos.modules.base = {
     imports = [
       inputs.stylix.nixosModules.stylix
       theme
@@ -66,7 +66,7 @@ in
     stylix.homeManagerIntegration.autoImport = false;
   };
 
-  flake.modules.homeManager.base = {
+  homeManager.modules.base = {
     imports = [
       inputs.stylix.homeModules.stylix
       theme
@@ -79,7 +79,7 @@ in
     stylix.targets.rofi.enable = false;
   };
 
-  flake.modules.homeManager.linux = {
+  homeManager.modules.linux = {
     imports = [ cursor ];
 
     # stylix only auto-enables qt for NixOS-managed homes

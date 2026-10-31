@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.wsl =
+  homeManager.modules.wsl =
     { pkgs, ... }:
 
     let

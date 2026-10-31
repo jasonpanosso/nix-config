@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.calibre =
+  homeManager.modules.desktop =
     { pkgs, ... }:
 
     {

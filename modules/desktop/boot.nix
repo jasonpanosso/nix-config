@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.boot = {
+  nixos.modules.desktop = {
     boot.loader = {
       systemd-boot = {
         enable = true;

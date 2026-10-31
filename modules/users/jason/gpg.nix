@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.jason =
+  users.jason.home =
     { pkgs, config, ... }:
 
     {
@@ -7,7 +7,7 @@
       assertions = [
         {
           assertion = config.services.gpg-agent.pinentry.package != null;
-          message = "gpg: no pinentry chosen; add a pinentry module (e.g. homeManager.pinentry-gnome3) or set services.gpg-agent.pinentry.package";
+          message = "gpg: no pinentry chosen; compose this home from an aspect that picks one (homeManager.modules.linux or .darwin) or set services.gpg-agent.pinentry.package";
         }
       ];
 

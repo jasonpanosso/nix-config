@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.foot =
+  homeManager.modules.desktop =
     { lib, pkgs, ... }:
 
     {

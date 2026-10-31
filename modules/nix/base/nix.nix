@@ -1,7 +1,7 @@
 { inputs, ... }:
 
 {
-  flake.modules.nixos.base =
+  nixos.modules.base =
     { lib, pkgs, ... }:
     {
       nix = {
@@ -47,7 +47,7 @@
       };
     };
 
-  flake.modules.homeManager.base =
+  homeManager.modules.base =
     {
       lib,
       pkgs,

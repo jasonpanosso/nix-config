@@ -1,7 +1,7 @@
 { inputs, ... }:
 
 {
-  flake.modules.homeManager.firefox =
+  homeManager.modules.desktop =
     { pkgs, ... }:
 
     {

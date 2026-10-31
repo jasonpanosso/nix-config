@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.base =
+  homeManager.modules.base =
     { lib, ... }:
     {
       options.clipboard = {

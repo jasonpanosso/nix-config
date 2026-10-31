@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.shell = {
+  homeManager.modules.base = {
     programs.eza = {
       enable = true;
       git = true;

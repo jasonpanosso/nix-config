@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.shell =
+  homeManager.modules.base =
     { pkgs, ... }:
 
     # helper script for getting a lang specific devshell with direnv setup

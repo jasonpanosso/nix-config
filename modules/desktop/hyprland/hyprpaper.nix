@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.hyprland = {
+  homeManager.modules.desktop = {
     services.hyprpaper = {
       enable = true;
     };

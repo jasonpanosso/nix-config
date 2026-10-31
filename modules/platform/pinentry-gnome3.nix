@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.pinentry-gnome3 =
+  homeManager.modules.linux =
     { pkgs, ... }:
     {
       services.gpg-agent.pinentry.package = pkgs.pinentry-gnome3;

@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.discord =
+  homeManager.modules.desktop =
     { pkgs, ... }:
 
     {

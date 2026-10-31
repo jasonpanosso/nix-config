@@ -1,4 +1,4 @@
-# A plain nixvim module: used by both homeManager.nvim and packages.nvim
+# A plain nixvim module: used by both homeManager.modules.base and packages.nvim
 { pkgs, ... }:
 
 {

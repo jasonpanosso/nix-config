@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.jason =
+  users.jason.nixos =
     { pkgs, config, ... }:
     let
       ifGroupExists = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
@@ -32,13 +32,10 @@
         };
       };
 
-      sops.secrets.jason-password = {
-        sopsFile = ../../../secrets/common.enc.yaml;
-        neededForUsers = true;
-      };
+      sops.secrets.jason-password.neededForUsers = true;
     };
 
-  flake.modules.homeManager.jason =
+  users.jason.home =
     { lib, config, ... }:
     {
       home = {

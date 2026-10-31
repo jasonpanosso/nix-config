@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.hyprland =
+  homeManager.modules.desktop =
     {
       lib,
       pkgs,
@@ -8,7 +8,7 @@
     }:
 
     let
-      inherit (config.desktop or (throw "hyprland: add homeManager.desktop to this home")) monitors;
+      inherit (config.desktop) monitors;
 
       output = m: if m.description != null then "desc:${m.description}" else m.name;
 

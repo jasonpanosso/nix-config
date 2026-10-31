@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.shell = {
+  homeManager.modules.base = {
     programs.fd = {
       enable = true;
       ignores = [

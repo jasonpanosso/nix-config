@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.linux =
+  homeManager.modules.linux =
     { pkgs, ... }:
     {
       systemd.user.startServices = "sd-switch";

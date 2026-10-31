@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.darwin =
+  homeManager.modules.darwin =
     { pkgs, ... }:
     {
       clipboard = {

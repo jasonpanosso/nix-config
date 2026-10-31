@@ -1,6 +1,6 @@
 {
   # must configure monitors for "desktop" features
-  flake.modules.homeManager.desktop =
+  homeManager.modules.desktop =
     { lib, ... }:
     let
       inherit (lib) mkOption types;

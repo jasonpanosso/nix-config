@@ -11,7 +11,7 @@ in
 {
   flake.overlays.rust-overlay = inputs.rust-overlay.overlays.default;
 
-  flake.modules.nixos.base = {
+  nixos.modules.base = {
     nixpkgs = {
       inherit overlays;
       config = nixpkgsConfig;

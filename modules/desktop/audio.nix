@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.audio = {
+  nixos.modules.desktop = {
     security.rtkit.enable = true;
     services.pulseaudio.enable = false;
 
@@ -16,7 +16,7 @@
   };
 
   # volume mixer for the pipewire-pulse server above
-  flake.modules.homeManager.audio =
+  homeManager.modules.desktop =
     { pkgs, ... }:
     {
       home.packages = [ pkgs.pavucontrol ];

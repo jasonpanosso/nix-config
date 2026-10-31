@@ -1,54 +1,30 @@
-{
-  inputs,
-  config,
-  withSystem,
-  ...
-}:
+# NixOS under WSL: no bootloader, no desktop, Windows interop
+{ inputs, config, ... }:
 
-let
-  inherit (config.flake.modules) nixos homeManager;
-in
 {
-  flake.nixosConfigurations.wsl = inputs.nixpkgs.lib.nixosSystem {
-    modules = with nixos; [
-      base
-      jason
-      docker
-      wsl
-    ];
+  hosts.wsl = {
+    users = [ "jason" ];
+    sshPublicKey = builtins.readFile ./ssh_host_ed25519_key.pub;
+
+    module = {
+      imports = [
+        config.nixos.modules.base
+        inputs.nixos-wsl.nixosModules.default
+      ];
+
+      wsl = {
+        enable = true;
+        defaultUser = "jason";
+      };
+
+      system.stateVersion = "26.05";
+
+      home-manager.sharedModules = [ config.homeManager.modules.wsl ];
+    };
   };
 
-  flake.homeConfigurations."jason@wsl" = withSystem "x86_64-linux" (
-    { pkgs, ... }:
-    inputs.home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
-      modules = with homeManager; [
-        base
-        jason
-        linux
-        shell
-        nvim
-        foot
-        pinentry-gnome3
-        wsl
-        {
-          # no desktop on wsl
-          dconf.enable = false;
-        }
-      ];
-    }
-  );
-
-  flake.modules.nixos.wsl = {
-    imports = [ inputs.nixos-wsl.nixosModules.default ];
-
-    nixpkgs.hostPlatform = "x86_64-linux";
-    networking.hostName = "wsl";
-    system.stateVersion = "26.05";
-
-    wsl = {
-      enable = true;
-      defaultUser = "jason";
-    };
+  homeManager.modules.wsl = {
+    # no dconf service without a desktop
+    dconf.enable = false;
   };
 }

@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.base =
+  nixos.modules.base =
     { lib, ... }:
     {
       i18n = {
