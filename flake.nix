@@ -31,11 +31,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nh = {
-      url = "github:nix-community/nh";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -44,10 +39,10 @@
     xremap-flake.url = "github:xremap/nix-flake";
   };
 
-  outputs = { self, nixpkgs, home-manager, nixos-wsl, ... } @ inputs:
+  outputs = { self, nixpkgs, nixos-wsl, ... } @ inputs:
     let
       inherit (self) outputs;
-      lib = nixpkgs.lib // home-manager.lib;
+      inherit (nixpkgs) lib;
       systems = [
         "aarch64-linux"
         "x86_64-linux"
@@ -60,13 +55,18 @@
       forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system});
     in
     {
-      inherit lib;
       overlays = import ./overlays { inherit inputs; };
       homeModules = import ./modules/home-manager;
       templates = import ./templates;
       packages = forEachSystem (pkgs: import ./pkgs { inherit pkgs; });
       devShells = forEachSystem (pkgs: import ./shells { inherit pkgs; });
-      formatter = forEachSystem (pkgs: pkgs.nixpkgs-fmt);
+      formatter = forEachSystem (pkgs: pkgs.nixfmt-tree);
+
+      # `nix flake check` builds every host for its platform
+      checks = forEachSystem (pkgs:
+        lib.mapAttrs (_: host: host.config.system.build.toplevel)
+          (lib.filterAttrs (_: host: host.pkgs.stdenv.hostPlatform.system == pkgs.stdenv.hostPlatform.system)
+            self.nixosConfigurations));
 
       nixosConfigurations = {
         # Laptop - XPS 13
@@ -92,32 +92,6 @@
           specialArgs = {
             inherit inputs outputs;
           };
-        };
-      };
-
-      homeConfigurations = {
-        # Workstations
-        "jason@pathfinder" = lib.homeManagerConfiguration {
-          modules = [ ./home/jason/pathfinder.nix ];
-          pkgs = pkgsFor.x86_64-linux;
-          extraSpecialArgs = { inherit inputs outputs; };
-        };
-
-        "jason" = lib.homeManagerConfiguration {
-          modules = [
-            ./home/jason/common
-            ./home/jason/features/desktop/common
-          ];
-          pkgs = pkgsFor.x86_64-linux;
-          extraSpecialArgs = { inherit inputs outputs; };
-        };
-
-        "cli" = lib.homeManagerConfiguration {
-          modules = [
-            ./home/jason/common
-          ];
-          pkgs = pkgsFor.x86_64-linux;
-          extraSpecialArgs = { inherit inputs outputs; };
         };
       };
     };

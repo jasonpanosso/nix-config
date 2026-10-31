@@ -26,9 +26,8 @@
 
   powerManagement.powertop.enable = true;
 
-  programs = {
-    light.enable = true;
-  };
+  # hm installs xdg portals into the user profile (useUserPackages)
+  environment.pathsToLink = [ "/share/applications" "/share/xdg-desktop-portal" ];
 
   # Lid settings
   services.logind = {
@@ -41,6 +40,7 @@
   system.stateVersion = "23.11";
 
   services.xremap = {
+    enable = true;
     withWlroots = true;
     userName = "jason";
     config = {

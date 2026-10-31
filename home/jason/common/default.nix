@@ -12,14 +12,6 @@ in
     ../features/nvim
   ] ++ (builtins.attrValues outputs.homeModules);
 
-  nixpkgs = {
-    overlays = builtins.attrValues outputs.overlays;
-    config = {
-      allowUnfree = true;
-      allowUnfreePredicate = (_: true);
-    };
-  };
-
   nix = {
     package = lib.mkDefault pkgs.nix;
     settings = {
@@ -27,6 +19,9 @@ in
       warn-dirty = false;
     };
   };
+
+  # stylix's overlays set nixpkgs.overlays, which useGlobalPkgs forbids
+  stylix.overlays.enable = false;
 
   systemd.user.startServices = "sd-switch";
 
@@ -43,6 +38,7 @@ in
     homeDirectory = lib.mkDefault "/home/${config.home.username}";
     stateVersion = lib.mkDefault "26.05";
     sessionPath = [ "${config.home.homeDirectory}/.local/bin" ];
+    file.".ideavimrc".source = ./ideavimrc;
     activation.cloneNixConfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       run mkdir -p "${projectsDir}"
       if [ ! -d "${flakePath}" ]; then

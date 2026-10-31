@@ -13,6 +13,7 @@
   home-manager = {
     extraSpecialArgs = { inherit inputs outputs; };
     backupFileExtension = ".bak";
+    useGlobalPkgs = true;
     useUserPackages = true;
   };
 

@@ -270,26 +270,6 @@
         "type": "github"
       }
     },
-    "nh": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1792352840,
-        "narHash": "sha256-U1j7gdQ2S9pPUqsgQDIoXhh5jL9uTT1s7Wh3kJl2NqM=",
-        "owner": "nix-community",
-        "repo": "nh",
-        "rev": "5a4bc4fa4874b76adb226cad29accf4f5feeefeb",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "nh",
-        "type": "github"
-      }
-    },
     "nixos-wsl": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -438,7 +418,6 @@
         "firefox-addons": "firefox-addons",
         "hardware": "hardware",
         "home-manager": "home-manager",
-        "nh": "nh",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs_3",
         "nixvim": "nixvim",

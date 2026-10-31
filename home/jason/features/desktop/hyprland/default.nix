@@ -104,11 +104,12 @@
             slurp = "${pkgs.slurp}/bin/slurp";
             wofi = "${pkgs.wofi}/bin/wofi";
             notify-send = "${pkgs.libnotify}/bin/notify-send";
+            foot = "${config.programs.foot.package}/bin/foot";
             wl-copy = "${pkgs.wl-clipboard}/bin/wl-copy";
           in
           [
             "$mainMod, Space, exec, ${wofi} --show=drun"
-            "$mainMod, Return, exec, /usr/bin/kitty" # HACK
+            "$mainMod, Return, exec, ${foot}"
             "$mainMod, d, exec, ${makoctl} dismiss"
 
             "$mainMod SHIFT, q, killactive"
@@ -168,18 +169,15 @@
           let
             pactl = "${pkgs.pulseaudio}/bin/pactl";
             playerctl = "${config.services.playerctld.package}/bin/playerctl";
+            brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
           in
           [
             ",XF86AudioRaiseVolume, exec, ${pactl} set-sink-volume @DEFAULT_SINK@ +5%"
             ",XF86AudioLowerVolume, exec, ${pactl} set-sink-volume @DEFAULT_SINK@ -5%"
             ",XF86AudioMute, exec, ${pactl} set-sink-mute @DEFAULT_SINK@ toggle"
             ",XF86AudioMicMute, exec, ${pactl} set-source-mute @DEFAULT_SOURCE@ toggle"
-            ",XF86MonBrightnessUp, exec, brightnessctl s 10%+"
-            ",XF86MonBrightnessDown, exec, brightnessctl s 10%-"
-
-            # Brightness (only works if lightd is installed)
-            ",XF86MonBrightnessUp, exec, light -A 10"
-            ",XF86MonBrightnessDown, exec, light -U 10"
+            ",XF86MonBrightnessUp, exec, ${brightnessctl} s 10%+"
+            ",XF86MonBrightnessDown, exec, ${brightnessctl} s 10%-"
 
             ",XF86AudioNext, exec, ${playerctl} next"
             ",XF86AudioPrev, exec, ${playerctl} previous"

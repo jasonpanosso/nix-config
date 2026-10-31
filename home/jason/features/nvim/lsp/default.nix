@@ -60,7 +60,7 @@
     ./lspsaga
     ./navic.nix
     ./pretty_hover
-    ./servers
+    ./servers.nix
     ./rustaceanvim.nix
     ./typescript-tools.nix
     ./jdtls.nix

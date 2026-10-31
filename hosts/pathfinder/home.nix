@@ -1,6 +1,7 @@
 {
   imports = [
     ../../home/jason/common
+    ../../home/jason/features/desktop/common
     ../../home/jason/features/desktop/hyprland
     ../../home/jason/features/desktop/optional/firefox.nix
     ../../home/jason/features/desktop/optional/discord.nix

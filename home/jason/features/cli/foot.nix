@@ -1,7 +1,7 @@
 { lib, pkgs, ... }:
 
 {
-  home.sessionVariables.TERMINAL = lib.getBin pkgs.foot;
+  home.sessionVariables.TERMINAL = lib.getExe pkgs.foot;
 
   programs.foot = {
     enable = true;
