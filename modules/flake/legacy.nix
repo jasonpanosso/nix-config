@@ -6,12 +6,9 @@ let
 
   specialArgs = { inherit inputs; };
 
-  legacy = {
+  home = modules: {
     home-manager.extraSpecialArgs = specialArgs;
-    home-manager.users.jason.imports = [
-      homeManager.base
-      homeManager.jason
-    ];
+    home-manager.users.jason.imports = modules;
   };
 in
 {
@@ -19,10 +16,29 @@ in
     # Laptop - XPS 13
     pathfinder = inputs.nixpkgs.lib.nixosSystem {
       inherit specialArgs;
-      modules = [
-        nixos.base
-        nixos.jason
-        legacy
+      modules = with nixos; [
+        base
+        jason
+        dconf
+        docker
+        systemd-boot
+        pipewire
+        embedded
+        (home (
+          with homeManager;
+          [
+            base
+            jason
+            cli
+            nvim
+            desktop
+            hyprland
+            calibre
+            zathura
+            firefox
+            discord
+          ]
+        ))
         ../../hosts/pathfinder
       ];
     };
@@ -30,11 +46,20 @@ in
     wsl = inputs.nixpkgs.lib.nixosSystem {
       inherit specialArgs;
       system = "x86_64-linux";
-      modules = [
-        nixos.base
-        nixos.jason
-        nixos.stylix
-        legacy
+      modules = with nixos; [
+        base
+        jason
+        stylix
+        docker
+        (home (
+          with homeManager;
+          [
+            base
+            jason
+            cli
+            nvim
+          ]
+        ))
         ../../hosts/wsl
         inputs.nixos-wsl.nixosModules.default
         {

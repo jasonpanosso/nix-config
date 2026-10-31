@@ -5,12 +5,6 @@
     ./hardware-configuration.nix
     inputs.hardware.nixosModules.dell-xps-13-9360
     inputs.xremap-flake.nixosModules.default
-
-    ../common/optional/dconf.nix
-    ../common/optional/docker.nix
-    ../common/optional/systemd-boot.nix
-    ../common/optional/pipewire.nix
-    ../common/optional/embedded.nix
   ];
 
   home-manager.users.jason = ./home.nix;
