@@ -10,7 +10,6 @@ in
 {
   flake = {
     homeModules = import ../../home/modules;
-    templates = import ../../templates;
 
     nixosConfigurations = {
       # Laptop - XPS 13
@@ -34,11 +33,4 @@ in
       };
     };
   };
-
-  perSystem =
-    { pkgs, ... }:
-    {
-      packages = import ../../pkgs { inherit pkgs; };
-      devShells = import ../../shells { inherit pkgs; };
-    };
 }

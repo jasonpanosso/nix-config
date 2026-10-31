@@ -23,15 +23,6 @@
     ) inputs;
   };
 
-  # Adds custom packages
-  additions =
-    final: prev:
-    import ../pkgs { pkgs = final; }
-    // {
-      # Add additions here, i.e
-      # formats = prev.formats // import ../pkgs/formats { pkgs = final; };
-    };
-
   # Modifies existing packages
   modifications = final: prev: {
     vimPlugins = prev.vimPlugins // {
