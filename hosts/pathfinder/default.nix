@@ -6,9 +6,6 @@
     inputs.hardware.nixosModules.dell-xps-13-9360
     inputs.xremap-flake.nixosModules.default
 
-    ../common/global
-    ../common/users/jason
-
     ../common/optional/dconf.nix
     ../common/optional/docker.nix
     ../common/optional/systemd-boot.nix

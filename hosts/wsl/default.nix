@@ -1,15 +1,13 @@
 {
   imports = [
-    ../common/global
-    ../common/users/jason
     ../common/optional/docker.nix
-    ../common/optional/stylix.nix
   ];
 
   networking.hostName = "wsl";
   home-manager.users.jason = {
     imports = [
-      ../../home/jason/common
+      ../../home/jason/features/cli
+      ../../home/jason/features/nvim
       ./git-exe.nix
       ./clipboard.nix
     ];

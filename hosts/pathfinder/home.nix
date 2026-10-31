@@ -1,6 +1,7 @@
 {
   imports = [
-    ../../home/jason/common
+    ../../home/jason/features/cli
+    ../../home/jason/features/nvim
     ../../home/jason/features/desktop/common
     ../../home/jason/features/desktop/hyprland
     ../../home/jason/features/desktop/optional/firefox.nix

@@ -1,0 +1,85 @@
+{ inputs, ... }:
+
+{
+  flake.modules.nixos.base =
+    { lib, pkgs, ... }:
+    {
+      nix = {
+        package = pkgs.nixVersions.latest;
+
+        settings = {
+          substituters = [
+            "https://cache.nixos.org"
+            "https://nix-community.cachix.org"
+          ];
+          trusted-public-keys = [
+            "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+          ];
+
+          trusted-users = [
+            "root"
+            "@wheel"
+          ];
+          auto-optimise-store = lib.mkDefault true;
+          experimental-features = [
+            "nix-command"
+            "flakes"
+          ];
+          warn-dirty = false;
+          system-features = [
+            "kvm"
+            "big-parallel"
+            "nixos-test"
+          ];
+          flake-registry = ""; # Disable global flake registry
+        };
+
+        gc = {
+          automatic = true;
+          dates = "weekly";
+          # Keep the last 3 generations
+          options = "--delete-older-than +3";
+        };
+
+        # Add each flake input as a registry
+        # To make nix3 commands consistent with the flake
+        registry = lib.mapAttrs (_: value: { flake = value; }) inputs;
+      };
+    };
+
+  flake.modules.homeManager.base =
+    {
+      lib,
+      pkgs,
+      config,
+      ...
+    }:
+    let
+      projectsDir = "${config.home.homeDirectory}/Programming";
+      flakePath = "${projectsDir}/nix-config";
+    in
+    {
+      nix = {
+        package = lib.mkDefault pkgs.nix;
+        settings = {
+          experimental-features = [
+            "nix-command"
+            "flakes"
+          ];
+          warn-dirty = false;
+        };
+      };
+
+      programs.nh = {
+        enable = true;
+        flake = flakePath;
+      };
+
+      home.activation.cloneNixConfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+        run mkdir -p "${projectsDir}"
+        if [ ! -d "${flakePath}" ]; then
+          run ${pkgs.git}/bin/git clone https://github.com/jasonpanosso/nix-config "${flakePath}"
+        fi
+      '';
+    };
+}
