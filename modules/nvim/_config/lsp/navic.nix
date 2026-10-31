@@ -5,10 +5,11 @@
       lsp = {
         auto_attach = true;
         preference = [
-          "tsserver"
+          "typescript-tools"
         ];
       };
       highlight = true;
+      separator = " › ";
     };
   };
 }

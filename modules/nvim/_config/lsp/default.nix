@@ -45,6 +45,26 @@
 
     {
       mode = [ "n" ];
+      key = "<leader>dl";
+      action.__raw = "function() vim.diagnostic.open_float({ scope = 'line' }) end";
+      options = {
+        silent = true;
+        desc = "LSP: [D]iagnostics [L]ine";
+      };
+    }
+
+    {
+      mode = [ "n" ];
+      key = "<leader>dc";
+      action.__raw = "function() vim.diagnostic.open_float({ scope = 'cursor' }) end";
+      options = {
+        silent = true;
+        desc = "LSP: [D]iagnostics [C]ursor";
+      };
+    }
+
+    {
+      mode = [ "n" ];
       key = "<leader>rl";
       action = "<cmd>so $MYVIMRC<CR>";
       options = {
@@ -58,7 +78,7 @@
     ./actions-preview
     ./fidget.nix
     ./garbage-day.nix
-    ./lspsaga
+    ./rename
     ./navic.nix
     ./pretty_hover
     ./servers.nix

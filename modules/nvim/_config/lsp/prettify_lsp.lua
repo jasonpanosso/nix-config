@@ -35,6 +35,6 @@ vim.diagnostic.config({
   severity_sort = true,
   virtual_text = {
     prefix = '',
-    source = "if_many",
+    source = 'if_many',
   },
 })

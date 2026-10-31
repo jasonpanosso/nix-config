@@ -53,6 +53,24 @@ local spaces = function()
   return 'spaces: ' .. vim.api.nvim_buf_get_option(0, 'shiftwidth')
 end
 
+-- breadcrumbs (file › symbols); empty, and so hidden, without a symbol-providing LSP
+local navic = require('nvim-navic')
+local breadcrumbs = {
+  lualine_c = {
+    { 'filetype', icon_only = true, cond = navic.is_available, padding = { left = 1, right = 0 } },
+    { 'filename', file_status = false, cond = navic.is_available },
+    {
+      function()
+        return '› ' .. navic.get_location()
+      end,
+      cond = function()
+        return navic.is_available() and navic.get_location() ~= ''
+      end,
+      padding = { left = 0, right = 1 },
+    },
+  },
+}
+
 lualine.setup({
   options = {
     refresh = {
@@ -74,4 +92,6 @@ lualine.setup({
     lualine_y = { location },
     lualine_z = { 'progress' },
   },
+  winbar = breadcrumbs,
+  inactive_winbar = breadcrumbs,
 })
