@@ -72,12 +72,17 @@ in
       theme
     ];
 
-    # stylix's overlays set nixpkgs.overlays, which useGlobalPkgs forbids
+    # stylix's overlays would make home-manager re-import nixpkgs; homes use the flake's pkgs
     stylix.overlays.enable = false;
 
     # rofi isn't used (wofi is), and stylix's rofi target sets a renamed option
     stylix.targets.rofi.enable = false;
   };
 
-  flake.modules.homeManager.linux.imports = [ cursor ];
+  flake.modules.homeManager.linux = {
+    imports = [ cursor ];
+
+    # stylix only auto-enables qt for NixOS-managed homes
+    stylix.targets.qt.enable = true;
+  };
 }

@@ -1,4 +1,9 @@
-{ inputs, config, ... }:
+{
+  inputs,
+  config,
+  withSystem,
+  ...
+}:
 
 let
   inherit (config.flake.modules) nixos homeManager;
@@ -13,6 +18,27 @@ in
     ];
   };
 
+  flake.homeConfigurations."jason@wsl" = withSystem "x86_64-linux" (
+    { pkgs, ... }:
+    inputs.home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
+      modules = with homeManager; [
+        base
+        jason
+        linux
+        shell
+        nvim
+        foot
+        pinentry-gnome3
+        wsl
+        {
+          # no desktop on wsl
+          dconf.enable = false;
+        }
+      ];
+    }
+  );
+
   flake.modules.nixos.wsl = {
     imports = [ inputs.nixos-wsl.nixosModules.default ];
 
@@ -23,21 +49,6 @@ in
     wsl = {
       enable = true;
       defaultUser = "jason";
-    };
-
-    home-manager.users.jason = {
-      imports = with homeManager; [
-        base
-        jason
-        shell
-        nvim
-        foot
-        pinentry-gnome3
-        wsl
-      ];
-
-      # no desktop on wsl
-      dconf.enable = false;
     };
   };
 }

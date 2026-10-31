@@ -1,19 +1,4 @@
-{ inputs, config, ... }:
-
 {
-  flake.modules.nixos.base = {
-    imports = [ inputs.home-manager.nixosModules.home-manager ];
-
-    home-manager = {
-      backupFileExtension = ".bak";
-      useGlobalPkgs = true;
-      useUserPackages = true;
-
-      # every NixOS home is a linux home
-      sharedModules = [ config.flake.modules.homeManager.linux ];
-    };
-  };
-
   flake.modules.homeManager.base =
     { lib, config, ... }:
     {
@@ -22,6 +7,9 @@
       home = {
         stateVersion = lib.mkDefault "26.05";
         sessionPath = [ "${config.home.homeDirectory}/.local/bin" ];
+
+        # back up clashing files instead of failing the switch
+        sessionVariables.HOME_MANAGER_BACKUP_EXT = "bak";
       };
     };
 }

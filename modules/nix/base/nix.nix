@@ -60,7 +60,8 @@
     in
     {
       nix = {
-        package = lib.mkDefault pkgs.nix;
+        # same nix as the NixOS hosts
+        package = lib.mkDefault pkgs.nixVersions.latest;
         settings = {
           experimental-features = [
             "nix-command"

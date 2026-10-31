@@ -1,12 +1,4 @@
 {
-  # home-manager installs hyprland's xdg portals into the user profile (useUserPackages)
-  flake.modules.nixos.hyprland = {
-    environment.pathsToLink = [
-      "/share/applications"
-      "/share/xdg-desktop-portal"
-    ];
-  };
-
   flake.modules.homeManager.hyprland =
     {
       lib,

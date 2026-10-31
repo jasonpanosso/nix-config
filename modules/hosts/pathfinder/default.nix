@@ -1,35 +1,22 @@
-{ inputs, config, ... }:
+{
+  inputs,
+  config,
+  withSystem,
+  ...
+}:
 
 let
   inherit (config.flake.modules) nixos homeManager;
 in
 {
-  # Laptop - XPS 13
-  flake.nixosConfigurations.pathfinder = inputs.nixpkgs.lib.nixosSystem {
-    modules = with nixos; [
-      base
-      jason
-      dconf
-      docker
-      boot
-      audio
-      hyprland
-      embedded
-      pathfinder
-    ];
-  };
-
-  flake.modules.nixos.pathfinder = {
-    imports = [
-      ./_hardware.nix
-      inputs.hardware.nixosModules.dell-xps-13-9360
-      inputs.xremap-flake.nixosModules.default
-    ];
-
-    home-manager.users.jason = {
-      imports = with homeManager; [
+  flake.homeConfigurations."jason@pathfinder" = withSystem "x86_64-linux" (
+    { pkgs, ... }:
+    inputs.home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
+      modules = with homeManager; [
         base
         jason
+        linux
         shell
         nvim
         desktop
@@ -41,17 +28,40 @@ in
         zathura
         firefox
         discord
-      ];
-
-      desktop.monitors = [
         {
-          name = "eDP-1";
-          width = 1920;
-          height = 1080;
-          workspaces = [ "1" ];
+          desktop.monitors = [
+            {
+              name = "eDP-1";
+              width = 1920;
+              height = 1080;
+              workspaces = [ "1" ];
+            }
+          ];
         }
       ];
-    };
+    }
+  );
+
+  # Laptop - XPS 13
+  flake.nixosConfigurations.pathfinder = inputs.nixpkgs.lib.nixosSystem {
+    modules = with nixos; [
+      base
+      jason
+      dconf
+      docker
+      boot
+      audio
+      embedded
+      pathfinder
+    ];
+  };
+
+  flake.modules.nixos.pathfinder = {
+    imports = [
+      ./_hardware.nix
+      inputs.hardware.nixosModules.dell-xps-13-9360
+      inputs.xremap-flake.nixosModules.default
+    ];
 
     swapDevices = [ { label = "swap"; } ];
 
