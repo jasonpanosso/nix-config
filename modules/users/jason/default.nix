@@ -34,7 +34,7 @@
       };
 
       sops.secrets.jason-password = {
-        sopsFile = ../../../hosts/common/secrets.enc.yaml;
+        sopsFile = ../../../secrets/common.enc.yaml;
         neededForUsers = true;
       };
     };

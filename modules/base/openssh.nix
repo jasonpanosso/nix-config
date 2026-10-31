@@ -8,7 +8,7 @@ in
     { lib, config, ... }:
     let
       inherit (config.networking) hostName;
-      pubKey = host: ../../hosts/${host}/ssh_host_ed25519_key.pub;
+      pubKey = host: ../hosts/${host}/ssh_host_ed25519_key.pub;
     in
     {
       services.openssh = {

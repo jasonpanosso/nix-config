@@ -7,7 +7,7 @@ keys:
       - &wsl age1dulrd8jku57xyq7m9uc3zeh592p0zzkcx9kst9f0taldp546uf3q7zw983
 
 creation_rules:
-  - path_regex: hosts/common/secrets.enc.yaml$
+  - path_regex: secrets/[^/]+\.enc\.yaml$
     key_groups:
       - age:
           - *pathfinder
