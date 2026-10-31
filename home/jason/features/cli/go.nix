@@ -1,3 +1,5 @@
 { pkgs, ... }:
 
-{ home.packages = [ pkgs.go ]; }
+{
+  home.packages = [ pkgs.go ];
+}

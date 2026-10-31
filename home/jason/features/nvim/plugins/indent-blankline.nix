@@ -4,7 +4,11 @@
     settings = {
       scope.enabled = false;
       exclude = {
-        buftypes = [ "terminal" "nofile" "prompt" ];
+        buftypes = [
+          "terminal"
+          "nofile"
+          "prompt"
+        ];
       };
     };
   };

@@ -2,21 +2,29 @@
 
 let
   pinentry =
-    if config.gtk.enable then {
-      homePackages = [ pkgs.pinentry-gnome3 pkgs.gcr_4 ];
-      package = pkgs.pinentry-gnome3;
-      name = "gnome3";
-    } else {
-      homePackages = [ pkgs.pinentry-curses pkgs.gcr_4 ];
-      package = pkgs.pinentry-curses;
-      name = "curses";
-    };
+    if config.gtk.enable then
+      {
+        homePackages = [
+          pkgs.pinentry-gnome3
+          pkgs.gcr_4
+        ];
+        package = pkgs.pinentry-gnome3;
+        name = "gnome3";
+      }
+    else
+      {
+        homePackages = [
+          pkgs.pinentry-curses
+          pkgs.gcr_4
+        ];
+        package = pkgs.pinentry-curses;
+        name = "curses";
+      };
 in
 {
   home = {
     packages = pinentry.homePackages;
-    shellAliases.gpg-unlock =
-      "gpg-connect-agent updatestartuptty /bye >/dev/null && echo | gpg --clearsign -u 7F4BBBCE5FA232F9DC9E6707CD4B7B6A06A225FD >/dev/null && echo unlocked";
+    shellAliases.gpg-unlock = "gpg-connect-agent updatestartuptty /bye >/dev/null && echo | gpg --clearsign -u 7F4BBBCE5FA232F9DC9E6707CD4B7B6A06A225FD >/dev/null && echo unlocked";
   };
 
   services.gpg-agent = {
@@ -45,10 +53,12 @@ in
         settings = {
           trust-model = "tofu+pgp";
         };
-        publicKeys = [{
-          source = ../../pgp.asc;
-          trust = 5;
-        }];
+        publicKeys = [
+          {
+            source = ../../pgp.asc;
+            trust = 5;
+          }
+        ];
       };
     };
 

@@ -3,7 +3,7 @@
 {
   programs.nixvim = {
     extraPlugins = with pkgs.vimPlugins; [ garbage-day ];
-    extraConfigLua = #lua
+    extraConfigLua = # lua
       ''
         require('garbage-day').setup({
           aggressive_mode = false,

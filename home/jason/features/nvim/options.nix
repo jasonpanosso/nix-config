@@ -105,34 +105,38 @@ in
       # wsl compat
       clipboard = {
         name = "nix-clipboard";
-        copy = { "+" = config.clipboard.copy; "*" = config.clipboard.copy; };
-        paste = { "+" = config.clipboard.paste; "*" = config.clipboard.paste; };
+        copy = {
+          "+" = config.clipboard.copy;
+          "*" = config.clipboard.copy;
+        };
+        paste = {
+          "+" = config.clipboard.paste;
+          "*" = config.clipboard.paste;
+        };
         cache_enabled = 0;
       };
     };
 
-    extraConfigLua =
-      /* lua */
-      ''
-        -- init cache directories
-        local cache_dir = vim.fn.stdpath('cache') .. '/' .. 'nvim' .. '/'
+    extraConfigLua = /* lua */ ''
+      -- init cache directories
+      local cache_dir = vim.fn.stdpath('cache') .. '/' .. 'nvim' .. '/'
 
-        local data_dir = {
-          cache_dir .. 'backup',
-          cache_dir .. 'session',
-          cache_dir .. 'swap',
-          cache_dir .. 'tags',
-          cache_dir .. 'undo',
-        }
+      local data_dir = {
+        cache_dir .. 'backup',
+        cache_dir .. 'session',
+        cache_dir .. 'swap',
+        cache_dir .. 'tags',
+        cache_dir .. 'undo',
+      }
 
-        if vim.fn.isdirectory(cache_dir) == 0 then
-          os.execute('mkdir -p ' .. cache_dir)
-          for _, v in pairs(data_dir) do
-            if vim.fn.isdirectory(v) == 0 then
-              os.execute('mkdir -p ' .. v)
-            end
+      if vim.fn.isdirectory(cache_dir) == 0 then
+        os.execute('mkdir -p ' .. cache_dir)
+        for _, v in pairs(data_dir) do
+          if vim.fn.isdirectory(v) == 0 then
+            os.execute('mkdir -p ' .. v)
           end
         end
-      '';
+      end
+    '';
   };
 }

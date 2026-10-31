@@ -1,4 +1,11 @@
-{ lib, pkgs, config, outputs, inputs, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  outputs,
+  inputs,
+  ...
+}:
 
 let
   projectsDir = "${config.home.homeDirectory}/Programming";
@@ -10,12 +17,16 @@ in
     ../../../shared/stylix.nix
     ../features/cli
     ../features/nvim
-  ] ++ (builtins.attrValues outputs.homeModules);
+  ]
+  ++ (builtins.attrValues outputs.homeModules);
 
   nix = {
     package = lib.mkDefault pkgs.nix;
     settings = {
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       warn-dirty = false;
     };
   };

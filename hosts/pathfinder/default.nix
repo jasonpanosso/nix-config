@@ -17,7 +17,7 @@
   ];
 
   home-manager.users.jason = ./home.nix;
-  swapDevices = [{ label = "swap"; }];
+  swapDevices = [ { label = "swap"; } ];
 
   networking = {
     hostName = "pathfinder";
@@ -27,7 +27,10 @@
   powerManagement.powertop.enable = true;
 
   # hm installs xdg portals into the user profile (useUserPackages)
-  environment.pathsToLink = [ "/share/applications" "/share/xdg-desktop-portal" ];
+  environment.pathsToLink = [
+    "/share/applications"
+    "/share/xdg-desktop-portal"
+  ];
 
   # Lid settings
   services.logind = {

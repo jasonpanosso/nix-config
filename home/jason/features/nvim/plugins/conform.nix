@@ -1,4 +1,9 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 {
   programs.nixvim = {
@@ -24,32 +29,44 @@
         formatters = {
           prettier-svelte = {
             command = "prettier";
-            args = [ "--stdin-filepath" "$FILENAME" ];
+            args = [
+              "--stdin-filepath"
+              "$FILENAME"
+            ];
           };
-          prettier = config.lib.nixvim.mkRaw
-            /* lua */
-            ''
-              {
-                command = function(self, bufnr)
-                    local util = require("conform.util")
-                    local cmd = util.find_executable({ ".yarn/sdks/prettier/bin/prettier.cjs" }, "")(self, bufnr)
+          prettier = config.lib.nixvim.mkRaw /* lua */ ''
+            {
+              command = function(self, bufnr)
+                  local util = require("conform.util")
+                  local cmd = util.find_executable({ ".yarn/sdks/prettier/bin/prettier.cjs" }, "")(self, bufnr)
 
-                    if cmd ~= "" then
-                      return cmd
-                    end
-
-                    return util.from_node_modules("prettier")(self, bufnr) or "${lib.getExe pkgs.prettier}"
+                  if cmd ~= "" then
+                    return cmd
                   end
-              }
-            '';
+
+                  return util.from_node_modules("prettier")(self, bufnr) or "${lib.getExe pkgs.prettier}"
+                end
+            }
+          '';
           prettier-helm = {
             command = "prettier";
-            args = [ "--no-bracket-spacing" "--parser" "yaml" "--stdin-filepath" "$FILENAME" ];
+            args = [
+              "--no-bracket-spacing"
+              "--parser"
+              "yaml"
+              "--stdin-filepath"
+              "$FILENAME"
+            ];
           };
           sqlfluff = {
             command = "sqlfluff";
             stdin = true;
-            args = [ "fix" "--dialect=postgres" "--force" "-" ];
+            args = [
+              "fix"
+              "--dialect=postgres"
+              "--force"
+              "-"
+            ];
           };
         };
 
@@ -69,7 +86,9 @@
           yaml = [ "prettier-helm" ];
           "yaml.ghaction" = [ "prettier-helm" ];
           toml = [ "taplo" ];
-          rust = { lsp_format = "prefer"; };
+          rust = {
+            lsp_format = "prefer";
+          };
           go = [ "gofmt" ];
           python = [ "ruff_format" ];
           sql = [ "sqlfluff" ];
@@ -86,15 +105,16 @@
 
     keymaps = [
       {
-        mode = [ "n" "v" ];
+        mode = [
+          "n"
+          "v"
+        ];
         key = "<leader>lf";
-        action.__raw =
-          /* lua */
-          ''
-            function()
-              require("conform").format({ async = true, lsp_fallback = true })
-            end
-          '';
+        action.__raw = /* lua */ ''
+          function()
+            require("conform").format({ async = true, lsp_fallback = true })
+          end
+        '';
         options = {
           silent = true;
           desc = "Format";

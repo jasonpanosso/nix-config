@@ -6,7 +6,10 @@
 
     keymaps = [
       {
-        mode = [ "n" "v" ];
+        mode = [
+          "n"
+          "v"
+        ];
         key = "<leader>u";
         action = "<cmd>UndotreeToggle<CR>";
         options = {

@@ -13,22 +13,24 @@
   # 'inputs.${flake}.packages.${pkgs.system}' or
   # 'inputs.${flake}.legacyPackages.${pkgs.system}'
   flake-inputs = final: _: {
-    inputs = builtins.mapAttrs
-      (_: flake:
-        let
-          legacyPackages = ((flake.legacyPackages or { }).${final.stdenv.hostPlatform.system} or { });
-          packages = ((flake.packages or { }).${final.stdenv.hostPlatform.system} or { });
-        in
-        if legacyPackages != { } then legacyPackages else packages
-      )
-      inputs;
+    inputs = builtins.mapAttrs (
+      _: flake:
+      let
+        legacyPackages = ((flake.legacyPackages or { }).${final.stdenv.hostPlatform.system} or { });
+        packages = ((flake.packages or { }).${final.stdenv.hostPlatform.system} or { });
+      in
+      if legacyPackages != { } then legacyPackages else packages
+    ) inputs;
   };
 
   # Adds custom packages
-  additions = final: prev: import ../pkgs { pkgs = final; } // {
-    # Add additions here, i.e
-    # formats = prev.formats // import ../pkgs/formats { pkgs = final; };
-  };
+  additions =
+    final: prev:
+    import ../pkgs { pkgs = final; }
+    // {
+      # Add additions here, i.e
+      # formats = prev.formats // import ../pkgs/formats { pkgs = final; };
+    };
 
   # Modifies existing packages
   modifications = final: prev: {
@@ -37,12 +39,11 @@
       harpoon2 = prev.vimUtils.buildVimPlugin {
         pname = "harpoon2";
         version = "2025-02-13";
-        src = prev.fetchgit
-          {
-            url = "https://github.com/ThePrimeagen/harpoon";
-            rev = "ed1f853847ffd04b2b61c314865665e1dadf22c7";
-            hash = "sha256-L7FvOV6KvD58BnY3no5IudiKTdgkGqhpS85RoSxtl7U=";
-          };
+        src = prev.fetchgit {
+          url = "https://github.com/ThePrimeagen/harpoon";
+          rev = "ed1f853847ffd04b2b61c314865665e1dadf22c7";
+          hash = "sha256-L7FvOV6KvD58BnY3no5IudiKTdgkGqhpS85RoSxtl7U=";
+        };
 
         # No idea why the require checks fail
         doCheck = false;
@@ -50,22 +51,20 @@
         meta.homepage = "https://github.com/ThePrimeagen/harpoon/tree/harpoon2";
       };
 
-      harpoon-tabline =
-        prev.vimUtils.buildVimPlugin {
-          pname = "harpoon-tabline";
-          version = "2024-04-27";
-          src = prev.fetchgit
-            {
-              url = "https://github.com/Run1e/harpoon-tabline.nvim";
-              rev = "f3092df9ce0f03d06ad7124128d6dd1c49bf717b";
-              hash = "sha256-DrFsPNkBSUBZfnFNeVM1qolY7OYmagu85bpbwmlYsIo=";
-            };
-
-          # dep on harpoon, idc to learn how to configure it
-          doCheck = false;
-
-          meta.homepage = "https://github.com/jasonpanosso/harpoon-tabline.nvim/";
+      harpoon-tabline = prev.vimUtils.buildVimPlugin {
+        pname = "harpoon-tabline";
+        version = "2024-04-27";
+        src = prev.fetchgit {
+          url = "https://github.com/Run1e/harpoon-tabline.nvim";
+          rev = "f3092df9ce0f03d06ad7124128d6dd1c49bf717b";
+          hash = "sha256-DrFsPNkBSUBZfnFNeVM1qolY7OYmagu85bpbwmlYsIo=";
         };
+
+        # dep on harpoon, idc to learn how to configure it
+        doCheck = false;
+
+        meta.homepage = "https://github.com/jasonpanosso/harpoon-tabline.nvim/";
+      };
 
       actions-preview = prev.vimUtils.buildVimPlugin {
         pname = "actions-preview";

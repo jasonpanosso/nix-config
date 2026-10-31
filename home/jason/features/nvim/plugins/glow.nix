@@ -6,7 +6,10 @@
 
     keymaps = [
       {
-        mode = [ "n" "v" ];
+        mode = [
+          "n"
+          "v"
+        ];
         key = "<leader>md";
         action = "<cmd>Glow<CR>";
         options = {

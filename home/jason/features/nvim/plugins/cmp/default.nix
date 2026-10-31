@@ -25,23 +25,24 @@
         enable_autosnippets = true;
         updateevents = "TextChanged,TextChangedI";
 
-        ext_opts.__raw =
-          /* lua */
-          ''
-            {
-              [require('luasnip.util.types').choiceNode] = {
-                active = {
-                  virt_text = { { '<- choiceNode', 'Comment' } },
-                },
+        ext_opts.__raw = /* lua */ ''
+          {
+            [require('luasnip.util.types').choiceNode] = {
+              active = {
+                virt_text = { { '<- choiceNode', 'Comment' } },
               },
-            }
-          '';
+            },
+          }
+        '';
       };
     };
 
     keymaps = [
       {
-        mode = [ "i" "v" ];
+        mode = [
+          "i"
+          "v"
+        ];
         key = "<C-L>";
         action.__raw = "function() require('luasnip').jump(1) end";
         options = {

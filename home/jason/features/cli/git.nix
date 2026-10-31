@@ -1,7 +1,11 @@
 { pkgs, ... }:
 
 {
-  home.packages = [ pkgs.github-cli pkgs.git-crypt pkgs.git-lfs ];
+  home.packages = [
+    pkgs.github-cli
+    pkgs.git-crypt
+    pkgs.git-lfs
+  ];
 
   programs.git = {
     enable = true;

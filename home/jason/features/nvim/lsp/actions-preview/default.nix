@@ -7,7 +7,10 @@
 
     keymaps = [
       {
-        mode = [ "n" "v" ];
+        mode = [
+          "n"
+          "v"
+        ];
         key = "<leader>ca";
         action.__raw = "require('actions-preview').code_actions";
         options = {

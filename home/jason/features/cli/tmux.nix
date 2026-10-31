@@ -1,11 +1,15 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
-  home.packages = with pkgs;
-    [
-      moreutils # sponge for hacky resurrect fix
-      tmux-sessionizer
-    ];
+  home.packages = with pkgs; [
+    moreutils # sponge for hacky resurrect fix
+    tmux-sessionizer
+  ];
 
   home.file = {
     # setup tmux-sessionizer config
@@ -69,7 +73,7 @@
               "\"~nix-shell->nix-shell *\""
             ];
           in
-            /* sh */ ''
+          /* sh */ ''
             set -g @resurrect-capture-pane-contents 'on'
             set -g @resurrect-processes '${resurrectProcesses}'
             resurrect_dir="${config.home.homeDirectory}/.tmux/resurrect"

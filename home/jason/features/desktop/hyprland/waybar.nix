@@ -7,7 +7,7 @@ in
   programs.waybar = {
     enable = true;
     package = pkgs.waybar.overrideAttrs (oa: {
-      mesonFlags = (oa.mesonFlags or  [ ]) ++ [ "-Dexperimental=true" ];
+      mesonFlags = (oa.mesonFlags or [ ]) ++ [ "-Dexperimental=true" ];
     });
     settings = {
       primary = {
@@ -32,7 +32,10 @@ in
         ];
         battery = {
           interval = 10;
-          states = { warning = 30; critical = 15; };
+          states = {
+            warning = 30;
+            critical = 15;
+          };
           format = " {icon}   {capacity}%"; # Icon: bolt
           format-discharging = "{icon}   {capacity}%";
           format-icons = [
@@ -98,7 +101,13 @@ in
           max-length = 30;
           format-icons = {
             ethernet = "󰌘";
-            wifi = [ "󰤯" "󰤟" "󰤢" "󰤥" "󰤨" ];
+            wifi = [
+              "󰤯"
+              "󰤟"
+              "󰤢"
+              "󰤥"
+              "󰤨"
+            ];
             linked = "󰈁";
             disconnected = "󰌙";
           };
@@ -111,7 +120,11 @@ in
             headphone = "󰋋";
             headset = "󰋎";
             portable = "";
-            default = [ "" "" "" ];
+            default = [
+              ""
+              ""
+              ""
+            ];
           };
           on-click = pavucontrol;
         };

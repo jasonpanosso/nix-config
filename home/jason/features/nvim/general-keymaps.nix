@@ -1,7 +1,10 @@
 {
   programs.nixvim.keymaps = [
     {
-      mode = [ "n" "v" ];
+      mode = [
+        "n"
+        "v"
+      ];
       key = "H";
       action = "^";
       options = {
@@ -10,7 +13,10 @@
     }
 
     {
-      mode = [ "n" "v" ];
+      mode = [
+        "n"
+        "v"
+      ];
       key = "L";
       action = "g_";
       options = {
@@ -29,12 +35,18 @@
 
     # bind Q to nop for following bdelete keymap:
     {
-      mode = [ "n" "v" ];
+      mode = [
+        "n"
+        "v"
+      ];
       key = "Q";
       action = "<nop>";
     }
     {
-      mode = [ "n" "v" ];
+      mode = [
+        "n"
+        "v"
+      ];
       key = "<S-q>";
       action = "<cmd>bdelete!<CR>";
     }
@@ -49,7 +61,10 @@
     }
 
     {
-      mode = [ "n" "v" ];
+      mode = [
+        "n"
+        "v"
+      ];
       key = "<C-g>";
       action = "<C-a>";
       options = {
@@ -58,25 +73,37 @@
     }
 
     {
-      mode = [ "n" "v" ];
+      mode = [
+        "n"
+        "v"
+      ];
       key = "n";
       action = "nzzzv";
     }
 
     {
-      mode = [ "n" "v" ];
+      mode = [
+        "n"
+        "v"
+      ];
       key = "N";
       action = "Nzzzv";
     }
 
     {
-      mode = [ "n" "v" ];
+      mode = [
+        "n"
+        "v"
+      ];
       key = "<C-d>";
       action = "<C-d>zz";
     }
 
     {
-      mode = [ "n" "v" ];
+      mode = [
+        "n"
+        "v"
+      ];
       key = "<C-u>";
       action = "<C-u>zz";
     }

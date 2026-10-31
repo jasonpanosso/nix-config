@@ -1,4 +1,9 @@
-{ inputs, lib, pkgs, ... }:
+{
+  inputs,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   nix = {
@@ -13,11 +18,21 @@
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       ];
 
-      trusted-users = [ "root" "@wheel" ];
+      trusted-users = [
+        "root"
+        "@wheel"
+      ];
       auto-optimise-store = lib.mkDefault true;
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       warn-dirty = false;
-      system-features = [ "kvm" "big-parallel" "nixos-test" ];
+      system-features = [
+        "kvm"
+        "big-parallel"
+        "nixos-test"
+      ];
       flake-registry = ""; # Disable global flake registry
     };
 

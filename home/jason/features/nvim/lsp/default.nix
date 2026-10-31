@@ -3,7 +3,7 @@
     plugins.lsp = {
       enable = true;
       inlayHints = false;
-      capabilities = #lua
+      capabilities = # lua
         ''
           capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
         '';
@@ -23,7 +23,10 @@
       }
 
       {
-        mode = [ "n" "v" ];
+        mode = [
+          "n"
+          "v"
+        ];
         key = "<leader>lr";
         action = "<cmd>LspStop<CR><cmd>sleep 100m<CR><cmd>LspStart<CR>";
         options = {

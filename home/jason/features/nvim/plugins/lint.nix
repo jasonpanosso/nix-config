@@ -2,24 +2,28 @@
 
 {
   programs.nixvim = {
-    extraPackages = with pkgs;
-      [
-        selene
-        python313Packages.flake8
-        sqlfluff
-        yamllint
-        djlint
-        golangci-lint
-        tflint
-        hadolint
-        proselint
-        codespell
-        actionlint
-      ];
+    extraPackages = with pkgs; [
+      selene
+      python313Packages.flake8
+      sqlfluff
+      yamllint
+      djlint
+      golangci-lint
+      tflint
+      hadolint
+      proselint
+      codespell
+      actionlint
+    ];
 
     plugins.lint = {
       enable = true;
-      autoCmd.event = [ "InsertLeave" "TextChanged" "BufRead" "BufWrite" ];
+      autoCmd.event = [
+        "InsertLeave"
+        "TextChanged"
+        "BufRead"
+        "BufWrite"
+      ];
 
       linters = {
         sqlfluff = {
@@ -45,7 +49,10 @@
         htmldjango = [ "djlint" ];
         go = [ "golangcilint" ];
         terraform = [ "tflint" ];
-        "yaml.ghaction" = [ "actionlint" "yamllint" ];
+        "yaml.ghaction" = [
+          "actionlint"
+          "yamllint"
+        ];
       };
     };
 

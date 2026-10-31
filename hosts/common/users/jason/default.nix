@@ -13,7 +13,8 @@ in
         "wheel"
         "video"
         "audio"
-      ] ++ ifGroupExists [
+      ]
+      ++ ifGroupExists [
         "network"
         "networkmanager"
         "wireshark"

@@ -14,7 +14,8 @@ let
         found = lib.filter (m: m != null) (map (builtins.match "go 1\\.([0-9]+).*") lines);
       in
       if found == [ ] then null else builtins.head (builtins.head found)
-    else null;
+    else
+      null;
 
   # Use go_1_<minor> when nixpkgs still has it, otherwise the newest Go
   pinned = if minor == null then null else builtins.tryEval pkgs."go_1_${minor}";
@@ -22,6 +23,12 @@ let
 in
 pkgs.mkShell {
   name = "go";
-  packages = [ go pkgs.gopls pkgs.gotools pkgs.go-tools pkgs.delve ];
+  packages = [
+    go
+    pkgs.gopls
+    pkgs.gotools
+    pkgs.go-tools
+    pkgs.delve
+  ];
   GOTOOLCHAIN = "local";
 }

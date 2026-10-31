@@ -51,7 +51,9 @@
         installRustc = false;
         installCargo = false;
         settings = {
-          cargo = { targetDir = true; };
+          cargo = {
+            targetDir = true;
+          };
           check = {
             command = "clippy";
             allTargets = true;

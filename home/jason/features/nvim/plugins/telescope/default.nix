@@ -206,7 +206,6 @@
         };
       }
 
-
       {
         mode = [ "n" ];
         key = "<leader>dw";

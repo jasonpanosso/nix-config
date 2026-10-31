@@ -39,7 +39,13 @@
     xremap-flake.url = "github:xremap/nix-flake";
   };
 
-  outputs = { self, nixpkgs, nixos-wsl, ... } @ inputs:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      nixos-wsl,
+      ...
+    }@inputs:
     let
       inherit (self) outputs;
       inherit (nixpkgs) lib;
@@ -48,10 +54,13 @@
         "x86_64-linux"
       ];
 
-      pkgsFor = lib.genAttrs systems (system: import nixpkgs {
-        inherit system;
-        overlays = builtins.attrValues outputs.overlays;
-      });
+      pkgsFor = lib.genAttrs systems (
+        system:
+        import nixpkgs {
+          inherit system;
+          overlays = builtins.attrValues outputs.overlays;
+        }
+      );
       forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system});
     in
     {
@@ -63,10 +72,14 @@
       formatter = forEachSystem (pkgs: pkgs.nixfmt-tree);
 
       # `nix flake check` builds every host for its platform
-      checks = forEachSystem (pkgs:
-        lib.mapAttrs (_: host: host.config.system.build.toplevel)
-          (lib.filterAttrs (_: host: host.pkgs.stdenv.hostPlatform.system == pkgs.stdenv.hostPlatform.system)
-            self.nixosConfigurations));
+      checks = forEachSystem (
+        pkgs:
+        lib.mapAttrs (_: host: host.config.system.build.toplevel) (
+          lib.filterAttrs (
+            _: host: host.pkgs.stdenv.hostPlatform.system == pkgs.stdenv.hostPlatform.system
+          ) self.nixosConfigurations
+        )
+      );
 
       nixosConfigurations = {
         # Laptop - XPS 13

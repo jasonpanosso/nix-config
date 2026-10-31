@@ -4,13 +4,24 @@
 
     settings = {
       compile = true;
-      keywordStyle = { bold = false; italic = false; };
-      commentStyle = { bold = false; italic = false; };
-      statementStyle = { bold = false; italic = false; };
-      functionStyle = { bold = false; italic = false; };
+      keywordStyle = {
+        bold = false;
+        italic = false;
+      };
+      commentStyle = {
+        bold = false;
+        italic = false;
+      };
+      statementStyle = {
+        bold = false;
+        italic = false;
+      };
+      functionStyle = {
+        bold = false;
+        italic = false;
+      };
 
-      overrides =
-        /* lua */ ''
+      overrides = /* lua */ ''
         function(colors)
           local theme = colors.theme
           return {
