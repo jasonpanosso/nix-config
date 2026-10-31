@@ -11,8 +11,9 @@ in
       jason
       dconf
       docker
-      systemd-boot
-      pipewire
+      boot
+      audio
+      hyprland
       embedded
       pathfinder
     ];
@@ -29,9 +30,10 @@ in
       imports = with homeManager; [
         base
         jason
-        cli
+        shell
         nvim
         desktop
+        audio
         hyprland
         foot
         pinentry-gnome3
@@ -59,12 +61,6 @@ in
     };
 
     powerManagement.powertop.enable = true;
-
-    # hm installs xdg portals into the user profile (useUserPackages)
-    environment.pathsToLink = [
-      "/share/applications"
-      "/share/xdg-desktop-portal"
-    ];
 
     # Lid settings
     services.logind = {

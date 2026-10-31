@@ -1,5 +1,3 @@
-{ config, ... }:
-
 {
   flake.modules.homeManager.linux =
     { pkgs, ... }:
@@ -20,7 +18,4 @@
         sysstat # sys perf monitoring tools
       ];
     };
-
-  # every NixOS home is a linux home
-  flake.modules.nixos.base.home-manager.sharedModules = [ config.flake.modules.homeManager.linux ];
 }

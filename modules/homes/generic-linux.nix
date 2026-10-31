@@ -18,7 +18,7 @@ in
         base
         jason
         linux
-        cli
+        shell
         nvim
         {
           targets.genericLinux.enable = true;

@@ -29,7 +29,7 @@ in
       imports = with homeManager; [
         base
         jason
-        cli
+        shell
         nvim
         foot
         pinentry-gnome3

@@ -45,5 +45,34 @@
     xremap-flake.url = "github:xremap/nix-flake";
   };
 
-  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
+  outputs =
+    inputs:
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } (
+      { lib, config, ... }:
+      {
+        imports = [
+          inputs.flake-parts.flakeModules.modules
+          inputs.home-manager.flakeModules.home-manager
+          (inputs.import-tree ./modules)
+        ];
+
+        systems = [
+          "aarch64-linux"
+          "x86_64-linux"
+        ];
+
+        perSystem =
+          { pkgs, ... }:
+          {
+            formatter = pkgs.nixfmt-tree;
+
+            # `nix flake check` builds every host for its platform
+            checks = lib.mapAttrs (_: host: host.config.system.build.toplevel) (
+              lib.filterAttrs (
+                _: host: host.pkgs.stdenv.hostPlatform.system == pkgs.stdenv.hostPlatform.system
+              ) config.flake.nixosConfigurations
+            );
+          };
+      }
+    );
 }
