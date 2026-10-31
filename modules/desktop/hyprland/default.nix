@@ -3,6 +3,11 @@
     { pkgs, config, ... }:
 
     {
+      clipboard = {
+        copy = "${pkgs.wl-clipboard}/bin/wl-copy";
+        paste = "${pkgs.wl-clipboard}/bin/wl-paste --no-newline";
+      };
+
       home.packages = with pkgs; [
         hyprpaper
         wl-clipboard

@@ -1,7 +1,10 @@
 { inputs, ... }:
 
 {
-  imports = [ inputs.flake-parts.flakeModules.modules ];
+  imports = [
+    inputs.flake-parts.flakeModules.modules
+    inputs.home-manager.flakeModules.home-manager
+  ];
 
   systems = [
     "aarch64-linux"

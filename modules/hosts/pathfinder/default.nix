@@ -33,6 +33,8 @@ in
         nvim
         desktop
         hyprland
+        foot
+        pinentry-gnome3
         calibre
         zathura
         firefox

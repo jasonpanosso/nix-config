@@ -37,16 +37,20 @@ let
           };
         };
 
-        cursor = {
-          name = "Vanilla-DMZ";
-          package = pkgs.vanilla-dmz;
-          size = 20;
-        };
-
         image = pkgs.fetchurl {
           url = "https://i.imgur.com/ivh6aQ3.png";
           sha256 = "nw1JNlircbublRy/1MhfiQWuDy2r1w+taRkb38x4N6I=";
         };
+      };
+    };
+
+  cursor =
+    { pkgs, ... }:
+    {
+      stylix.cursor = {
+        name = "Vanilla-DMZ";
+        package = pkgs.vanilla-dmz;
+        size = 20;
       };
     };
 in
@@ -55,9 +59,10 @@ in
     imports = [
       inputs.stylix.nixosModules.stylix
       theme
+      cursor
     ];
 
-    # each home imports stylix itself, so standalone and NixOS homes match
+    # each home imports stylix itself
     stylix.homeManagerIntegration.autoImport = false;
   };
 
@@ -70,4 +75,6 @@ in
     # stylix's overlays set nixpkgs.overlays, which useGlobalPkgs forbids
     stylix.overlays.enable = false;
   };
+
+  flake.modules.homeManager.linux.imports = [ cursor ];
 }

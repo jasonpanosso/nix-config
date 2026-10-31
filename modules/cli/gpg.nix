@@ -2,36 +2,19 @@
   flake.modules.homeManager.cli =
     { pkgs, config, ... }:
 
-    let
-      pinentry =
-        if config.gtk.enable then
-          {
-            homePackages = [
-              pkgs.pinentry-gnome3
-              pkgs.gcr_4
-            ];
-            package = pkgs.pinentry-gnome3;
-            name = "gnome3";
-          }
-        else
-          {
-            homePackages = [
-              pkgs.pinentry-curses
-              pkgs.gcr_4
-            ];
-            package = pkgs.pinentry-curses;
-            name = "curses";
-          };
-    in
     {
-      home = {
-        packages = pinentry.homePackages;
-        shellAliases.gpg-unlock = "gpg-connect-agent updatestartuptty /bye >/dev/null && echo | gpg --clearsign -u 7F4BBBCE5FA232F9DC9E6707CD4B7B6A06A225FD >/dev/null && echo unlocked";
-      };
+      # the pinentry depends on the environment, so whoever composes this home picks it
+      assertions = [
+        {
+          assertion = config.services.gpg-agent.pinentry.package != null;
+          message = "gpg: no pinentry chosen; add a pinentry module (e.g. homeManager.pinentry-gnome3) or set services.gpg-agent.pinentry.package";
+        }
+      ];
+
+      home.shellAliases.gpg-unlock = "gpg-connect-agent updatestartuptty /bye >/dev/null && echo | gpg --clearsign -u 7F4BBBCE5FA232F9DC9E6707CD4B7B6A06A225FD >/dev/null && echo unlocked";
 
       services.gpg-agent = {
         enable = true;
-        pinentry.package = pinentry.package;
         enableExtraSocket = true;
         defaultCacheTtl = 3600;
         maxCacheTtl = 7200;

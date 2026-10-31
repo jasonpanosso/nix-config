@@ -18,17 +18,10 @@
       imports = builtins.attrValues (import ../../home/modules);
 
       programs.home-manager.enable = true;
-      systemd.user.startServices = "sd-switch";
 
       home = {
         stateVersion = lib.mkDefault "26.05";
         sessionPath = [ "${config.home.homeDirectory}/.local/bin" ];
-      };
-
-      xdg.userDirs = {
-        enable = true;
-        createDirectories = true;
-        setSessionVariables = true;
       };
     };
 }

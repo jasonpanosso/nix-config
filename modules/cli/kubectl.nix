@@ -5,14 +5,22 @@
     {
       home.packages = with pkgs; [
         kubectl
-        kubectl-cnpg
         kubectl-df-pv
-        kubectl-doctor
         kubectl-example
         kubectl-neat
         kubectl-node-shell
         kubectl-view-secret
         kubectl-tree
       ];
+
+      home.shellAliases = {
+        k = "kubecolor";
+      };
+
+      programs.kubecolor = {
+        enable = true;
+        enableAlias = true;
+        enableZshIntegration = true;
+      };
     };
 }

@@ -31,6 +31,8 @@ in
         jason
         cli
         nvim
+        foot
+        pinentry-gnome3
         wsl
       ];
 
