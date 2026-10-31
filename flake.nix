@@ -1,5 +1,5 @@
 {
-  description = "My NixOS configuration";
+  description = "flake :)";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
