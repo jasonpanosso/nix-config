@@ -100,8 +100,13 @@ in
       programs.ssh = {
         enable = true;
         enableDefaultConfig = false;
-        # an absent yubikey's handle fails and ssh moves on to the next
-        settings."*".IdentityFile = map handle serials;
+        settings."*" = {
+          # an absent yubikey's handle fails and ssh moves on to the next
+          IdentityFile = map handle serials;
+          ControlMaster = "auto";
+          ControlPath = "~/.ssh/control-%C";
+          ControlPersist = "10m";
+        };
       };
 
       programs.git.settings = {
