@@ -15,7 +15,6 @@
           user = {
             name = "jasonpanosso";
             email = "jasonpanosso@protonmail.com";
-            signingkey = "7F4BBBCE5FA232F9DC9E6707CD4B7B6A06A225FD";
           };
           lfs.enable = true;
           difftastic.enable = true;

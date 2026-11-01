@@ -22,15 +22,18 @@ personal nix config
 
 ## yubikeys
 
-yubikeys hold a PIV key for sops (`age-plugin-yubikey`) & have FIDO2 set up for touch-to-sudo (`pam_u2f`)
+yubikeys hold a PIV key for sops (`age-plugin-yubikey`), FIDO2 credentials for touch-to-sudo (`pam_u2f`), & ssh keys (see `modules/users/jason/yubikeys.nix`)
+
+copy all ssh pubkeys to a non-nixos server with `ssh-copy-yubikeys USER@HOST`
 
 ### enroll a new yubikey
 
-1. set PIV credentials (pin & puk) to match other yubikeys (you know these)
+1. set PIV credentials (pin & puk) and FIDO2 pin to match other yubikeys (you know these)
    ```sh
    ykman piv access change-pin
    ykman piv access change-puk
    ykman piv access change-management-key -a TDES --protect # age-plugin-yubikey doesn't support AES management keys yet
+   ykman fido access change-pin
    ```
 2. generate its sops key and copy the printed `age1yubikey1...` recipient
    ```sh
@@ -41,10 +44,20 @@ yubikeys hold a PIV key for sops (`age-plugin-yubikey`) & have FIDO2 set up for 
    ```sh
    echo "$(cat modules/users/jason/u2f_keys)$(pamu2fcfg -n -o pam://nix-config -i pam://nix-config)" > modules/users/jason/u2f_keys
    ```
-5. `nh os switch`
+5. generate its ssh key; the pub key goes in the repo, the key handle into sops (handles bypass yubikey pin)
+   ```sh
+   serial=$(ykman list --serials | head -n1) tmp=$(mktemp -d)
+   ssh-keygen -t ed25519-sk -O resident -C "jason@yubikey-$serial" -N "" -f $tmp/id
+   cp $tmp/id.pub modules/users/jason/yubikeys/$serial.pub && git add modules/users/jason/yubikeys
+   sops set secrets/common.enc.yaml "[\"ssh-yk-$serial\"]" "$(jq -Rs . < $tmp/id)" && rm -r $tmp
+   ```
+6. `nh os switch`
+7. add it to github as a signing key with `gh-add-yubikeys` (skips keys already there), and re-run `ssh-copy-yubikeys` for non-nixos servers
 
 ### remove a yubikey
 
 1. delete its recipient from `.sops.yaml` (ALL repos), then `sops updatekeys -y FILE` and `sops rotate -i FILE` for every encrypted file
 2. delete its `:...` entry from `modules/users/jason/u2f_keys` (entries are in enrollment order)
-3. `nh os switch`
+3. delete its ssh key: `git rm modules/users/jason/yubikeys/SERIAL.pub && sops unset secrets/common.enc.yaml '["ssh-yk-SERIAL"]'`
+4. delete its signing key from github (`gh ssh-key list`, `gh ssh-key delete ID`) and from `~/.ssh/authorized_keys` on non-nixos servers
+5. `nh os switch`
