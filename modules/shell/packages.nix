@@ -24,9 +24,6 @@
         p7zip # 7-zip port for unix
         pciutils # lspci
         pnpm
-        sops
-        age
-        age-plugin-yubikey # yubikey (PIV) recipients for sops
         go-task
         tree
         unzip

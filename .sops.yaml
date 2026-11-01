@@ -1,7 +1,13 @@
 ---
 keys:
   - users:
-      - &jason 7F4BBBCE5FA232F9DC9E6707CD4B7B6A06A225FD
+      # yubikey PIV keys
+      - &yubikey_37800570 age1yubikey1qvh7cprhr6kwhejcyegzdza3tysjepz55w5rh539v2dy7yu4gk046laevy2
+      - &yubikey_37800708 age1yubikey1qfl7hg6g2e2s4vd4kv3c9ea6pcqhjs9g7sn43dda65ln839x0x3fusmlyu2
+      # usb backup key
+      - &breakglass age1wckum007u3z8j0psv78x36y4y846hptazq927w4uducq0wzk63ts32gdlc
+      # old gpg key (REMOVE)
+      - &jason_gpg 7F4BBBCE5FA232F9DC9E6707CD4B7B6A06A225FD
   - hosts:
       - &pathfinder age1c2ruz060djdr5mjn49wkgvnh6kl89e6t7zkentlql9u83f88zatqzrvmlp
       - &wsl age1dulrd8jku57xyq7m9uc3zeh592p0zzkcx9kst9f0taldp546uf3q7zw983
@@ -10,7 +16,10 @@ creation_rules:
   - path_regex: secrets/[^/]+\.enc\.yaml$
     key_groups:
       - age:
+          - *yubikey_37800570
+          - *yubikey_37800708
+          - *breakglass
           - *pathfinder
           - *wsl
         pgp:
-          - *jason
+          - *jason_gpg
