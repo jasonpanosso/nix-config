@@ -22,7 +22,7 @@ personal nix config
 
 ## yubikeys
 
-yubikeys hold a PIV key for sops (`age-plugin-yubikey`), FIDO2 credentials for touch-to-sudo (`pam_u2f`), & ssh keys (see `modules/users/jason/yubikeys.nix`)
+yubikeys hold a PIV key for sops (`age-plugin-yubikey`), FIDO2 credentials for touch-to-sudo (`pam_u2f`), ssh keys (see `modules/users/jason/yubikeys.nix`), & pgp subkeys for email (see [pgp](#pgp))
 
 copy all ssh pubkeys to a non-nixos server with `ssh-copy-yubikeys USER@HOST`
 
@@ -51,8 +51,9 @@ copy all ssh pubkeys to a non-nixos server with `ssh-copy-yubikeys USER@HOST`
    cp $tmp/id.pub modules/users/jason/yubikeys/$serial.pub && git add modules/users/jason/yubikeys
    sops set secrets/common.enc.yaml "[\"ssh-yk-$serial\"]" "$(jq -Rs . < $tmp/id)" && rm -r $tmp
    ```
-6. `nh os switch`
-7. add it to github as a signing key with `gh-add-yubikeys` (skips keys already there), and re-run `ssh-copy-yubikeys` for non-nixos servers
+6. load the pgp subkeys from the breakglass backup (see [pgp](#pgp))
+7. `nh os switch`
+8. add it to github as a signing key with `gh-add-yubikeys` (skips keys already there), and re-run `ssh-copy-yubikeys` for non-nixos servers
 
 ### remove a yubikey
 
@@ -61,3 +62,39 @@ copy all ssh pubkeys to a non-nixos server with `ssh-copy-yubikeys USER@HOST`
 3. delete its ssh key: `git rm modules/users/jason/yubikeys/SERIAL.pub && sops unset secrets/common.enc.yaml '["ssh-yk-SERIAL"]'`
 4. delete its signing key from github (`gh ssh-key list`, `gh ssh-key delete ID`) and from `~/.ssh/authorized_keys` on non-nixos servers
 5. `nh os switch`
+6. revoke pgp subkeys if stolen
+
+## pgp
+
+primary key + subkeys & .rev is on the USB backups, `pgp-FPR.asc` & `FPR.rev`. YOU KNOW THE PASSPHRASE!
+yubikey has sign & encrypt subkeys on them, no primary key
+
+### setup
+
+```sh
+# before loading onto new yubikey or extending expiry:
+export GNUPGHOME=$(mktemp -d) FPR=3674755D4C57C09205D0C8C3ACA1A3C9082C2044
+cp -L ~/.gnupg/{scdaemon,gpg-agent}.conf $GNUPGHOME/ # pcscd + pinentry
+gpg --import PATH_TO_KEY/pgp-$FPR.asc
+
+# finish loading onto new yubikey or extending expiry, then run this:
+gpgconf --kill gpg-agent && rm -rf $GNUPGHOME && unset GNUPGHOME FPR
+```
+
+### load onto a yubikey
+
+1. set the openpgp pins to match other yubikeys: `ykman openpgp access change-pin` & `change-admin-pin` (defaults 123456 / 12345678)
+2. `gpg --edit-key $FPR`, then `key 1`, `keytocard`, `1` (signature), `key 1`, `key 2`, `keytocard`, `2` (encryption), `save`
+3. require touch: `ykman openpgp keys set-touch sig on` & `ykman openpgp keys set-touch dec on`
+
+`save` swaps the temp keyring's subkeys for card stubs (and re-importing won't overwrite them), so wipe the temp `GNUPGHOME` and start over before loading another yubikey
+
+### extend expiry
+
+```sh
+gpg --quick-set-expire $FPR 2y '*'
+gpg --armor --export-secret-keys $FPR > PATH_TO_KEY/pgp-$FPR.asc
+gpg --armor --export $FPR > modules/users/jason/pgp.asc
+```
+
+then `nh os switch` and update the key on github & WKD

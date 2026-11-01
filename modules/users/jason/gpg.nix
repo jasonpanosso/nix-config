@@ -11,7 +11,8 @@
         }
       ];
 
-      home.shellAliases.gpg-unlock = "gpg-connect-agent updatestartuptty /bye >/dev/null && echo | gpg --clearsign -u 7F4BBBCE5FA232F9DC9E6707CD4B7B6A06A225FD >/dev/null && echo unlocked";
+      # learn the plugged in yubikey (new machine or swapped yubikey), then unlock it
+      home.shellAliases.gpg-unlock = "gpg-connect-agent 'scd serialno' 'learn --force' updatestartuptty /bye >/dev/null && echo | gpg --clearsign -u jason@jasonpanosso.com >/dev/null && echo unlocked";
 
       services.gpg-agent = {
         enable = true;
