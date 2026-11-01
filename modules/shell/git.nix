@@ -14,7 +14,7 @@
         settings = {
           user = {
             name = "jasonpanosso";
-            email = "jasonpanosso@protonmail.com";
+            email = "git@jasonpanosso.com";
           };
           lfs.enable = true;
           difftastic.enable = true;
