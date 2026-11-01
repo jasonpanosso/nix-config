@@ -8,7 +8,7 @@ personal nix config
 - run only nvim: `nix run github:jasonpanosso/nix-config#nvim`
 - setup dev shells: `nix develop .#go` / `.#rust`
   - for bootstrapping new nixos hosts that need nh/sops/age/git/etc: `nix develop`
-- template new projects: `nix flake init -t .#go` (also `rust`, `typescript`)
+- template new projects: `nix flake init -t .#LANGUAGE`
 - build every host: `nix flake check`
 
 ## setup new host key
