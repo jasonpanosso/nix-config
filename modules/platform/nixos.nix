@@ -13,6 +13,8 @@
         GatewayPorts = "clientspecified";
       };
 
+      security.sudo.wheelNeedsPassword = true;
+
       # Increase open file limit for sudoers
       security.pam.loginLimits = [
         {
