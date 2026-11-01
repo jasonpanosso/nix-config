@@ -5,7 +5,7 @@
       lsp = {
         auto_attach = true;
         preference = [
-          "typescript-tools"
+          "tsc"
         ];
       };
       highlight = true;

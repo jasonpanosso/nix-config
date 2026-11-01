@@ -83,7 +83,6 @@
     ./pretty_hover
     ./servers.nix
     ./rustaceanvim.nix
-    ./typescript-tools.nix
     ./jdtls.nix
   ];
 }

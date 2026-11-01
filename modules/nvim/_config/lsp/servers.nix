@@ -61,6 +61,13 @@
       };
     };
 
+    # TS 7 native LSP: lspconfig uses a project's node_modules/.bin/tsc if it's
+    # >= 7, otherwise `tsc` from PATH (this one suffixed, like rust-analyzer)
+    tsc = {
+      enable = true;
+      packageFallback = true;
+    };
+
     tailwindcss = {
       enable = true;
 
