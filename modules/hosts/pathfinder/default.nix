@@ -8,7 +8,8 @@
 
     module = {
       imports = [
-        config.nixos.modules.desktop
+        config.nixos.profiles.metal
+        config.nixos.profiles.desktop
         ./_hardware.nix
         inputs.hardware.nixosModules.dell-xps-13-9360
         inputs.xremap-flake.nixosModules.default
@@ -17,6 +18,8 @@
       swapDevices = [ { label = "swap"; } ];
 
       networking.networkmanager.enable = true;
+      # speed up boot time
+      systemd.services.NetworkManager-wait-online.enable = false;
 
       powerManagement.powertop.enable = true;
 

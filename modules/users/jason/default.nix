@@ -1,6 +1,11 @@
 {
   users.jason.nixos =
-    { pkgs, config, ... }:
+    {
+      lib,
+      pkgs,
+      config,
+      ...
+    }:
     let
       ifGroupExists = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
     in
@@ -25,6 +30,7 @@
             "docker"
             "git"
             "libvirtd"
+            "plugdev"
           ];
 
           hashedPasswordFile = config.sops.secrets.jason-password.path;
@@ -33,6 +39,12 @@
       };
 
       sops.secrets.jason-password.neededForUsers = true;
+
+      # yubikey for sudo; generate with:
+      #   pamu2fcfg -u jason -o pam://nix-config -i pam://nix-config > modules/users/jason/u2f_keys
+      environment.etc."u2f-mappings" = lib.mkIf (builtins.pathExists ./u2f_keys) {
+        text = builtins.readFile ./u2f_keys;
+      };
     };
 
   users.jason.home =

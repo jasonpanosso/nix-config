@@ -1,7 +1,7 @@
 { inputs, ... }:
 
 {
-  nixos.modules.base =
+  nixos.profiles.base =
     { config, ... }:
     let
       isEd25519 = k: k.type == "ed25519";

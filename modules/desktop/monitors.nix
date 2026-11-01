@@ -1,6 +1,6 @@
 {
   # must configure monitors for "desktop" features
-  homeManager.modules.desktop =
+  homeManager.profiles.desktop =
     { lib, ... }:
     let
       inherit (lib) mkOption types;

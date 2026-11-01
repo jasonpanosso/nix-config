@@ -12,6 +12,8 @@ let
     name: host:
     inputs.nixpkgs.lib.nixosSystem {
       modules = [
+        # every host gets base (sops, ssh, nix, home-manager); hosts list only what they add
+        config.nixos.profiles.base
         host.module
         {
           networking.hostName = name;

@@ -7,7 +7,7 @@
       assertions = [
         {
           assertion = config.services.gpg-agent.pinentry.package != null;
-          message = "gpg: no pinentry chosen; compose this home from an aspect that picks one (homeManager.modules.linux or .darwin) or set services.gpg-agent.pinentry.package";
+          message = "gpg: no pinentry chosen; compose this home from a profile that picks one (homeManager.profiles.linux or .darwin) or set services.gpg-agent.pinentry.package";
         }
       ];
 
@@ -38,6 +38,8 @@
             settings = {
               trust-model = "tofu+pgp";
             };
+            # go through pcscd instead of claiming the yubikey, so age-plugin-yubikey can still reach it
+            scdaemonSettings.disable-ccid = true;
             publicKeys = [
               {
                 source = ./pgp.asc;

@@ -1,5 +1,5 @@
 {
-  homeManager.modules.wsl =
+  homeManager.profiles.wsl =
     { pkgs, ... }:
 
     let

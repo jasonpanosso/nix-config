@@ -1,7 +1,7 @@
 { inputs, ... }:
 
 {
-  nixos.modules.base =
+  nixos.profiles.base =
     { lib, pkgs, ... }:
     {
       nix = {
@@ -47,7 +47,7 @@
       };
     };
 
-  homeManager.modules.base =
+  homeManager.profiles.base =
     {
       lib,
       pkgs,

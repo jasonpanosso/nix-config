@@ -1,5 +1,5 @@
 {
-  nixos.modules.desktop = {
+  nixos.profiles.metal = {
     boot.loader = {
       systemd-boot = {
         enable = true;

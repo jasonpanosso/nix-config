@@ -1,5 +1,5 @@
 {
-  nixos.modules.desktop = {
+  nixos.profiles.desktop = {
     security.rtkit.enable = true;
     services.pulseaudio.enable = false;
 
@@ -16,7 +16,7 @@
   };
 
   # volume mixer for the pipewire-pulse server above
-  homeManager.modules.desktop =
+  homeManager.profiles.desktop =
     { pkgs, ... }:
     {
       home.packages = [ pkgs.pavucontrol ];

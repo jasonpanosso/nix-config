@@ -1,5 +1,5 @@
 {
-  homeManager.modules.base =
+  homeManager.profiles.base =
     { pkgs, ... }:
 
     # helper script for getting a lang specific devshell with direnv setup

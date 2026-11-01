@@ -2,8 +2,8 @@
 
 {
   # a machine with a graphical session hands its homes the desktop too
-  nixos.modules.desktop = {
-    home-manager.sharedModules = [ config.homeManager.modules.desktop ];
+  nixos.profiles.desktop = {
+    home-manager.sharedModules = [ config.homeManager.profiles.desktop ];
 
     # home-manager's xdg.portal needs these linked when homes install into the system profile
     environment.pathsToLink = [

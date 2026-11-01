@@ -1,5 +1,5 @@
 {
-  nixos.modules.desktop = {
+  nixos.profiles.desktop = {
     programs.dconf.enable = true;
   };
 }

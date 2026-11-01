@@ -1,5 +1,5 @@
 {
-  homeManager.modules.darwin =
+  homeManager.profiles.darwin =
     { pkgs, ... }:
     {
       clipboard = {

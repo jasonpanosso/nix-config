@@ -1,12 +1,11 @@
 { inputs, ... }:
 
 {
-  homeManager.modules.desktop =
+  homeManager.profiles.apps =
     { pkgs, ... }:
 
     {
-      # not themed for now; stylix needs `stylix.targets.firefox.profileNames = [ "jason" ]` to theme it
-      stylix.targets.firefox.enable = false;
+      stylix.targets.firefox.profileNames = [ "jason" ];
 
       programs.firefox = {
         enable = true;

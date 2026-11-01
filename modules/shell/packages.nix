@@ -1,5 +1,5 @@
 {
-  homeManager.modules.base =
+  homeManager.profiles.base =
     { pkgs, ... }:
 
     {
@@ -25,6 +25,8 @@
         pciutils # lspci
         pnpm
         sops
+        age
+        age-plugin-yubikey # yubikey (PIV) recipients for sops
         go-task
         tree
         unzip

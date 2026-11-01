@@ -1,5 +1,5 @@
 {
-  homeManager.modules.desktop =
+  homeManager.profiles.apps =
     { pkgs, ... }:
 
     {

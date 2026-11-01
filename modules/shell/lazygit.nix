@@ -1,5 +1,5 @@
 {
-  homeManager.modules.base = {
+  homeManager.profiles.base = {
     programs.lazygit = {
       enable = true;
       settings = {

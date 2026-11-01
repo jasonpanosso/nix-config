@@ -1,5 +1,5 @@
 {
-  homeManager.modules.base = {
+  homeManager.profiles.base = {
     programs.ripgrep = {
       enable = true;
     };

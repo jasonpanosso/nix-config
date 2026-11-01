@@ -2,7 +2,7 @@
 
 {
   # homes are part of the system: `nh os switch` activates both
-  nixos.modules.base = {
+  nixos.profiles.base = {
     imports = [ inputs.home-manager.nixosModules.home-manager ];
 
     home-manager = {
@@ -11,11 +11,11 @@
       # back up clashing files instead of failing the switch
       backupFileExtension = "bak";
       # every NixOS home is a linux home
-      sharedModules = [ config.homeManager.modules.linux ];
+      sharedModules = [ config.homeManager.profiles.linux ];
     };
   };
 
-  homeManager.modules.base =
+  homeManager.profiles.base =
     { lib, config, ... }:
     {
       programs.home-manager.enable = true;

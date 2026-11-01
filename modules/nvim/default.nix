@@ -1,7 +1,7 @@
 { inputs, ... }:
 
 {
-  homeManager.modules.base =
+  homeManager.profiles.base =
     { config, ... }:
     {
       imports = [ inputs.nixvim.homeModules.nixvim ];

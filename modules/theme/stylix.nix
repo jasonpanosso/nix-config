@@ -55,7 +55,7 @@ let
     };
 in
 {
-  nixos.modules.base = {
+  nixos.profiles.base = {
     imports = [
       inputs.stylix.nixosModules.stylix
       theme
@@ -66,7 +66,7 @@ in
     stylix.homeManagerIntegration.autoImport = false;
   };
 
-  homeManager.modules.base = {
+  homeManager.profiles.base = {
     imports = [
       inputs.stylix.homeModules.stylix
       theme
@@ -79,7 +79,7 @@ in
     stylix.targets.rofi.enable = false;
   };
 
-  homeManager.modules.linux = {
+  homeManager.profiles.linux = {
     imports = [ cursor ];
 
     # stylix only auto-enables qt for NixOS-managed homes
