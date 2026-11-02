@@ -135,7 +135,9 @@
           # vi copy fixes
           set-window-option -g mode-keys vi
 
-          set -s copy-command '${config.clipboard.copy}'
+          ${lib.optionalString (
+            config.clipboard.copy != null
+          ) "set -s copy-command '${config.clipboard.copy}'"}
           set -s set-clipboard on
 
           bind -T copy-mode-vi v send-keys -X begin-selection

@@ -11,4 +11,14 @@
       "/share/xdg-desktop-portal"
     ];
   };
+
+  homeManager.profiles.desktop = {
+    dconf.enable = true;
+
+    xdg.userDirs = {
+      enable = true;
+      createDirectories = true;
+      setSessionVariables = true;
+    };
+  };
 }

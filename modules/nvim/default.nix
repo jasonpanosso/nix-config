@@ -2,7 +2,7 @@
 
 {
   homeManager.profiles.base =
-    { config, ... }:
+    { lib, config, ... }:
     {
       imports = [ inputs.nixvim.homeModules.nixvim ];
 
@@ -14,7 +14,7 @@
         imports = [ ./_config ];
 
         # the home's clipboard commands (e.g. win32yank on wsl) instead of nvim's autodetection
-        globals.clipboard = {
+        globals.clipboard = lib.mkIf (config.clipboard.copy != null && config.clipboard.paste != null) {
           name = "nix-clipboard";
           copy = {
             "+" = config.clipboard.copy;

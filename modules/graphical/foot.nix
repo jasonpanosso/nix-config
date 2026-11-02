@@ -1,5 +1,5 @@
 {
-  homeManager.profiles.terminal =
+  homeManager.profiles.graphical =
     { lib, pkgs, ... }:
 
     {

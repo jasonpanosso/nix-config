@@ -1,5 +1,5 @@
 {
-  homeManager.profiles.apps = {
+  homeManager.profiles.desktop = {
     programs.zathura = {
       enable = true;
     };

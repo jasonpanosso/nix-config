@@ -1,15 +1,28 @@
 { inputs, ... }:
 
 let
-  theme =
+  colors =
+    { lib, pkgs, ... }:
+    {
+      stylix = {
+        enable = true;
+        autoEnable = true;
+        base16Scheme = "${pkgs.base16-schemes}/share/themes/kanagawa.yaml";
+
+        # stylix installs its (default) fonts unless told not to; only homes with a display want them
+        targets.font-packages.enable = lib.mkDefault false;
+        targets.fontconfig.enable = lib.mkDefault false;
+      };
+    };
+
+  fonts =
     { pkgs, ... }:
     {
       fonts.fontconfig.enable = true;
 
       stylix = {
-        enable = true;
-        autoEnable = true;
-        base16Scheme = "${pkgs.base16-schemes}/share/themes/kanagawa.yaml";
+        targets.font-packages.enable = true;
+        targets.fontconfig.enable = true;
 
         fonts = {
           monospace = {
@@ -58,18 +71,22 @@ in
   nixos.profiles.base = {
     imports = [
       inputs.stylix.nixosModules.stylix
-      theme
-      cursor
+      colors
     ];
 
     # each home imports stylix itself
     stylix.homeManagerIntegration.autoImport = false;
   };
 
+  nixos.profiles.desktop.imports = [
+    fonts
+    cursor
+  ];
+
   homeManager.profiles.base = {
     imports = [
       inputs.stylix.homeModules.stylix
-      theme
+      colors
     ];
 
     # stylix's overlays would make home-manager re-import nixpkgs; homes use the flake's pkgs
@@ -79,10 +96,23 @@ in
     stylix.targets.rofi.enable = false;
   };
 
-  homeManager.profiles.linux = {
-    imports = [ cursor ];
+  # stylix's gtk target turns gtk on regardless of the home having a display
+  homeManager.profiles.linux =
+    { lib, ... }:
+    {
+      stylix.targets.gtk.enable = lib.mkDefault false;
+    };
 
+  homeManager.profiles.graphical = {
+    imports = [
+      fonts
+      cursor
+    ];
+
+    stylix.targets.gtk.enable = true;
     # stylix only auto-enables qt for NixOS-managed homes
     stylix.targets.qt.enable = true;
   };
+
+  homeManager.profiles.darwin.imports = [ fonts ];
 }

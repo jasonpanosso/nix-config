@@ -30,7 +30,7 @@
 
       home-manager.sharedModules = [
         config.homeManager.profiles.wsl
-        config.homeManager.profiles.terminal
+        config.homeManager.profiles.graphical
       ];
     };
   };
@@ -38,9 +38,6 @@
   homeManager.profiles.wsl =
     { pkgs, ... }:
     {
-      # no dconf service without a desktop
-      dconf.enable = false;
-
       # stand-in for wslu's wslview (dropped from nixpkgs)
       # need for nvim's gx/:Open, gh, etc.
       home.packages = [

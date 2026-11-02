@@ -1,7 +1,7 @@
 { inputs, ... }:
 
 {
-  homeManager.profiles.apps =
+  homeManager.profiles.desktop =
     { pkgs, ... }:
 
     {

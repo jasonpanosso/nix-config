@@ -1,16 +1,14 @@
 {
   homeManager.profiles.linux =
-    { pkgs, ... }:
+    { lib, pkgs, ... }:
     {
       systemd.user.startServices = "sd-switch";
 
-      xdg.userDirs = {
-        enable = true;
-        createDirectories = true;
-        setSessionVariables = true;
-      };
+      # no dconf service without a desktop session
+      dconf.enable = lib.mkDefault false;
 
-      services.gpg-agent.pinentry.package = pkgs.pinentry-gnome3;
+      # no display to prompt on; graphical homes override
+      services.gpg-agent.pinentry.package = lib.mkDefault pkgs.pinentry-curses;
 
       home.packages = with pkgs; [
         ethtool # query/control network device driver & hw settings
@@ -18,9 +16,6 @@
         lm_sensors # for `sensors` command
         strace # sys calls
         sysstat # sys perf monitoring tools
-
-        pinentry-gnome3
-        gcr_4 # system prompter pinentry-gnome3 talks to outside GNOME
       ];
     };
 }
