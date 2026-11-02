@@ -113,6 +113,4 @@ in
     # stylix only auto-enables qt for NixOS-managed homes
     stylix.targets.qt.enable = true;
   };
-
-  homeManager.profiles.darwin.imports = [ fonts ];
 }

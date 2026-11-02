@@ -7,7 +7,7 @@
       assertions = [
         {
           assertion = config.services.gpg-agent.pinentry.package != null;
-          message = "gpg: no pinentry chosen; compose this home from a profile that picks one (homeManager.profiles.linux or .darwin) or set services.gpg-agent.pinentry.package";
+          message = "gpg: no pinentry chosen; compose this home from a profile that picks one (homeManager.profiles.linux) or set services.gpg-agent.pinentry.package";
         }
       ];
 

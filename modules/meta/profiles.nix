@@ -26,7 +26,6 @@ in
   options.homeManager.profiles = {
     base = profile "homeManager" "base" [ ];
     linux = profile "homeManager" "linux" [ home.base ];
-    darwin = profile "homeManager" "darwin" [ home.base ];
     # linux is cli only; graphical is for homes with a display, desktop for homes with a session
     graphical = profile "homeManager" "graphical" [ home.linux ];
     desktop = profile "homeManager" "desktop" [ home.graphical ];
