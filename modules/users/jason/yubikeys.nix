@@ -71,7 +71,14 @@ in
         (pkgs.writeShellApplication {
           name = "ssh-copy-yubikeys";
           runtimeInputs = [ pkgs.openssh ];
-          text = ''exec ssh-copy-id -f -i ${authorizedKeys} "$@"'';
+          text = ''
+            # require an explicit user rather than falling back to the local one
+            case "''${!#}" in
+              *@*) ;;
+              *) echo "usage: ssh-copy-yubikeys [ssh-copy-id options] USER@HOST" >&2; exit 1 ;;
+            esac
+            exec ssh-copy-id -f -i ${authorizedKeys} "$@"
+          '';
         })
 
         (pkgs.writeShellApplication {
