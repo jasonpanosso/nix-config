@@ -9,6 +9,8 @@ personal nix config
 - setup dev shells: `nix develop .#go` / `.#rust`
   - for bootstrapping new nixos hosts that need nh/sops/age/git/etc: `nix develop`
 - template new projects: `nix flake init -t .#LANGUAGE`
+  - `nix flake init -t "$NH_FLAKE"#LANGUAGE`
+  - `nix flake init -t "https://github.com/jasonpanosso/nix-config/archive/main.tar.gz"#LANGUAGE`
 - build every host: `nix flake check`
 
 ## setup new host key
