@@ -7,6 +7,7 @@ personal nix config
 - switch system and home: `nh os switch` (home-manager runs as a NixOS module)
 - run only nvim: `nix run github:jasonpanosso/nix-config#nvim`
 - setup dev shells: `nix develop .#go` / `.#rust`
+  - may need `--impure` to get toolchain/compiler version from current directory (important for rust/go)
   - for bootstrapping new nixos hosts that need nh/sops/age/git/etc: `nix develop`
 - template new projects: `nix flake init -t .#LANGUAGE`
   - `nix flake init -t "$NH_FLAKE"#LANGUAGE`
