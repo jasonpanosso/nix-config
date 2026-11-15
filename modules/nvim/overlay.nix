@@ -1,6 +1,6 @@
 {
   # vim plugins nixvim uses that nixpkgs doesn't package
-  flake.overlays.vim-plugins = final: prev: {
+  flake.overlays.vim-plugins = _final: prev: {
     vimPlugins = prev.vimPlugins // {
       harpoon-tabline = prev.vimUtils.buildVimPlugin {
         pname = "harpoon-tabline";

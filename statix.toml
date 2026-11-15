@@ -1,0 +1,2 @@
+# Flat dotted assignments (programs.zsh = …; programs.fzf = …;)
+disabled = ["repeated_keys"]
