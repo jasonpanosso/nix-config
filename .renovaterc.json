@@ -16,6 +16,23 @@
   "dependencyDashboardTitle": "Renovate Dashboard 🤖",
   "suppressNotifications": ["prEditedNotification", "prIgnoreNotification"],
   "ignorePaths": ["**/*.sops.*", "**/*.md"],
-  "description": "Actions only (plus `# renovate:` annotations); flake.lock is handled by the Flake Update workflow",
-  "enabledManagers": ["github-actions", "custom.regex"]
+  "description": "Actions, `# renovate:` annotations, and a weekly `nix flake update` via lockFileMaintenance",
+  "enabledManagers": ["github-actions", "custom.regex", "nix"],
+  "nix": {
+    "enabled": true
+  },
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": ["before 6am on monday"],
+    "commitMessageAction": "update",
+    "commitMessageTopic": "flake.lock"
+  },
+  "packageRules": [
+    {
+      "description": "flake.lock is updated wholesale by lockFileMaintenance, not per input",
+      "matchManagers": ["nix"],
+      "matchUpdateTypes": ["digest"],
+      "enabled": false
+    }
+  ]
 }
