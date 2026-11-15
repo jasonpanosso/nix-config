@@ -1,0 +1,21 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    "helpers:pinGitHubActionDigests",
+    "github>jasonpanosso/nix-config//.renovate/autoMerge.json",
+    "github>jasonpanosso/nix-config//.renovate/customManagers.json",
+    "github>jasonpanosso/nix-config//.renovate/labels.json",
+    "github>jasonpanosso/nix-config//.renovate/semanticCommits.json",
+    ":automergeBranch",
+    ":disableRateLimiting",
+    ":dependencyDashboard",
+    ":semanticCommits",
+    ":timezone(America/Detroit)"
+  ],
+  "dependencyDashboardTitle": "Renovate Dashboard 🤖",
+  "suppressNotifications": ["prEditedNotification", "prIgnoreNotification"],
+  "ignorePaths": ["**/*.sops.*", "**/*.md"],
+  "description": "Actions only (plus `# renovate:` annotations); flake.lock is handled by the Flake Update workflow",
+  "enabledManagers": ["github-actions", "custom.regex"]
+}
