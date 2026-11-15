@@ -26,6 +26,13 @@
       systemd.services."usbip-auto-attach@".serviceConfig.ExecStartPre =
         "/sbin/modprobe -a vhci-hcd usbhid";
 
+      # for usbipd + yubikey, random failures hang for way too long
+      boot.kernel.sysctl = {
+        "net.ipv4.tcp_keepalive_time" = 30;
+        "net.ipv4.tcp_keepalive_intvl" = 10;
+        "net.ipv4.tcp_keepalive_probes" = 3;
+      };
+
       system.stateVersion = "26.05";
 
       home-manager.sharedModules = [
