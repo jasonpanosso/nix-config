@@ -1,19 +1,22 @@
 {
-  nixos.profiles.desktop = {
-    security.rtkit.enable = true;
-    services.pulseaudio.enable = false;
+  nixos.profiles.desktop =
+    { config, ... }:
+    {
+      environment.systemPackages = [ config.services.pipewire.package.jack ];
 
-    services.pipewire = {
-      enable = true;
-      pulse.enable = true;
-      jack.enable = true;
-      wireplumber.enable = true;
-      alsa = {
+      security.rtkit.enable = true;
+
+      services.pulseaudio.enable = false;
+      services.pipewire = {
         enable = true;
-        support32Bit = true;
+        pulse.enable = true;
+        wireplumber.enable = true;
+        alsa = {
+          enable = true;
+          support32Bit = true;
+        };
       };
     };
-  };
 
   # volume mixer for the pipewire-pulse server above
   homeManager.profiles.desktop =
