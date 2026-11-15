@@ -36,7 +36,6 @@ jobs:
       - name: Check formatting
         run: nix fmt -- --ci
 
-      # Tools come from this flake's locked nixpkgs, so versions move with flake.lock
       - name: Run statix
         if: ${{ !cancelled() }}
         run: nix run --inputs-from . nixpkgs#statix -- check .
@@ -58,9 +57,13 @@ jobs:
       - name: Install Nix
         uses: cachix/install-nix-action@3dc140bfc76c49fbd4dd958429132e3746bcb086 # v31.11.5
 
-      # Eval only: every host's toplevel is instantiated (options, assertions,
-      # warnings) but nothing is built, so build-time failures aren't caught.
-      # The result is reported after the comment is posted.
+      # fix stylix from failing `flake check --no-build`. stylix reads
+      # base16.nix from a package
+      - name: Prefetch IFD Inputs
+        run: |
+          nix eval --json .#checks \
+            --apply 'builtins.mapAttrs (_: builtins.mapAttrs (_: c: c.drvPath))' || true
+
       - name: Run nix flake check
         id: check
         shell: bash
@@ -74,8 +77,6 @@ jobs:
         env:
           CHECK_RC: ${{ steps.check.outputs.rc }}
         run: |
-          # Each warning plus its continuation lines, up to the next nix log
-          # line; deduped since every host repeats shared warnings.
           awk '
             function flush() { if (blk != "" && !seen[blk]++) print blk "\n"; blk = "" }
             /^(evaluation warning:|warning:|trace:)/ { flush(); blk = $0; next }
@@ -111,7 +112,6 @@ jobs:
             fi
           } > comment.md
 
-      # Fork PRs get no secrets; they still get the check result, just no comment
       - name: Generate Token
         if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
         uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
