@@ -10,6 +10,7 @@
     ":automergeBranch",
     ":disableRateLimiting",
     ":dependencyDashboard",
+    ":maintainLockFilesWeekly",
     ":semanticCommits",
     ":timezone(America/Detroit)"
   ],
@@ -20,12 +21,6 @@
   "enabledManagers": ["github-actions", "custom.regex", "nix"],
   "nix": {
     "enabled": true
-  },
-  "lockFileMaintenance": {
-    "enabled": true,
-    "schedule": ["before 6am on monday"],
-    "commitMessageAction": "update",
-    "commitMessageTopic": "flake.lock"
   },
   "packageRules": [
     {
