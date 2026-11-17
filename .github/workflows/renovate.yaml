@@ -52,6 +52,16 @@ jobs:
         with:
           client-id: "${{ secrets.BOT_CLIENT_ID }}"
           private-key: "${{ secrets.BOT_APP_PRIVATE_KEY }}"
+          # branches, commits and branch automerge to main
+          permission-contents: write
+          # Dependency Dashboard and config-error issues
+          permission-issues: write
+          # PRs and their labels
+          permission-pull-requests: write
+          # renovate/stability-days and other commit statuses
+          permission-statuses: write
+          # updates to .github/workflows (action digests, PINNED_RENOVATE_VERSION)
+          permission-workflows: write
 
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1

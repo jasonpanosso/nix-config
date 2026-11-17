@@ -119,6 +119,8 @@ jobs:
         with:
           client-id: "${{ secrets.BOT_CLIENT_ID }}"
           private-key: "${{ secrets.BOT_APP_PRIVATE_KEY }}"
+          # sticky result comment on the PR
+          permission-pull-requests: write
 
       - if: ${{ steps.app-token.outputs.token && steps.comment.outputs.post == 'true' }}
         name: Add Comment
