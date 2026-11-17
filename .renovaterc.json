@@ -1,33 +1,8 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:recommended",
-    "helpers:pinGitHubActionDigests",
-    "github>jasonpanosso/nix-config//.renovate/autoMerge.json",
-    "github>jasonpanosso/nix-config//.renovate/customManagers.json",
-    "github>jasonpanosso/nix-config//.renovate/labels.json",
-    "github>jasonpanosso/nix-config//.renovate/semanticCommits.json",
-    ":automergeBranch",
-    ":disableRateLimiting",
-    ":dependencyDashboard",
-    ":maintainLockFilesWeekly",
-    ":semanticCommits",
-    ":timezone(America/Detroit)"
-  ],
-  "dependencyDashboardTitle": "Renovate Dashboard 🤖",
-  "suppressNotifications": ["prEditedNotification", "prIgnoreNotification"],
-  "ignorePaths": ["**/*.sops.*", "**/*.md"],
   "description": "Actions, `# renovate:` annotations, and a weekly `nix flake update` via lockFileMaintenance",
-  "enabledManagers": ["github-actions", "custom.regex", "nix"],
-  "nix": {
-    "enabled": true
-  },
-  "packageRules": [
-    {
-      "description": "flake.lock is updated wholesale by lockFileMaintenance, not per input",
-      "matchManagers": ["nix"],
-      "matchUpdateTypes": ["digest"],
-      "enabled": false
-    }
-  ]
+  "extends": [
+    "github>jasonpanosso/renovate-config"
+  ],
+  "enabledManagers": ["github-actions", "custom.regex", "nix"]
 }
