@@ -36,4 +36,4 @@ jobs:
           advanced-security: false
           annotations: true
           # renovate: datasource=pypi depName=zizmor
-          version: 1.32.0
+          version: 1.33.0
